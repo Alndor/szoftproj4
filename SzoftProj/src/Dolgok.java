@@ -3,6 +3,9 @@ public abstract class Dolgok {
 	//Dolgok aktuális mezõjét számontartó változó
 	protected Mezo current = new Mezo();
 	
+	//Dolgok súlya
+	private int weight;
+	
 	//nem abstract, mert csak a dolgozonak és a ladanak kötelezõ megírni
 	public void CollideWith(Dolgok d) {	}
 	
@@ -20,5 +23,17 @@ public abstract class Dolgok {
 		
 	public void SetCurrent(Mezo tmp) {
 		current = tmp;
+	}
+	
+	//"int weight" lekérdezése
+	
+	public int GetWeight(){
+		return weight;
+	}
+	
+	//"int weight" beaállítása
+	
+	public void SetWeight(int x){
+		weight = x;
 	}
 }
