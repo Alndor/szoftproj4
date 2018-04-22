@@ -32,7 +32,6 @@ public abstract class Dolgok {
 	}
 	
 	//"int weight" beaállítása
-	//Próba
 	
 	public void SetWeight(int x){
 		weight = x;
