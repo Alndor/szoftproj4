@@ -1,3 +1,4 @@
+import javax.json.JsonObject;
 
 public abstract class Dolgok {
 	//Dolgok aktuális mezõjét számontartó változó
@@ -36,4 +37,6 @@ public abstract class Dolgok {
 	public void SetWeight(int x){
 		weight = x;
 	}
+	
+	public abstract JsonObject Saved();
 }

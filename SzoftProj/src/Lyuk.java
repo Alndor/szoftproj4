@@ -1,3 +1,9 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 
 public class Lyuk extends Dolgok {
 	protected Map m = new Map();
@@ -34,5 +40,35 @@ public class Lyuk extends Dolgok {
 			
 	public void SetMap(Map tmp) {
 		m = tmp;
+	}
+	
+//	public void Save()
+//	{
+//		JsonObject value = Json.createObjectBuilder()
+//				.add("map", m.toString())
+//				.build();
+//		JsonObject out = Json.createObjectBuilder()
+//				.add("lyuk", value)
+//				.add("weight", String.valueOf(weight))
+//				.build();
+//		try {
+//			JsonWriter w = Json.createWriter(new FileWriter("lyuk.txt"));
+//			w.writeObject(out);
+//			w.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
+	public JsonObject Saved() {
+		JsonObject value = Json.createObjectBuilder()
+				.add("map", m.toString())
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("lyuk", value)
+				.add("weight", String.valueOf(weight))
+				.build();
+		return out;
 	}
 }

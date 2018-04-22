@@ -1,5 +1,12 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 //a mezõket reprezentáló osztály
 public class Mezo {
 	//a mezõn lévõ Dolgokat tárolja
@@ -91,5 +98,18 @@ public class Mezo {
 	
 	public void SetMod(int m){
 		mod = m;
+	}
+	
+	public JsonObject Saved() {
+		JsonArray things = Json.createArrayBuilder(dolgok).build();
+		
+		JsonObject value = Json.createObjectBuilder()
+				.add("modifier", String.valueOf(mod))
+				.add("dolgok", things)
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("mezo", value)
+				.build();
+		return out;
 	}
 }

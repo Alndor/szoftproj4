@@ -1,3 +1,9 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 
 public class Kapcsolo extends Dolgok {
 	//azt a mezõt képviseli, amelyre a lyuk felkerülhet
@@ -77,5 +83,17 @@ public class Kapcsolo extends Dolgok {
 	
 	public void SetSegedLyuk(Lyuk tmp) {
 		segedlyuk = tmp;
+	}
+	
+	public JsonObject Saved() {
+		JsonObject value = Json.createObjectBuilder()
+				.add("lyukasmezo", lyukable.toString())
+				.add("segedlyuk", segedlyuk.Saved())
+				.add("weight", String.valueOf(weight))
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("kapcsolo", value)
+				.build();
+		return out;
 	}
 }

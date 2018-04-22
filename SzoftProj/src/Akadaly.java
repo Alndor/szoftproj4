@@ -1,3 +1,10 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
+
 //a mezõkön elhelyezhetõ akadályok osztálya
 public class Akadaly extends Dolgok {
 	
@@ -24,4 +31,12 @@ public class Akadaly extends Dolgok {
 		System.out.println("<\t<-[akadaly].HitByLada(l, i)");
 	}
 	
+	public JsonObject Saved() {
+
+		JsonObject out = Json.createObjectBuilder()
+				.add("akadaly", "")
+				.add("weight", String.valueOf(weight))
+				.build();
+		return out;
+	}
 }

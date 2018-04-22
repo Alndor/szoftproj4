@@ -1,3 +1,9 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 
 public class CelMezo extends Dolgok {
 
@@ -42,5 +48,16 @@ public class CelMezo extends Dolgok {
 	
 	public void SetMap(Map tmp) {
 		m = tmp;
+	}
+	
+	public JsonObject Saved() {
+		JsonObject value = Json.createObjectBuilder()
+				.add("map", m.toString())
+				.add("weight", String.valueOf(weight))
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("celmezo", value)
+				.build();
+		return out;
 	}
 }
