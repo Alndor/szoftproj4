@@ -1,8 +1,6 @@
-package szoftproj4;
-
 import java.util.Scanner;
 
-public class Main2Application {
+public class Main3Function {
 	
 	public static void Main(String args[]) {
 		
@@ -11,6 +9,8 @@ public class Main2Application {
 		String myString=scanner.nextLine();		
 		scanner.close();	
 		String[] cmd=myString.split(reg);
+		
+		//Map terkep = new Map();
 		
 		if (cmd[0].equals("loadMap")) {
 			if (cmd[1].equals("Test1")) {
