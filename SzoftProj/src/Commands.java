@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -227,6 +228,33 @@ public class Commands {
 		
 		public void GiveUp(int sz) {
 			cmap.getInGame().get(0).GiveUp();			
+		}
+		
+		public void CompareTest(String uj, int elvart) throws IOException {
+			File f_out=null;
+			
+			String outname="output" + elvart +".txt";
+			
+			f_out = new File(wd, outname);
+			
+			FileReader rout = new FileReader(f_out);
+			BufferedReader brout = new BufferedReader(rout);
+			
+			String out;
+			String reqout="";
+			
+			out = brout.readLine();
+			while (out!=null) {
+				reqout += out+"\n";
+				out = brout.readLine();
+			}
+			
+			if (uj.equals(reqout)) {
+				System.out.println("\n\nAz eredmény egyezik az elvárttal.\n\n");
+			}
+			else {
+				System.out.println("\n\nAz eredmény nem egyezik az elvárttal.\n\n");
+			}
 		}
 		
 		

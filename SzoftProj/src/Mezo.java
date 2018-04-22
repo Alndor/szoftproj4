@@ -9,6 +9,8 @@ public class Mezo {
 	//A mez� m�dos�t� �rt�ke
 	private double mod;
 	
+	private Map mymap;
+	
 	//Dolgok mez�re helyez�se
 	public void Accept(Dolgok d) {
 		//System.out.println(">\t->[mezo].Accept(d)");
