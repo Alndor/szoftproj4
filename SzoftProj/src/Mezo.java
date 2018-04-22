@@ -113,6 +113,10 @@ public class Mezo {
 		else {
 			tmp += this.GetNeighbor(i).CountWeight(i);
 			return tmp*mod;
-		}
+		}		
+	}
+	
+	public String GetPosition() {
+		
 	}
 }

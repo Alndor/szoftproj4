@@ -1,4 +1,7 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Commands {
@@ -198,6 +201,32 @@ public class Commands {
 			
 			brin.close();
 			brout.close();
+		}
+		
+		//Célmezõk kilistázásához használandó függvény
+		
+		public String ListCelmezo() {
+			int db=1;
+			String stemp="\n";
+			for(int i=0;i<cmap.GetMezo().size();i++) {
+				Mezo temp=cmap.GetMezo().get(i);
+				for (int j=0;j<temp.GetThings().size();j++) {
+					Dolgok dtemp=temp.GetThings().get(j);
+					if(dtemp.getName()=="CelMezo") {
+						stemp+=(db+" "+temp.getPosition()+"\n");
+					}
+				}
+			}
+			if (stemp!="\n") System.out.println(stemp);
+			return stemp;
+		}
+		
+		public void EndGame() {
+			System.exit(0);
+		}
+		
+		public void GiveUp(int sz) {
+			cmap.getInGame().get(0).GiveUp();			
 		}
 		
 		
