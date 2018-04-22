@@ -10,18 +10,18 @@ public class Lada extends Dolgok {
 	@Override
 	public void CollideWith(Dolgok d) {
 		// TODO Auto-generated method stub
-		System.out.println(">\t->[lada].CollideWith(d)");
+		//System.out.println(">\t->[lada].CollideWith(d)");
 		
 		d.HitByLada(this, irany);
 		
-		System.out.println("<\t<-[lada].CollideWith(d)");
+		//System.out.println("<\t<-[lada].CollideWith(d)");
 	}
 
 	//a paraméterül kapott dolgozó egy megfelelõ irányba löki
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
 		// TODO Auto-generated method stub
-		System.out.println(">\t->[lada].HitByDolgozo(d, i)");
+		//System.out.println(">\t->[lada].HitByDolgozo(d, i)");
 		
 		irany = i;
 		Mezo nextMezo = current.GetNeighbor(i);
@@ -40,14 +40,14 @@ public class Lada extends Dolgok {
 			nextMezo.Accept(this);
 		
 		
-		System.out.println("<\t<-[lada].HitByDolgozo(d, i)");
+		//System.out.println("<\t<-[lada].HitByDolgozo(d, i)");
 	}
 	
 	//a paraméterül kapott láda egy megfelelõ irányba löki
 	@Override
 	public void HitByLada(Lada l, Iranyok i) {
 		// TODO Auto-generated method stub
-		System.out.println(">\t->[lada].HitByLada(d, i)");
+		//System.out.println(">\t->[lada].HitByLada(d, i)");
 		
 		irany = i;
 		Mezo nextMezo = current.GetNeighbor(i);
@@ -67,25 +67,25 @@ public class Lada extends Dolgok {
 			nextMezo.Accept(this);
 		
 			
-		System.out.println("<\t<-[lada].HitByLada(d, i)");
+		//System.out.println("<\t<-[lada].HitByLada(d, i)");
 	}
 	
 	//a mozgás sikertelenségének nyilvántartása
 	public void Refuse() {
-		System.out.println(">\t->[lada].Refuse()");	
+		//System.out.println(">\t->[lada].Refuse()");	
 		
 		refused = true;
 		
-		System.out.println("<\t<-[lada].Refuse()");
+		//System.out.println("<\t<-[lada].Refuse()");
 	}
 	
 	//a láda megsemmisülésének nyilvántartása
 	public void Smashed() {
-		System.out.println(">\t->[lada].Smashed()");
+		//System.out.println(">\t->[lada].Smashed()");
 		
 		smashed = true;
 		
-		System.out.println("<\t<-[lada].Smashed()");
+		//System.out.println("<\t<-[lada].Smashed()");
 	}
 	
 	//"Iranyok irany" lekérdezése

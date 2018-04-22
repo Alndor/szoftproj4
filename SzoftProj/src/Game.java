@@ -3,41 +3,49 @@ import java.util.ArrayList;
 public class Game {
 
 	private ArrayList<Map> maps = new ArrayList<>();
+	private Map currentMap=new Map();
+	
 	
 	
 	//elindítja a játékot
 	public void StartGame() {
-		System.out.println(">\t->[game].StartGame()");
+		//temporary solution, még úgyse kell
+		/*while(currentMap.getInGame().size()!=0) {
+			currentMap.Running();
 			
-		System.out.println("<\t<-[game].StartGame()");
+			
+			
+			
+		}*/
+		
+		//EndGame();
 	}
 	
 	//véget vet a játéknak
 	public void EndGame() {
-		System.out.println(">\t->[game].EndGame()");
-	 
+		for(int i=0;i<currentMap.GetScores().size();i++)
+			System.out.println(currentMap.GetScores().get(i));
 		
-		System.out.println("<\t<-[game].EndGame()");
 	}
 	
 	
 	//a játék feladására szolgál
 	public void Concede() {
-		System.out.println(">\t->[game].EndGame()");
+		
 		
 		EndGame();
 		
-		System.out.println("<\t<-[game].EndGame()");
 	}
 	
 	
 	//kiválaszthatjuk a pályát
-	public void ChooseMap() {
-		System.out.println(">\t->[game].ChooseMap()");
+	public Map ChooseMap() {
+		for(int i=0;i<maps.size();i++) {
+			System.out.println(i+".\t"+maps.get(i).getName());
+		}
 		
-		//Gondolom itt tolti fel a mapot
-		
-		System.out.println("<\t<-[game].ChooseMap()");
+		//temporary solution, még úgyse kell
+		return maps.get(0);
 	}
 	
 	//"ArrayList maps" lekérdezése

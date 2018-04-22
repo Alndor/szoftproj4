@@ -7,29 +7,29 @@ public class CelMezo extends Dolgok {
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
 		// TODO Auto-generated method stub
-		System.out.println(">\t->[celmezo].HitByDolgozo(d, i)");
-		System.out.println("<\t<-[celmezo].HitByDolgozo(d, i)");
+		//System.out.println(">\t->[celmezo].HitByDolgozo(d, i)");
+		//System.out.println("<\t<-[celmezo].HitByDolgozo(d, i)");
 	}
 
 	//amennyiben ládát tolunk rá, pontot kapunk
 	@Override
 	public void HitByLada(Lada l, Iranyok i) {
 		// TODO Auto-generated method stub
-		System.out.println(">\t->[celmezo].HitByLada(l, i)");
+		//System.out.println(">\t->[celmezo].HitByLada(l, i)");
 		
 		Score(l);
 		
-		System.out.println("<\t<-[celmezo].HitByLada(l, i)");
+		//System.out.println("<\t<-[celmezo].HitByLada(l, i)");
 	}
 	
 	//pontot kapunk és a ládát megsemmisítjük,  helyére falat emelünk
 	public void Score(Lada l) {
-		System.out.println("<\t->[celmezo].Score(l)");
+		//System.out.println("<\t->[celmezo].Score(l)");
 		
 		m.AddPoints();
 		l.Smashed();
 		
-		System.out.println("<\t<-[celmezo].Score(l)");
+		//System.out.println("<\t<-[celmezo].Score(l)");
 	}
 	
 	//"Map m" lekérdezése
