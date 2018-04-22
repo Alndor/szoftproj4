@@ -92,4 +92,27 @@ public class Mezo {
 	public void SetMod(int m){
 		mod = m;
 	}
+	
+	//A mezõn lévõ összes dolognak az együttes súlya.
+	public int GetOsszSuly() {		
+		int cntr = 0;
+		for (int i = 0; i < dolgok.size(); i++) {
+			cntr += dolgok.get(i).GetWeight();
+		}
+		return cntr;
+	}
+	
+	//Egy adott irányban lévõ összes doboz súlya (módosításokkal együtt)
+	public int CountWeight(Iranyok i) {
+		int tmp = this.GetOsszSuly();
+		
+		//Ha nincs a következõ mezõn semmi, akkor leáll a rekurzió.
+		if (this.GetNeighbor(i).GetOsszSuly() == 0) {
+			return tmp*mod;
+		}
+		else {
+			tmp += this.GetNeighbor(i).CountWeight(i);
+			return tmp*mod;
+		}
+	}
 }

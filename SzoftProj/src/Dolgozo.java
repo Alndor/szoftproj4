@@ -158,7 +158,7 @@ public class Dolgozo extends Dolgok {
 	//"Game g" beállítása
 		
 	public void SetGame(Game tmp) {
-		g = tmp;;
+		g = tmp;
 	}
 	
 	//"ArrayList items" lekérdezése
