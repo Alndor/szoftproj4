@@ -1,6 +1,7 @@
 //a mezõkön elhelyezhetõ akadályok osztálya
 public class Akadaly extends Dolgok {
 	
+	private String name="Akadaly";
 	//ha az akadályra dolgozó lépne
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
@@ -23,5 +24,10 @@ public class Akadaly extends Dolgok {
 		
 		//System.out.println("<\t<-[akadaly].HitByLada(l, i)");
 	}
+	
+	public String getName() {
+		return name;
+	}
+
 	
 }

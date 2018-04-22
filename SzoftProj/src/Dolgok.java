@@ -2,7 +2,7 @@
 public abstract class Dolgok {
 	//Dolgok aktuális mezõjét számontartó változó
 	protected Mezo current = new Mezo();
-	
+	private String name=null;
 	//Dolgok súlya
 	protected int weight;
 	
@@ -36,4 +36,8 @@ public abstract class Dolgok {
 	public void SetWeight(int x){
 		weight = x;
 	}
+	public String getName() {
+		return name;
+	}
+
 }

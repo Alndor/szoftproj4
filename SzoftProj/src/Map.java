@@ -8,7 +8,7 @@ public class Map {
 	//a pontok számontartására szolgáló lista
 	private ArrayList<Dolgozo> scores = new ArrayList<>();
 	private ArrayList<Dolgozo>	inGame= new ArrayList<>();
-	private Dolgozo current= new Dolgozo();
+	private Dolgozo current= null;
 	
 	//megöli az épp soron lévõ dolgozót
 	public void Kill(Dolgozo d) {
@@ -21,10 +21,10 @@ public class Map {
 	
 	//a játék folyását irányítja
 	public void Running() {
-		//temporary solution, még úgyse kell
+		//temporary solution, még úgyse kell rendesen
 		
-		if (current!=null)
-		inGame.add(current);
+		if (current==null && inGame.size()!=0)
+		//inGame.add(current);
 		current=inGame.remove(0);
 			
 		

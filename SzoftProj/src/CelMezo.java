@@ -2,7 +2,7 @@
 public class CelMezo extends Dolgok {
 
 	protected Map m = new Map();
-	
+	private String name = "CelMezo";
 	//amennyiben dolgozó lép rá nem történik semmi
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
@@ -43,4 +43,9 @@ public class CelMezo extends Dolgok {
 	public void SetMap(Map tmp) {
 		m = tmp;
 	}
+	
+	public String getName() {
+		return name;
+	}
+
 }

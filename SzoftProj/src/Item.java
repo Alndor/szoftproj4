@@ -2,7 +2,7 @@
 public abstract class Item extends Dolgok{
 	
 	//Az Item módosító értéke
-	protected int modifier;
+	protected double modifier;
 	
 	//A módosító metódus
 	public abstract void Modify();
@@ -13,7 +13,7 @@ public abstract class Item extends Dolgok{
 	
 	//"int modifier" lekérdezése
 	
-	public int GetModifier(){
+	public double GetModifier(){
 		return modifier;
 	}
 	
