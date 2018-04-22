@@ -1,38 +1,41 @@
 import java.util.ArrayList;
 
 public class Map {
-
+	
+	
+	private String name=new String();
 	private ArrayList<Mezo> map = new ArrayList<>();
 	//a pontok számontartására szolgáló lista
 	private ArrayList<Dolgozo> scores = new ArrayList<>();
-	
+	private ArrayList<Dolgozo>	inGame= new ArrayList<>();
+	private Dolgozo current= new Dolgozo();
 	
 	//megöli az épp soron lévõ dolgozót
-	public void Kill() {
-		System.out.println(">\t->[map].Kill()");
-		System.out.println("<\t-<[map].Kill()");
+	public void Kill(Dolgozo d) {
+		if(inGame.contains(d))
+			inGame.remove(d);
+		if (current==d) 
+			current=null;
+		
 	}
 	
 	//a játék folyását irányítja
 	public void Running() {
-		System.out.println(">\t->[map].Running()");
+		//temporary solution, még úgyse kell
 		
-		while(!scores.isEmpty()) {
-			for(Dolgozo d : scores) {
-			}
-		}
+		if (current!=null)
+		inGame.add(current);
+		current=inGame.remove(0);
+			
 		
-		System.out.println("<\t-<[map].Running()");
 	}
 	
 	
 	//meghívja a pontot adó függvényét az épp soron lévõ játékosnak
 	public void AddPoints() {
-		System.out.println(">\t->[map].AddPoints()");
+	
+		current.PointsGiven();	
 		
-
-		
-		System.out.println("<\t-<[map].AddPoints()");
 	}
 	
 	//"ArrayList map" lekérdezése
@@ -57,5 +60,21 @@ public class Map {
 	
 	public void SetScores(ArrayList<Dolgozo> tmp) {
 		scores = tmp;
+	}
+	
+	public Dolgozo getCurrent() {
+		return current;
+	}
+	
+	public ArrayList<Dolgozo> getInGame(){
+		return inGame;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String s) {
+		name=s;
 	}
 }

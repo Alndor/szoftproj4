@@ -11,27 +11,27 @@ public class Kapcsolo extends Dolgok {
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
 		// TODO Auto-generated method stub
-		System.out.println(">\t->[kapcsolo].HitByDolgozo(d, i)");
+		//System.out.println(">\t->[kapcsolo].HitByDolgozo(d, i)");
 		
 		SwitchD();
 		
-		System.out.println("<\t<-[kapcsolo].HitByDolgozo(d, i)");
+		//System.out.println("<\t<-[kapcsolo].HitByDolgozo(d, i)");
 	}
 
 	//ha láda tolódik rá, megvizsgálja a váltó állását, és az alapján alakít rajta
 	@Override
 	public void HitByLada(Lada l, Iranyok i) {
 		// TODO Auto-generated method stub
-		System.out.println(">\t->[kapcsolo].HitByLada(l, i)");
+		//System.out.println(">\t->[kapcsolo].HitByLada(l, i)");
 		
 		SwitchL();
 		
-		System.out.println("<\t<-[kapcsolo].HitByLada(l, i)");
+		//System.out.println("<\t<-[kapcsolo].HitByLada(l, i)");
 	}
 	
 	//megvizsgálja a mezõn lévõ Dolgokat, és aszerint jár el, hogy tartalmazta-e a lyukat
 	public void SwitchL() {
-		System.out.println(">\t->[kapcsolo].SwitchL()");
+		//System.out.println(">\t->[kapcsolo].SwitchL()");
 		
 		//csak akkor teszünk bele, ha még nem tartalmazza
 		
@@ -39,12 +39,12 @@ public class Kapcsolo extends Dolgok {
 			lyukable.Accept(segedlyuk);
 		}
 			
-		System.out.println("<\t<-[kapcsolo].SwitchL()");
+		//System.out.println("<\t<-[kapcsolo].SwitchL()");
 	}
 	
 	//megvizsgálja a mezõn lévõ Dolgokat, és aszerint jár el, hogy tartalmazta-e a lyukat
 	public void SwitchD() {
-	  	System.out.println(">\t->[kapcsolo].SwitchD()");
+	  	//System.out.println(">\t->[kapcsolo].SwitchD()");
 	  	
 	  	//ha van rajta a bizonyos lyuk, akkor leszedjük róla, mivel Dolgozó lépett a kapcsolóra
 	  	
@@ -52,7 +52,7 @@ public class Kapcsolo extends Dolgok {
 	  		lyukable.Remove(segedlyuk);
 	  	}
 	  	
-	 	System.out.println("<\t<-[kapcsolo].SwitchD()");
+	 	//System.out.println("<\t<-[kapcsolo].SwitchD()");
 	}
 	
 	//"Mezo lyukable" lekérdezése

@@ -13,28 +13,28 @@ public class Dolgozo extends Dolgok {
 	@Override
 	public void CollideWith(Dolgok d) {
 		// TODO Auto-generated method stub
-		System.out.println(">\t->[dolgozo].CollideWith(d)");
+	//	System.out.println(">\t->[dolgozo].CollideWith(d)");
 		
 		d.HitByDolgozo(this, irany);
 		
-		System.out.println("<\t<-[dolgozo].CollideWith(d)");
+		//System.out.println("<\t<-[dolgozo].CollideWith(d)");
 	}
 
 	//a paraméterül kapott dolgozót egy megfelelõ irányba üti
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
 		// TODO Auto-generated method stub
-		System.out.println(">\t->[dolgozo].HitByDolgozo(d, i)");
+		//System.out.println(">\t->[dolgozo].HitByDolgozo(d, i)");
 		//dolgozó nem léphet dolgozóra
 		d.Refuse();
-		System.out.println("<\t<-[dolgozo].HitByDolgozo(d, i)");
+		//System.out.println("<\t<-[dolgozo].HitByDolgozo(d, i)");
 	}
 
 	//a paraméterül kapott láda egy megfelelõ irányba üti
 	@Override
 	public void HitByLada(Lada l, Iranyok i) {
 		// TODO Auto-generated method stub
-		System.out.println(">\t->[dolgozo].HitByLada(l, i)");
+		//System.out.println(">\t->[dolgozo].HitByLada(l, i)");
 		
 		irany = i;
 		Mezo nextMezo = current.GetNeighbor(i);
@@ -42,20 +42,20 @@ public class Dolgozo extends Dolgok {
 		current.Remove(this);
 		if(refused) {
 			//amennyiben a dolgozót nem lehet a következõ mezõre tolni, meghal
-			m.Kill();
+			m.Kill(this);
 			return;
 		}
 		else
 			nextMezo.Accept(this);
 		
 		
-		System.out.println("<\t<-[dolgozo].HitByLada(l, i)");
+		//System.out.println("<\t<-[dolgozo].HitByLada(l, i)");
 	}
 	
 	
 	//a játékos mozgatja a dolgozót egy irányba, vagy dönthet úgy is, hogy nem mozdul a körben
 	public void Move(Iranyok i) {
-		System.out.println(">\t->[dolgozo].Move(i)");
+		//System.out.println(">\t->[dolgozo].Move(i)");
 		if(i.getDir()!='x') {
 				Mezo nextMezo = current.GetNeighbor(i);
 				nextMezo.GetDolgok(this);
@@ -72,36 +72,35 @@ public class Dolgozo extends Dolgok {
 		else current.Accept(this);
 		
 		
-		System.out.println("<\t<-[dolgozo].Move(i)");
+		//System.out.println("<\t<-[dolgozo].Move(i)");
 	}
 	
 	
 	//növeli a dolgozó pontjainak számát egyel, ha sikeresen a helyére tolt egy ládát, akkor hívódik meg
 	public void PointsGiven(){
-		System.out.println(">\t->[dolgozo].PointsGiven()");
+		//System.out.println(">\t->[dolgozo].PointsGiven()");
 		
 		points++;		
 		
-		System.out.println("<\t<-[dolgozo].PointsGiven()");
+		//System.out.println("<\t<-[dolgozo].PointsGiven()");
 	}
 	
 	//a játékos feladhatja a játékot, ha úgy érzi, hogy már nem vezet sehova
 	public void GiveUp() {
-		System.out.println(">\t->[dolgozo].GiveUp()");
+		//System.out.println(">\t->[dolgozo].GiveUp()");
 		
 		g.Concede();
 		
-		System.out.println("<\t<-[dolgozo].GiveUp()");
+		//System.out.println("<\t<-[dolgozo].GiveUp()");
 	}
 	
 	
 	//amennyiben dolgozó lépne dolgozóra ez a függvény hívódik meg, ami nem engedi a lépést
 	public void Refuse() {
-		System.out.println(">\t->[dolgozo].Refuse()");
 		
 		refused = true;
 		
-		System.out.println("<\t<-[dolgozo].Refuse()");
+		
 	}
 	
 	//"int points" lekérdezése

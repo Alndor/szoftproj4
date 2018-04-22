@@ -9,27 +9,27 @@ public class Mezo {
 	
 	//Dolgok mezõre helyezése
 	public void Accept(Dolgok d) {
-		System.out.println(">\t->[mezo].Accept(d)");
+		//System.out.println(">\t->[mezo].Accept(d)");
 		
 		dolgok.add(d);
 		d.SetCurrent(this);
 		
 		
-		System.out.println("<\t<-[mezo].Accept(d)");
+		//System.out.println("<\t<-[mezo].Accept(d)");
 	}
 	//Dolgok eltávolítása a mezõrõl
 	public void Remove(Dolgok d) {
-		System.out.println(">\t->[mezo].Remove(d)");
+		//System.out.println(">\t->[mezo].Remove(d)");
 		
 		dolgok.remove(d);
 		
-		System.out.println("<\t<-[mezo].Remove(d)");
+		//System.out.println("<\t<-[mezo].Remove(d)");
 	}
 	
 	//szomszédos mezõ lekérése
 	public Mezo GetNeighbor(Iranyok i) {
-		System.out.println(">\t->[mezo].GetNeighbour(i)");
-		System.out.println("<\t<-[mezo].GetNeighbour(i)");
+		//System.out.println(">\t->[mezo].GetNeighbour(i)");
+		//System.out.println("<\t<-[mezo].GetNeighbour(i)");
 		
 		return szomszedok.get(i);
 		
@@ -37,22 +37,22 @@ public class Mezo {
 	
 	//szomszédos mezõ beállítása
 	public void SetNeighbor(Iranyok i, Mezo m) {
-		System.out.println(">\t->[mezo].SetNeighbour(i, m)");
+		//System.out.println(">\t->[mezo].SetNeighbour(i, m)");
 		
 		szomszedok.put(i, m);
 		
-		System.out.println("<\t<-[mezo].SetNeighbour(i, m)");
+		//System.out.println("<\t<-[mezo].SetNeighbour(i, m)");
 	}
 	
 	//Paraméterül kapott Dolog ütköztetése a mezõn lévõ dolgokkal
 	public void GetDolgok(Dolgok d) {
-		System.out.println(">\t->[mezo].GetDolgok(d)");
+		//System.out.println(">\t->[mezo].GetDolgok(d)");
 		//System.out.println(dolgok.size());
 		for (int i=dolgok.size();i>0;i--) {
 			d.CollideWith(dolgok.get(i-1));
 		}
 		
-		System.out.println("<\t<-[mezo].GetDolgok(d)");
+		//System.out.println("<\t<-[mezo].GetDolgok(d)");
 	}
 	
 	//"ArrayList dolgok" lekérdezése
