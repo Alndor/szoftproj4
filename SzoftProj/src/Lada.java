@@ -6,6 +6,11 @@ public class Lada extends Dolgok {
 	protected boolean refused = false;
 	protected Iranyok irany = null;
 	
+	private String name="Lada";
+	public String getName() {
+		return name;
+	}
+	
 	//a paraméterül kapott Dologhoz hozzáüti a ládát
 	@Override
 	public void CollideWith(Dolgok d) {

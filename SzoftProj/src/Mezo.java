@@ -7,7 +7,7 @@ public class Mezo {
 	//megfelel� ir�nyokba be�ll�tott mez�ket t�rolja
 	private HashMap<Iranyok, Mezo> szomszedok = new HashMap<>();
 	//A mez� m�dos�t� �rt�ke
-	private int mod;
+	private double mod;
 	
 	//Dolgok mez�re helyez�se
 	public void Accept(Dolgok d) {
@@ -83,13 +83,13 @@ public class Mezo {
 	
 	//"int mod" lek�rdez�se
 	
-	public int GetMod(){
+	public double GetMod(){
 		return mod;
 	}
 	
 	//"int mod" be�ll�t�sa
 	
-	public void SetMod(int m){
+	public void SetMod(double m){
 		mod = m;
 	}
 	
@@ -103,7 +103,7 @@ public class Mezo {
 	}
 	
 	//Egy adott ir�nyban l�v� �sszes doboz s�lya (m�dos�t�sokkal egy�tt)
-	public int CountWeight(Iranyok i) {
+	public double CountWeight(Iranyok i) {
 		int tmp = this.GetOsszSuly();
 		
 		//Ha nincs a k�vetkez� mez�n semmi, akkor le�ll a rekurzi�.

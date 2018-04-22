@@ -2,10 +2,13 @@ import java.util.ArrayList;
 
 //a j�t�kosok �ltal ir�ny�tott dolgoz�k oszt�lya
 public class Dolgozo extends Dolgok {
+	
+	
+	private String name= "Dolgozo";
 	//az adott j�t�kos pontjait t�rol� v�ltoz�
 	private int points;
 	private Iranyok irany = null;
-	//v�ltoz�, ami sz�mon tartja, hogy siker�lt-e a mozgat�s
+	//valtozo, ami szamon tartja, hogy sikerult-e a mozgatas
 	protected boolean refused = false;
 	//a megfelel� kommunik�l�shoz haszn�lt v�ltoz�k
 	private Map m = new Map();
@@ -171,4 +174,9 @@ public class Dolgozo extends Dolgok {
 	public void SetItems(ArrayList<Item> tmp){
 		items = tmp;
 	}
+	
+	public String getName() {
+		return name;
+	}
+
 }
