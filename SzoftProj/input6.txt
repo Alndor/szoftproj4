@@ -1,0 +1,6 @@
+loadMap Test2
+listDolgozo
+listCelmezo
+moveDolgozo Up
+listDolgozo
+listCelmezo

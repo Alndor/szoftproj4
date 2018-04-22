@@ -1,0 +1,6 @@
+LoadMap Test6
+ListDolgozo
+ListMez
+PlaceDolgozoMez
+ListDolgozo
+ListMez

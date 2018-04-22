@@ -1,0 +1,5 @@
+LoadMap Test6
+ListDolgozo
+GiveUp 1
+MoveDolgozo Right
+ListDolgozo

@@ -1,0 +1,8 @@
+LoadMap Test5
+ListOlaj
+ListDolgozo
+ListLada
+MoveDolgozo Down
+ListOlaj
+ListDolgozo
+ListLada

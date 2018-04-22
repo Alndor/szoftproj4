@@ -1,0 +1,6 @@
+loadMap Test4
+listDolgozo
+listLada
+moveDolgozo Right
+listDolgozo
+ListLada

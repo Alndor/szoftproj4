@@ -1,0 +1,8 @@
+loadMap Test4
+listDolgozo
+listLada
+listAkadaly
+moveDolgozo Down
+moveDolgozo Down
+listDolgozo
+ListLada
