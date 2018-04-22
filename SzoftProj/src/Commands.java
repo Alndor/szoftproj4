@@ -5,108 +5,126 @@ public class Commands {
 	private Map cmap= new Map();
 	
 	//listazo fuggvenyek a kulonbozo dolgokhoz
-	public void listAkadaly() {
+	public String listAkadaly() {
 		int db=1;
+		String stemp="\n";
 		for(int i=0;i<cmap.GetMezo().size();i++) {
 			Mezo temp=cmap.GetMezo().get(i);
 			for (int j=0;j<temp.GetThings().size();j++) {
 				Dolgok dtemp=temp.GetThings().get(j);
 				if(dtemp.getName()=="Akadaly") {
-					System.out.println(db+" "+temp.getPosition());
+					stemp+=(db+" "+temp.getPosition()+"\n");
 				}
 			}
 		}
+		if (stemp!="\n") System.out.println(stemp);
+		return stemp;
 		}
 		
 		
-		public void listDolgozo() {
+		public String listDolgozo() {
 			int db=1;
+			String stemp="\n";
 			for(int i=0;i<cmap.GetMezo().size();i++) {
 				Mezo temp=cmap.GetMezo().get(i);
 				for (int j=0;j<temp.GetThings().size();j++) {
 					Dolgok dtemp=temp.GetThings().get(j);
 					if(dtemp.getName()=="Dolgozo") {
-						System.out.println(db+" "+temp.getPosition());
+						stemp+=(db+" "+temp.getPosition()+"\n");
 					}
 				}
 			}
-		
+			if (stemp!="\n") System.out.println(stemp);
+			return stemp;
 	}
 		
-		public void listKapcsolo() {
+		public String listKapcsolo() {
 			int db=1;
+			String stemp="\n";
 			for(int i=0;i<cmap.GetMezo().size();i++) {
 				Mezo temp=cmap.GetMezo().get(i);
 				for (int j=0;j<temp.GetThings().size();j++) {
 					Dolgok dtemp=temp.GetThings().get(j);
 					if(dtemp.getName()=="Kapcsolo") {
-						System.out.println(db+" "+temp.getPosition());
+						stemp+=(db+" "+temp.getPosition()+"\n");
 					}
 				}
 			}
+			if (stemp!="\n") System.out.println(stemp);
+			return stemp;
 		
 	}
 		
 		
-		public void listLada() {
+		public String listLada() {
 			int db=1;
+			String stemp="\n";
 			for(int i=0;i<cmap.GetMezo().size();i++) {
 				Mezo temp=cmap.GetMezo().get(i);
 				for (int j=0;j<temp.GetThings().size();j++) {
 					Dolgok dtemp=temp.GetThings().get(j);
 					if(dtemp.getName()=="Lada") {
-						System.out.println(db+" "+temp.getPosition());
+						stemp+=(db+" "+temp.getPosition()+"\n");
 					}
 				}
 			}
-		
+			if (stemp!="\n") System.out.println(stemp);
+			return stemp;
 	}
 		
 		
-		public void listLyuk() {
+		public String listLyuk() {
 			int db=1;
+			String stemp="\n";
 			for(int i=0;i<cmap.GetMezo().size();i++) {
 				Mezo temp=cmap.GetMezo().get(i);
 				for (int j=0;j<temp.GetThings().size();j++) {
 					Dolgok dtemp=temp.GetThings().get(j);
 					if(dtemp.getName()=="Lyuk") {
-						System.out.println(db+" "+temp.getPosition());
+						stemp+=(db+" "+temp.getPosition()+"\n");
 					}
 				}
 			}
+			if (stemp!="\n") System.out.println(stemp);
+			return stemp;
 		
 	}
 		
 		
-		public void listMez() {
+		public String listMez() {
 			int db=1;
+			String stemp= new String();
 			for(int i=0;i<cmap.GetMezo().size();i++) {
 				Mezo temp=cmap.GetMezo().get(i);
 				for (int j=0;j<temp.GetThings().size();j++) {
 					Dolgok dtemp=temp.GetThings().get(j);
 					if(dtemp.getName()=="Mez") {
-						System.out.println(db+" "+temp.getPosition());
+						stemp+=(db+" "+temp.getPosition()+"\n");
 					}
 				}
 			}
-		
+			if (stemp!="\n") System.out.println(stemp);
+			return stemp;
 	}
 		
 		
 	
 		
-		public void listOlaj() {
+		public String listOlaj() {
 			int db=1;
-			for(int i=0;i<cmap.GetMezo().size();i++) {
+			String stemp= "\n";
+				for(int i=0;i<cmap.GetMezo().size();i++) {
 				Mezo temp=cmap.GetMezo().get(i);
 				for (int j=0;j<temp.GetThings().size();j++) {
 					Dolgok dtemp=temp.GetThings().get(j);
 					if(dtemp.getName()=="Olaj") {
-						System.out.println(db+" "+temp.getPosition());
+						
+						stemp+=(db+" "+temp.getPosition()+"\n");
 					}
 				}
 			}
-		
+			if (stemp!="\n") System.out.println(stemp);
+			return stemp;
 	}
 	
 		//map betoltese
