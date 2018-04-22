@@ -5,7 +5,11 @@ public class Kapcsolo extends Dolgok {
 	//a felrakható lyuk
 	private Lyuk segedlyuk = new Lyuk();
 	//protected boolean open = false;
-	
+	private String name="Kapcsolo";
+	public String getName() {
+		return name;
+	}
+
 
 	//ha dolgozó lép rá, megvizsgálja a váltó állását, és az alapján alakít rajta
 	@Override

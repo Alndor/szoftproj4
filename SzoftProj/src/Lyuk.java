@@ -1,7 +1,7 @@
 
 public class Lyuk extends Dolgok {
 	protected Map m = new Map();
-	
+	private String name = "Lyuk";
 	//amennyiben dolgozó lép a lyukra, meghívja az annak megölésére szolgáló függvényt
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
@@ -34,5 +34,9 @@ public class Lyuk extends Dolgok {
 			
 	public void SetMap(Map tmp) {
 		m = tmp;
+	}
+	
+	public String getName() {
+		return name;
 	}
 }
