@@ -1,15 +1,19 @@
-//a játékosok által irányított dolgozók osztálya
+import java.util.ArrayList;
+
+//a jï¿½tï¿½kosok ï¿½ltal irï¿½nyï¿½tott dolgozï¿½k osztï¿½lya
 public class Dolgozo extends Dolgok {
-	//az adott játékos pontjait tároló változó
+	//az adott jï¿½tï¿½kos pontjait tï¿½rolï¿½ vï¿½ltozï¿½
 	private int points;
 	private Iranyok irany = null;
-	//változó, ami számon tartja, hogy sikerült-e a mozgatás
+	//vï¿½ltozï¿½, ami szï¿½mon tartja, hogy sikerï¿½lt-e a mozgatï¿½s
 	protected boolean refused = false;
-	//a megfelelõ kommunikáláshoz használt változók
+	//a megfelelï¿½ kommunikï¿½lï¿½shoz hasznï¿½lt vï¿½ltozï¿½k
 	private Map m = new Map();
 	private Game g = new Game();
+	//A dolgozï¿½ letehetï¿½ Itemjeinek gyï¿½jtemï¿½nye
+	private ArrayList<Item> items = new ArrayList<>();
 	
-	//a paraméterül kapott Dologhoz hozzáüti a dolgozót
+	//a paramï¿½terï¿½l kapott Dologhoz hozzï¿½ï¿½ti a dolgozï¿½t
 	@Override
 	public void CollideWith(Dolgok d) {
 		// TODO Auto-generated method stub
@@ -20,17 +24,17 @@ public class Dolgozo extends Dolgok {
 		//System.out.println("<\t<-[dolgozo].CollideWith(d)");
 	}
 
-	//a paraméterül kapott dolgozót egy megfelelõ irányba üti
+	//a paramï¿½terï¿½l kapott dolgozï¿½t egy megfelelï¿½ irï¿½nyba ï¿½ti
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
 		// TODO Auto-generated method stub
 		//System.out.println(">\t->[dolgozo].HitByDolgozo(d, i)");
-		//dolgozó nem léphet dolgozóra
+		//dolgozï¿½ nem lï¿½phet dolgozï¿½ra
 		d.Refuse();
 		//System.out.println("<\t<-[dolgozo].HitByDolgozo(d, i)");
 	}
 
-	//a paraméterül kapott láda egy megfelelõ irányba üti
+	//a paramï¿½terï¿½l kapott lï¿½da egy megfelelï¿½ irï¿½nyba ï¿½ti
 	@Override
 	public void HitByLada(Lada l, Iranyok i) {
 		// TODO Auto-generated method stub
@@ -41,7 +45,7 @@ public class Dolgozo extends Dolgok {
 		nextMezo.GetDolgok(this);
 		current.Remove(this);
 		if(refused) {
-			//amennyiben a dolgozót nem lehet a következõ mezõre tolni, meghal
+			//amennyiben a dolgozï¿½t nem lehet a kï¿½vetkezï¿½ mezï¿½re tolni, meghal
 			m.Kill(this);
 			return;
 		}
@@ -53,7 +57,7 @@ public class Dolgozo extends Dolgok {
 	}
 	
 	
-	//a játékos mozgatja a dolgozót egy irányba, vagy dönthet úgy is, hogy nem mozdul a körben
+	//a jï¿½tï¿½kos mozgatja a dolgozï¿½t egy irï¿½nyba, vagy dï¿½nthet ï¿½gy is, hogy nem mozdul a kï¿½rben
 	public void Move(Iranyok i) {
 		//System.out.println(">\t->[dolgozo].Move(i)");
 		if(i.getDir()!='x') {
@@ -61,7 +65,7 @@ public class Dolgozo extends Dolgok {
 				nextMezo.GetDolgok(this);
 				current.Remove(this);
 				
-				//amennyiben a dolgozó nem léphet a következõ mezõre az aktuális mezõn marad
+				//amennyiben a dolgozï¿½ nem lï¿½phet a kï¿½vetkezï¿½ mezï¿½re az aktuï¿½lis mezï¿½n marad
 				if(refused) {
 					current.Accept(this);
 					refused=false;
@@ -76,7 +80,7 @@ public class Dolgozo extends Dolgok {
 	}
 	
 	
-	//növeli a dolgozó pontjainak számát egyel, ha sikeresen a helyére tolt egy ládát, akkor hívódik meg
+	//nï¿½veli a dolgozï¿½ pontjainak szï¿½mï¿½t egyel, ha sikeresen a helyï¿½re tolt egy lï¿½dï¿½t, akkor hï¿½vï¿½dik meg
 	public void PointsGiven(){
 		//System.out.println(">\t->[dolgozo].PointsGiven()");
 		
@@ -85,7 +89,7 @@ public class Dolgozo extends Dolgok {
 		//System.out.println("<\t<-[dolgozo].PointsGiven()");
 	}
 	
-	//a játékos feladhatja a játékot, ha úgy érzi, hogy már nem vezet sehova
+	//a jï¿½tï¿½kos feladhatja a jï¿½tï¿½kot, ha ï¿½gy ï¿½rzi, hogy mï¿½r nem vezet sehova
 	public void GiveUp() {
 		//System.out.println(">\t->[dolgozo].GiveUp()");
 		
@@ -95,7 +99,7 @@ public class Dolgozo extends Dolgok {
 	}
 	
 	
-	//amennyiben dolgozó lépne dolgozóra ez a függvény hívódik meg, ami nem engedi a lépést
+	//amennyiben dolgozï¿½ lï¿½pne dolgozï¿½ra ez a fï¿½ggvï¿½ny hï¿½vï¿½dik meg, ami nem engedi a lï¿½pï¿½st
 	public void Refuse() {
 		
 		refused = true;
@@ -103,51 +107,68 @@ public class Dolgozo extends Dolgok {
 		
 	}
 	
-	//"int points" lekérdezése
+	//Item lerakï¿½sa
+	public void PlaceItem(Item it){
+		current.Accept(it);
+	}
+	
+	//"int points" lekï¿½rdezï¿½se
 	
 	public int GetPoints() {
 		return points;
 	}
 	
-	//"int points" beállítása
+	//"int points" beï¿½llï¿½tï¿½sa
 	
 	public void SetPoints(int tmp) {
 		points = tmp;
 	}
 	
-	//"Iranyok irany" lekérdezése
+	//"Iranyok irany" lekï¿½rdezï¿½se
 	
 	public Iranyok GetIrany() {
 		return irany;
 	}
 	
-	//"Iranyok irany" beállítása
+	//"Iranyok irany" beï¿½llï¿½tï¿½sa
 	
 	public void SetIrany(Iranyok tmp) {
 		irany = tmp;
 	}
 	
-	//"Map m" lekérdezése
+	//"Map m" lekï¿½rdezï¿½se
 	
 	public Map GetMap() {
 		return m;
 	}
 		
-	//"Map m" beállítása
+	//"Map m" beï¿½llï¿½tï¿½sa
 		
 	public void SetMap(Map tmp) {
 		m = tmp;
 	}
 	
-	//"Game g" lekérdezése
+	//"Game g" lekï¿½rdezï¿½se
 	
 	public Game GetGame() {
 		return g;
 	}
 		
-	//"Game g" beállítása
+	//"Game g" beï¿½llï¿½tï¿½sa
 		
 	public void SetGame(Game tmp) {
-		g = tmp;;
+		g = tmp;
+	}
+	
+	//"ArrayList items" lekï¿½rdezï¿½se
+	
+	public ArrayList<Item> GetItems(){
+		return items;
+	}
+	
+	//"ArrayList items" beaï¿½llytï¿½sa
+	
+	public void SetItems(ArrayList<Item> tmp){
+		items = tmp;
 	}
 }

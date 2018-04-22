@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-//a mezõket reprezentáló osztály
+//a mezï¿½ket reprezentï¿½lï¿½ osztï¿½ly
 public class Mezo {
-	//a mezõn lévõ Dolgokat tárolja
+	//a mezï¿½n lï¿½vï¿½ Dolgokat tï¿½rolja
 	private ArrayList<Dolgok> dolgok=new ArrayList<>();
-	//megfelelõ irányokba beállított mezõket tárolja
+	//megfelelï¿½ irï¿½nyokba beï¿½llï¿½tott mezï¿½ket tï¿½rolja
 	private HashMap<Iranyok, Mezo> szomszedok = new HashMap<>();
+	//A mezï¿½ mï¿½dosï¿½tï¿½ ï¿½rtï¿½ke
+	private int mod;
 	
-	//Dolgok mezõre helyezése
+	//Dolgok mezï¿½re helyezï¿½se
 	public void Accept(Dolgok d) {
 		//System.out.println(">\t->[mezo].Accept(d)");
 		
@@ -17,7 +19,7 @@ public class Mezo {
 		
 		//System.out.println("<\t<-[mezo].Accept(d)");
 	}
-	//Dolgok eltávolítása a mezõrõl
+	//Dolgok eltï¿½volï¿½tï¿½sa a mezï¿½rï¿½l
 	public void Remove(Dolgok d) {
 		//System.out.println(">\t->[mezo].Remove(d)");
 		
@@ -26,7 +28,7 @@ public class Mezo {
 		//System.out.println("<\t<-[mezo].Remove(d)");
 	}
 	
-	//szomszédos mezõ lekérése
+	//szomszï¿½dos mezï¿½ lekï¿½rï¿½se
 	public Mezo GetNeighbor(Iranyok i) {
 		//System.out.println(">\t->[mezo].GetNeighbour(i)");
 		//System.out.println("<\t<-[mezo].GetNeighbour(i)");
@@ -35,7 +37,7 @@ public class Mezo {
 		
 	}
 	
-	//szomszédos mezõ beállítása
+	//szomszï¿½dos mezï¿½ beï¿½llï¿½tï¿½sa
 	public void SetNeighbor(Iranyok i, Mezo m) {
 		//System.out.println(">\t->[mezo].SetNeighbour(i, m)");
 		
@@ -44,7 +46,7 @@ public class Mezo {
 		//System.out.println("<\t<-[mezo].SetNeighbour(i, m)");
 	}
 	
-	//Paraméterül kapott Dolog ütköztetése a mezõn lévõ dolgokkal
+	//Paramï¿½terï¿½l kapott Dolog ï¿½tkï¿½ztetï¿½se a mezï¿½n lï¿½vï¿½ dolgokkal
 	public void GetDolgok(Dolgok d) {
 		//System.out.println(">\t->[mezo].GetDolgok(d)");
 		//System.out.println(dolgok.size());
@@ -55,28 +57,62 @@ public class Mezo {
 		//System.out.println("<\t<-[mezo].GetDolgok(d)");
 	}
 	
-	//"ArrayList dolgok" lekérdezése
+	//"ArrayList dolgok" lekï¿½rdezï¿½se
 	
 	public ArrayList<Dolgok> GetThings() {
 		return dolgok;
 	}
 	
-	//"ArrayList dolgok" beállítása
+	//"ArrayList dolgok" beï¿½llï¿½tï¿½sa
 	
 	public void SetThings(ArrayList<Dolgok> seged) {
 		dolgok = seged;
 	}
 	
-	//"HashMap szomszedok" lekérdezése
+	//"HashMap szomszedok" lekï¿½rdezï¿½se
 	
 	public HashMap<Iranyok, Mezo> GetSzomszed() {
 		return szomszedok;
 	}
 	
-	//"HashMap szomszedok" beállítása
+	//"HashMap szomszedok" beï¿½llï¿½tï¿½sa
 	
 	public void SetSzomszed(HashMap<Iranyok, Mezo> tmp) {
 		szomszedok = tmp;
 	}
 	
+	//"int mod" lekï¿½rdezï¿½se
+	
+	public int GetMod(){
+		return mod;
+	}
+	
+	//"int mod" beï¿½llï¿½tï¿½sa
+	
+	public void SetMod(int m){
+		mod = m;
+	}
+	
+	//A mezï¿½n lï¿½vï¿½ ï¿½sszes dolognak az egyï¿½ttes sï¿½lya.
+	public int GetOsszSuly() {		
+		int cntr = 0;
+		for (int i = 0; i < dolgok.size(); i++) {
+			cntr += dolgok.get(i).GetWeight();
+		}
+		return cntr;
+	}
+	
+	//Egy adott irï¿½nyban lï¿½vï¿½ ï¿½sszes doboz sï¿½lya (mï¿½dosï¿½tï¿½sokkal egyï¿½tt)
+	public int CountWeight(Iranyok i) {
+		int tmp = this.GetOsszSuly();
+		
+		//Ha nincs a kï¿½vetkezï¿½ mezï¿½n semmi, akkor leï¿½ll a rekurziï¿½.
+		if (this.GetNeighbor(i).GetOsszSuly() == 0) {
+			return tmp*mod;
+		}
+		else {
+			tmp += this.GetNeighbor(i).CountWeight(i);
+			return tmp*mod;
+		}
+	}
 }

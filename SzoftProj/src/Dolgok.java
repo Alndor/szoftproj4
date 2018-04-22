@@ -4,7 +4,7 @@ public abstract class Dolgok {
 	protected Mezo current = new Mezo();
 	
 	//Dolgok súlya
-	private int weight;
+	protected int weight;
 	
 	//nem abstract, mert csak a dolgozonak és a ladanak kötelezõ megírni
 	public void CollideWith(Dolgok d) {	}
