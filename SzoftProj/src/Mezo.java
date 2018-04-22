@@ -6,6 +6,8 @@ public class Mezo {
 	private ArrayList<Dolgok> dolgok=new ArrayList<>();
 	//megfelelõ irányokba beállított mezõket tárolja
 	private HashMap<Iranyok, Mezo> szomszedok = new HashMap<>();
+	//A mezõ módosító értéke
+	private int mod;
 	
 	//Dolgok mezõre helyezése
 	public void Accept(Dolgok d) {
@@ -79,4 +81,15 @@ public class Mezo {
 		szomszedok = tmp;
 	}
 	
+	//"int mod" lekérdezése
+	
+	public int GetMod(){
+		return mod;
+	}
+	
+	//"int mod" beállítása
+	
+	public void SetMod(int m){
+		mod = m;
+	}
 }
