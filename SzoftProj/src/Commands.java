@@ -255,7 +255,118 @@ public class Commands {
 			else {
 				System.out.println("\n\nAz eredmény nem egyezik az elvárttal.\n\n");
 			}
+			
+			brout.close();
 		}
 		
-		
+		public void FajlBolParancs(String fajlnev) throws IOException {
+			File f_out=null;					
+			
+			f_out = new File(wd, fajlnev);
+			
+			FileReader rout = new FileReader(f_out);
+			BufferedReader brout = new BufferedReader(rout);
+			
+			String out;
+			String reqout = "";
+			
+			out = brout.readLine();
+			while (out!=null) {
+				
+				if (out.equals("loadMap Test1")) {
+					this.loadMap("Test1");
+				}
+				
+				if (out.equals("loadMap Test2")) {
+					this.loadMap("Test2");
+				}
+				
+				if (out.equals("loadMap Test3")) {
+					this.loadMap("Test3");
+				}
+				
+				if (out.equals("loadMap Test4")) {
+					this.loadMap("Test4");
+				}
+				
+				if (out.equals("loadMap Test5")) {
+					this.loadMap("Test5");
+				}
+				
+				if (out.equals("loadMap Test6")) {
+					this.loadMap("Test6");
+				}
+				
+				if (out.equals("listDolgozo")) {
+					String reqout7 = this.listDolgozo();
+					reqout += reqout7;
+				}
+				
+				if (out.equals("listLada")) {
+					String reqout6 = this.listLada();
+					reqout += reqout6;
+				}
+				
+				if (out.equals("listCelmezo")) {
+					String reqout5 = this.ListCelmezo();
+					reqout += reqout5;
+				}
+				
+				if (out.equals("listLyuk")) {
+					String reqout4 = this.listLyuk();
+					reqout += reqout4;
+				}
+				
+				if (out.equals("listAkadaly")) {
+					String reqout3 = this.listAkadaly();
+					reqout += reqout3;
+				}
+				
+				if (out.equals("listMez")) {
+					String reqout2 = this.listMez();
+					reqout += reqout2;
+				}
+				
+				if (out.equals("listOlaj")) {
+					String reqout1 = this.listOlaj();
+					reqout += reqout1;
+				}
+				
+				if (out.equals("PlaceDolgozoMez")) {
+					this.placeMez();
+				}
+				
+				if (out.equals("PlaceDolgozoOlaj")) {
+					this.placeOlaj();
+				}
+				
+				if (out.equals("GiveUp 1")) {
+					this.GiveUp(1);
+				}
+				
+				if (out.equals("EndGame")) {
+					this.EndGame();
+				}
+				
+				if (out.equals("moveDolgozo Right")) {
+					this.moveDolgozo("d");
+				}
+						
+				if (out.equals("moveDolgozo Left")) {
+					this.moveDolgozo("a");
+				}
+				
+				if (out.equals("moveDolgozo Up")) {
+					this.moveDolgozo("w");
+				}
+				
+				if (out.equals("moveDolgozo Down")) {
+					this.moveDolgozo("s");
+				}
+				
+				out = brout.readLine();
+			}
+			
+			brout.close();				
+		}			
 }

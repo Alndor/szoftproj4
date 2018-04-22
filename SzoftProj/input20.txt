@@ -1,10 +1,10 @@
-LoadMap Test6
-ListDolgozo
-ListCelmezo
-ListAkadaly
-ListLada
-MoveDolgozo Down
-ListDolgozo
-ListAkadaly
-ListLada
-ListCelmezo
+loadMap Test6
+listDolgozo
+listCelmezo
+listAkadaly
+listLada
+moveDolgozo Down
+listDolgozo
+listAkadaly
+listLada
+listCelmezo

@@ -1,8 +1,8 @@
-LoadMap Test5
-ListOlaj
-ListDolgozo
-ListLada
-MoveDolgozo Down
-ListOlaj
-ListDolgozo
-ListLada
+loadMap Test5
+listOlaj
+listDolgozo
+listLada
+moveDolgozo Down
+listOlaj
+listDolgozo
+listLada

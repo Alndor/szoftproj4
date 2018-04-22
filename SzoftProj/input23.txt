@@ -1,6 +1,6 @@
-LoadMap Test6
-ListDolgozo
-ListMez
+loadMap Test6
+listDolgozo
+listMez
 PlaceDolgozoMez
-ListDolgozo
-ListMez
+listDolgozo
+listMez
