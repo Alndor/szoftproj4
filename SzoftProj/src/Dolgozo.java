@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 //a játékosok által irányított dolgozók osztálya
 public class Dolgozo extends Dolgok {
 	//az adott játékos pontjait tároló változó
@@ -8,6 +10,8 @@ public class Dolgozo extends Dolgok {
 	//a megfelelõ kommunikáláshoz használt változók
 	private Map m = new Map();
 	private Game g = new Game();
+	//A dolgozó letehetõ Itemjeinek gyüjteménye
+	private ArrayList<Item> items = new ArrayList<>();
 	
 	//a paraméterül kapott Dologhoz hozzáüti a dolgozót
 	@Override
@@ -104,6 +108,11 @@ public class Dolgozo extends Dolgok {
 		System.out.println("<\t<-[dolgozo].Refuse()");
 	}
 	
+	//Item lerakása
+	public void PlaceItem(Item it){
+		current.Accept(it);
+	}
+	
 	//"int points" lekérdezése
 	
 	public int GetPoints() {
@@ -150,5 +159,17 @@ public class Dolgozo extends Dolgok {
 		
 	public void SetGame(Game tmp) {
 		g = tmp;;
+	}
+	
+	//"ArrayList items" lekérdezése
+	
+	public ArrayList<Item> GetItems(){
+		return items;
+	}
+	
+	//"ArrayList items" beaállytása
+	
+	public void SetItems(ArrayList<Item> tmp){
+		items = tmp;
 	}
 }

@@ -2,7 +2,7 @@
 public abstract class Item extends Dolgok{
 	
 	//Az Item módosító értéke
-	protected int modifier = 0;
+	protected int modifier;
 	
 	//A módosító metódus
 	public abstract void Modify();
