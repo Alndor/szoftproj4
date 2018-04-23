@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 import java.util.HashMap;
 
 public class Commands {
@@ -294,7 +295,8 @@ public class Commands {
 		public String listAny(String s) {
 			int db=1;
 			String stemp="\n";
-			HashMap<Coord, Mezo> tmpmap = cmap.GetMezo();
+			TreeMap<Coord, Mezo> tmpmap = cmap.GetMezo();
+			
 			for(Entry<Coord, Mezo> tmp : tmpmap.entrySet()){
 				Mezo temp = tmp.getValue();
 				ArrayList<Dolgok> things = temp.GetThings();
@@ -302,7 +304,6 @@ public class Commands {
 				if(things != null) {
 					for (int j = 0;j < things.size(); j++) {
 						if(things.get(j).getName() != null)
-						System.out.println(things.get(j).getName());
 						if(things.get(j).getName().equals(s)) {
 							stemp+=(db+" "+temp.getPosition()+"\n");
 						}

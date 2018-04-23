@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Objects;
+import java.util.TreeMap;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -18,6 +19,7 @@ import javax.json.JsonWriter;
 public class Map {
 
 	private HashMap<Coord, Mezo> map = new HashMap<Coord, Mezo>();
+	private TreeMap<Coord, Mezo> palya = new TreeMap<Coord, Mezo>();
 	
 	
 	private String name=new String();
@@ -56,8 +58,8 @@ public class Map {
 	
 	//"ArrayList map" lek�rdez�se
 	
-	public HashMap<Coord, Mezo> GetMezo() {
-		return map;
+	public TreeMap<Coord, Mezo> GetMezo() {
+		return palya;
 	}
 	
 	//"ArrayList map" be�ll�t�sa
@@ -159,6 +161,7 @@ public class Map {
 		}
 		
 		createNeighbourhood();
+		SetTreeMap();
 
 	}
 	
@@ -195,6 +198,12 @@ public class Map {
 	        
 	        if(map.containsKey(c)) 
 	        	m.SetNeighbor(Iranyok.UP, map.get(c));
+	    }
+	}
+	
+	private void SetTreeMap() {
+		for (Entry<Coord, Mezo> entry : map.entrySet()) {
+	        palya.put(entry.getKey(), entry.getValue());
 	    }
 	}
 	
