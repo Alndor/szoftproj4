@@ -164,29 +164,37 @@ public class Map {
 	
 	private void createNeighbourhood() {
 		for (Entry<Coord, Mezo> entry : map.entrySet()) {
+			Mezo m = entry.getValue();
 			int x = entry.getKey().getX();
 			int y = entry.getKey().getY();
 	        Coord c = new Coord(x, y);
 	        
+	        m.setMap(this);
+	        
+	        m.SetNeighbor(Iranyok.DOWN, null);
+	        m.SetNeighbor(Iranyok.UP, null);
+	        m.SetNeighbor(Iranyok.LEFT, null);
+	        m.SetNeighbor(Iranyok.RIGHT, null);
+	        
 	        c.setX(x-1);
 	        
 	        if(map.containsKey(c)) 
-	        	entry.getValue().SetNeighbor(Iranyok.LEFT, map.get(c));
+	        	m.SetNeighbor(Iranyok.LEFT, map.get(c));
 	        
 	        c.setX(x+1);
 	        
 	        if(map.containsKey(c)) 
-	        	entry.getValue().SetNeighbor(Iranyok.RIGHT, map.get(c));
+	        	m.SetNeighbor(Iranyok.RIGHT, map.get(c));
 	        
 	        c.setX(y-1);
 	        
 	        if(map.containsKey(c)) 
-	        	entry.getValue().SetNeighbor(Iranyok.DOWN, map.get(c));
+	        	m.SetNeighbor(Iranyok.DOWN, map.get(c));
 	        
 	        c.setX(y+1);
 	        
 	        if(map.containsKey(c)) 
-	        	entry.getValue().SetNeighbor(Iranyok.UP, map.get(c));
+	        	m.SetNeighbor(Iranyok.UP, map.get(c));
 	    }
 	}
 	

@@ -13,7 +13,7 @@ public class Mezo {
 	//a mez�n l�v� Dolgokat t�rolja
 	private ArrayList<Dolgok> dolgok=new ArrayList<>();
 	//megfelel� ir�nyokba be�ll�tott mez�ket t�rolja
-	private HashMap<Iranyok, Mezo> szomszedok = new HashMap<>();
+	private HashMap<Iranyok, Mezo> szomszedok = new HashMap<Iranyok, Mezo>();
 	//A mez� m�dos�t� �rt�ke
 	private double mod;
 	
@@ -155,7 +155,7 @@ public class Mezo {
 		mymap = mezok;
 	}
 	
-public void Load(JsonObject ob, Map map) {
+	public void Load(JsonObject ob, Map map) {
 		
 		mod = Double.parseDouble(ob.getString("modifier"));
 		mymap = map;
@@ -163,8 +163,11 @@ public void Load(JsonObject ob, Map map) {
 		
 		for(int i = 0; i < things.size(); ++i) {
 			Dolgok dolog = setDolog(things.getJsonObject(i), map);
-			if(dolog != null)
-			dolgok.add(dolog);
+			if(dolog != null) {
+				Mezo temp = new Mezo();
+				dolog.SetCurrent(temp);
+				dolgok.add(dolog);
+			}
 		}
 	}
 	
@@ -199,6 +202,7 @@ public void Load(JsonObject ob, Map map) {
 			return null;
 			
 		dolog.Load(ob, map);
+		dolog.SetCurrent(this);
 		return dolog;
 	}
 	

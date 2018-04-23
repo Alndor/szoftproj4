@@ -73,18 +73,20 @@ public class Dolgozo extends Dolgok {
 		//System.out.println(">\t->[dolgozo].Move(i)");
 		if(i.getDir()!='x') {
 				Mezo nextMezo = current.GetNeighbor(i);
-				nextMezo.GetDolgok(this);
-				current.Remove(this);
-				int weight=0;
-				weight+=current.CountWeight(i);
-				if (weight>strength) refused=true;
-				//amennyiben a dolgoz� nem l�phet a k�vetkez� mez�re az aktu�lis mez�n marad
-				if(refused) {
-					current.Accept(this);
-					refused=false;
-				}		
-				else
-					nextMezo.Accept(this);	
+				if(nextMezo != null) {
+					nextMezo.GetDolgok(this);
+					current.Remove(this);
+					int weight=0;
+					weight+=current.CountWeight(i);
+					if (weight>strength) refused=true;
+					//amennyiben a dolgoz� nem l�phet a k�vetkez� mez�re az aktu�lis mez�n marad
+					if(refused) {
+						current.Accept(this);
+						refused=false;
+					}		
+					else
+						nextMezo.Accept(this);
+				}
 		}
 		else current.Accept(this);
 		
