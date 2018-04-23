@@ -22,7 +22,6 @@ public class Mezo {
 	//Dolgok mez�re helyez�se
 	public void Accept(Dolgok d) {
 		//System.out.println(">\t->[mezo].Accept(d)");
-		
 		dolgok.add(d);
 		d.SetCurrent(this);
 		

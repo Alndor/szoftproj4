@@ -59,4 +59,6 @@ public class Lyuk extends Dolgok {
 	public String getName() {
 		return name;
 	}
+	
+	
 }
