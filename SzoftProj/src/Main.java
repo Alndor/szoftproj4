@@ -9,37 +9,6 @@ import javax.json.JsonWriter;
 public class Main {
 
 	public static void main(String args[]) {
-		
-		Dolgozo d = new Dolgozo();
-		Lada l = new Lada();
-		Mezo m = new Mezo();
-		CelMezo cm = new CelMezo();
-		Lyuk ly = new Lyuk();
-		Kapcsolo k = new Kapcsolo();
-		Akadaly a = new Akadaly();
-		Mez me = new Mez();
-		Olaj o = new Olaj();
-		
-		
-//		d.Saved();
-//		l.Saved();
-//		m.Saved();
-//		cm.Saved();
-//		ly.Saved();
-		JsonObject out = k.Save();
-//		a.Saved();
-//		me.Saved();
-//		o.Saved();
-		
-		try {
-			JsonWriter w = Json.createWriter(new FileWriter("test.txt"));
-			w.writeObject(out);
-			w.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		/*
 		while(true) {
 			
@@ -854,6 +823,128 @@ public class Main {
 			System.out.println("\n\n");
 		}
 		*/
+		
+		kiirtest();
+		//olvastest();
+	}
+	
+	private static void olvastest() {
+		Map ma = new Map();
+		ma.Load("map2.txt");
+		
+		ma.Save();
 	}
 
+	private static void kiirtest() {
+		Map map = new Map();
+		Akadaly a = new Akadaly();
+		Mezo am = new Mezo();
+		am.Accept(a);
+		
+		Mezo m = new Mezo();
+		
+		Dolgozo d = new Dolgozo();
+		
+		Lada l = new Lada();
+		Mez mez = new Mez();
+		Olaj olaj = new Olaj();
+		
+		Mezo lm = new Mezo();
+		lm.Accept(mez);
+		lm.Accept(l);
+		
+		Mezo lo = new Mezo();
+		lo.Accept(olaj);
+		lm.Accept(l);
+		
+		Mezo ml = new Mezo();
+		ml.Accept(l);
+		
+		Mezo md = new Mezo();
+		md.Accept(d);
+		
+		Lada l2 = new Lada();
+		l2.SetWeight(10);
+		Mezo ml2 = new Mezo();
+		ml2.Accept(l2);
+		
+		CelMezo c = new CelMezo();
+		Mezo cm = new Mezo();
+		cm.Accept(c);
+		
+		Kapcsolo k = new Kapcsolo();
+		Mezo kl = new Mezo();
+		kl.Accept(k);
+		kl.Accept(l);
+		
+		Mezo km = new Mezo();
+		km.Accept(k);
+		
+		Dolgozo d2 = new Dolgozo();
+		Mezo md2 = new Mezo();
+		md2.Accept(d2);
+		
+		Lyuk ly = new Lyuk();
+		Mezo lym = new Mezo();
+		lym.Accept(ly);
+		
+		map.addDolgozo(d);
+		map.addMezo(0, 0, am);
+		map.addMezo(0, 1, am);
+		map.addMezo(0, 2, am);
+		map.addMezo(0, 3, am);
+		map.addMezo(0, 4, am);
+		map.addMezo(0, 5, am);
+		map.addMezo(0, 6, am);
+		map.addMezo(0, 7, am);
+		map.addMezo(0, 8, am);
+		map.addMezo(1, 0, am);
+		map.addMezo(1, 1, m);
+		map.addMezo(1, 2, ml2);
+		map.addMezo(1, 3, ml2);
+		map.addMezo(1, 4, md);
+		map.addMezo(1, 5, kl);
+		map.addMezo(1, 6, kl);
+		map.addMezo(1, 7, m);
+		map.addMezo(1, 8, am);
+		map.addMezo(2, 0, am);
+		map.addMezo(2, 1, am);
+		map.addMezo(2, 2, am);
+		map.addMezo(2, 3, am);
+		map.addMezo(2, 4, lm);
+		map.addMezo(2, 5, am);
+		map.addMezo(2, 6, am);
+		map.addMezo(2, 7, am);
+		map.addMezo(2, 8, am);
+		map.addMezo(3, 0, am);
+		map.addMezo(3, 1, am);
+		map.addMezo(3, 2, am);
+		map.addMezo(3, 3, am);
+		map.addMezo(3, 4, md2);
+		map.addMezo(3, 5, am);
+		map.addMezo(3, 6, am);
+		map.addMezo(3, 7, am);
+		map.addMezo(3, 8, am);
+		map.addMezo(4, 0, am);
+		map.addMezo(4, 1, am);
+		map.addMezo(4, 2, am);
+		map.addMezo(4, 3, am);
+		map.addMezo(4, 4, m);
+		map.addMezo(4, 5, am);
+		map.addMezo(4, 6, am);
+		map.addMezo(4, 7, am);
+		map.addMezo(4, 8, am);
+		map.addMezo(5, 0, am);
+		map.addMezo(5, 1, am);
+		map.addMezo(5, 2, am);
+		map.addMezo(5, 3, am);
+		map.addMezo(5, 4, am);
+		map.addMezo(5, 5, am);
+		map.addMezo(5, 6, am);
+		map.addMezo(5, 7, am);
+		map.addMezo(5, 8, am);
+		
+		map.Save();
+		
+	}
 }

@@ -41,7 +41,7 @@ public class Map {
 		
 		if (current==null && inGame.size()!=0)
 		//inGame.add(current);
-		current=inGame.remove(0);
+		current=inGame.get(0);
 			
 		
 	}
@@ -92,32 +92,6 @@ public class Map {
 	    return null;
 	}
 	
-	private static class Coord {
-		int x; int y;
-	    public Coord(int x, int y) {
-	       this.x = x;
-	       this.y = y;
-	    }
-	    public String getCoord() {
-	    	return new String("("+String.valueOf(x)+","+String.valueOf(y)+")");
-	    }
-	    public int getX() {
-	    	return x;
-	    }
-	    public int getY() {
-	    	return y;
-	    }
-	    public void setX(int i) {
-	    	x = i;
-	    }
-	    public void setY(int i) {
-	    	y = i;
-	    }
-	    public boolean isEqual(Coord c) {
-	    	return x == c.getX() && y == c.getY();
-	    }
-	}
-	
 	public void Save() {
 		JsonArrayBuilder mezok = Json.createArrayBuilder();
 		for (Entry<Coord, Mezo> entry :  map.entrySet()) {
@@ -134,7 +108,7 @@ public class Map {
 				.build();
 		
 		try {
-			JsonWriter w = Json.createWriter(new FileWriter("map.txt"));
+			JsonWriter w = Json.createWriter(new FileWriter("map4.txt"));
 			w.writeObject(out);
 			w.close();
 		} catch (IOException e) {

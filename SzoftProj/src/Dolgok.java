@@ -3,7 +3,7 @@ import javax.json.JsonObject;
 public abstract class Dolgok {
 	//Dolgok aktu�lis mez�j�t sz�montart� v�ltoz�
 	protected Mezo current = new Mezo();
-	private String name=null;
+	protected String name = "Dolgok";
 	//Dolgok s�lya
 	protected int weight;
 	
