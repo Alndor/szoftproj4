@@ -281,7 +281,9 @@ public class Main3Function {
 		case 24:
 				Scanner tmp = new Scanner(System.in);
 				String sgd = tmp.nextLine();
+				tmp.close();
 				comm.FajlBolParancs(sgd);
+				
 				break;
 		default:
 				break;

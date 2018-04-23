@@ -302,9 +302,10 @@ public class Commands {
 				if(things != null) {
 					for (int j = 0;j < things.size(); j++) {
 						if(things.get(j).getName() != null)
-						System.out.println(things.get(j).getName());
+						//System.out.println(things.get(j).getName());
 						if(things.get(j).getName().equals(s)) {
 							stemp+=(db+" "+temp.getPosition()+"\n");
+							db++;
 						}
 					}
 				}
