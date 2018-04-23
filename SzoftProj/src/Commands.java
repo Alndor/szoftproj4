@@ -15,130 +15,40 @@ public class Commands {
 	
 	//listazo fuggvenyek a kulonbozo dolgokhoz
 	public String listAkadaly() {
-		int db=1;
-		String stemp="\n";
-		HashMap<Coord, Mezo> tmpmap = cmap.GetMezo();
-		for(Entry<Coord, Mezo> faszom : tmpmap.entrySet()){
-			Mezo temp = faszom.getValue();
-			ArrayList<Dolgok> things = temp.GetThings();
-			
-			if(things != null) {
-				for (int j = 0;j < things.size(); j++) {
-					System.out.println(things.get(j).getName());
-					if(things.get(j).getName().equals("Akadaly")) {
-						stemp+=(db+" "+temp.getPosition()+"\n");
-					}
-				}
-			}
-		}
-		if (stemp!="\n") System.out.println(stemp);
-		return stemp;
+		return listAny("Akadaly");
 		}
 		
 		
 		public String listDolgozo() {
-			int db=1;
-			String stemp="\n";
-			for(int i=0;i<cmap.GetMezo().size();i++) {
-				Mezo temp=cmap.GetMezo().get(i);
-				for (int j=0;j<temp.GetThings().size();j++) {
-					Dolgok dtemp=temp.GetThings().get(j);
-					if(dtemp.getName()=="Dolgozo") {
-						stemp+=(db+" "+temp.getPosition()+"\n");
-					}
-				}
-			}
-			if (stemp!="\n") System.out.println(stemp);
-			return stemp;
+			return listAny("Dolgozo");
 	}
 		
 		public String listKapcsolo() {
-			int db=1;
-			String stemp="\n";
-			for(int i=0;i<cmap.GetMezo().size();i++) {
-				Mezo temp=cmap.GetMezo().get(i);
-				for (int j=0;j<temp.GetThings().size();j++) {
-					Dolgok dtemp=temp.GetThings().get(j);
-					if(dtemp.getName()=="Kapcsolo") {
-						stemp+=(db+" "+temp.getPosition()+"\n");
-					}
-				}
-			}
-			if (stemp!="\n") System.out.println(stemp);
-			return stemp;
+			return listAny("Kapcsolo");
 		
 	}
 		
 		
 		public String listLada() {
-			int db=1;
-			String stemp="\n";
-			for(int i=0;i<cmap.GetMezo().size();i++) {
-				Mezo temp=cmap.GetMezo().get(i);
-				for (int j=0;j<temp.GetThings().size();j++) {
-					Dolgok dtemp=temp.GetThings().get(j);
-					if(dtemp.getName()=="Lada") {
-						stemp+=(db+" "+temp.getPosition()+"\n");
-					}
-				}
-			}
-			if (stemp!="\n") System.out.println(stemp);
-			return stemp;
+			return listAny("Lada");
 	}
 		
 		
 		public String listLyuk() {
-			int db=1;
-			String stemp="\n";
-			for(int i=0;i<cmap.GetMezo().size();i++) {
-				Mezo temp=cmap.GetMezo().get(i);
-				for (int j=0;j<temp.GetThings().size();j++) {
-					Dolgok dtemp=temp.GetThings().get(j);
-					if(dtemp.getName()=="Lyuk") {
-						stemp+=(db+" "+temp.getPosition()+"\n");
-					}
-				}
-			}
-			if (stemp!="\n") System.out.println(stemp);
-			return stemp;
+			return listAny("Lyuk");
 		
 	}
 		
 		
 		public String listMez() {
-			int db=1;
-			String stemp= new String();
-			for(int i=0;i<cmap.GetMezo().size();i++) {
-				Mezo temp=cmap.GetMezo().get(i);
-				for (int j=0;j<temp.GetThings().size();j++) {
-					Dolgok dtemp=temp.GetThings().get(j);
-					if(dtemp.getName()=="Mez") {
-						stemp+=(db+" "+temp.getPosition()+"\n");
-					}
-				}
-			}
-			if (stemp!="\n") System.out.println(stemp);
-			return stemp;
+			return listAny("Mez");
 	}
 		
 		
 	
 		
 		public String listOlaj() {
-			int db=1;
-			String stemp= "\n";
-				for(int i=0;i<cmap.GetMezo().size();i++) {
-				Mezo temp=cmap.GetMezo().get(i);
-				for (int j=0;j<temp.GetThings().size();j++) {
-					Dolgok dtemp=temp.GetThings().get(j);
-					if(dtemp.getName()=="Olaj") {
-						
-						stemp+=(db+" "+temp.getPosition()+"\n");
-					}
-				}
-			}
-			if (stemp!="\n") System.out.println(stemp);
-			return stemp;
+			return listAny("Olaj");
 	}
 	
 		//map betoltese
@@ -375,5 +285,35 @@ public class Commands {
 			}
 			
 			brout.close();				
-		}			
+		}		
+		
+		
+		
+		
+		
+		public String listAny(String s) {
+			int db=1;
+			String stemp="\n";
+			HashMap<Coord, Mezo> tmpmap = cmap.GetMezo();
+			for(Entry<Coord, Mezo> tmp : tmpmap.entrySet()){
+				Mezo temp = tmp.getValue();
+				ArrayList<Dolgok> things = temp.GetThings();
+				
+				if(things != null) {
+					for (int j = 0;j < things.size(); j++) {
+						if(things.get(j).getName() != null)
+						System.out.println(things.get(j).getName());
+						if(things.get(j).getName().equals(s)) {
+							stemp+=(db+" "+temp.getPosition()+"\n");
+						}
+					}
+				}
+			}
+			if (stemp!="\n") System.out.println(stemp);
+			return stemp;
+			}
+		
+		
+		
+		
 }

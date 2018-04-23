@@ -163,6 +163,7 @@ public void Load(JsonObject ob, Map map) {
 		
 		for(int i = 0; i < things.size(); ++i) {
 			Dolgok dolog = setDolog(things.getJsonObject(i), map);
+			if(dolog != null)
 			dolgok.add(dolog);
 		}
 	}
