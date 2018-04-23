@@ -306,6 +306,7 @@ public class Commands {
 						if(things.get(j).getName() != null)
 						if(things.get(j).getName().equals(s)) {
 							stemp+=(db+" "+temp.getPosition()+"\n");
+							db++;
 						}
 					}
 				}
