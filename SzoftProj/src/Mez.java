@@ -22,14 +22,19 @@ public class Mez extends Item{
 		current.SetMod(modifier);
 	}
 	
-	public JsonObject Saved() {
-		JsonObject value = Json.createObjectBuilder()
-				.add("modifier", String.valueOf(modifier))
-				.add("weight", String.valueOf(weight))
-				.build();
+	public JsonObject Save() {
 		JsonObject out = Json.createObjectBuilder()
-				.add("mez", value)
+				.add("type", "mez")
+				.add("modifier", String.valueOf(modifier))
+				.add("weight", weight)
 				.build();
+
 		return out;
 	}
+
+	@Override
+	public void Load(JsonObject ob, Map map) {
+		modifier = Double.parseDouble(ob.getString("modifier"));
+		weight = ob.getInt("weight");
+	}	
 }

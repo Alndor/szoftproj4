@@ -1,9 +1,19 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Objects;
 
+import javax.json.Json;
 import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import javax.json.JsonWriter;
 
 public class Map {
 
@@ -97,13 +107,114 @@ public class Map {
 	    public int getY() {
 	    	return y;
 	    }
+	    public void setX(int i) {
+	    	x = i;
+	    }
+	    public void setY(int i) {
+	    	y = i;
+	    }
+	    public boolean isEqual(Coord c) {
+	    	return x == c.getX() && y == c.getY();
+	    }
 	}
 	
-	/*public void Save() {
-		for (Entry<Coord, Mezo> entry : map.entrySet()) {
-			
+	public void Save() {
+		JsonArrayBuilder mezok = Json.createArrayBuilder();
+		for (Entry<Coord, Mezo> entry :  map.entrySet()) {
+			JsonObject neighbour = Json.createObjectBuilder()
+					.add("mezo", entry.getValue().Save())
+					.add("x", entry.getKey().getX())
+					.add("y", entry.getKey().getY())
+					.build();
+	        mezok.add(neighbour);
+	    }
+		
+		JsonObject out = Json.createObjectBuilder()
+				.add("mezok", mezok.build())
+				.build();
+		
+		try {
+			JsonWriter w = Json.createWriter(new FileWriter("map.txt"));
+			w.writeObject(out);
+			w.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	}*/
+	}
+	
+	public void addMezo(int x, int y, Mezo m) {
+		map.put(new Coord(x, y), m);
+	}
+	
+	public void addDolgozo(Dolgozo d) {
+		inGame.add(d);
+		scores.add(d);
+	}
+	
+	public void Load(String file) {
+		JsonObject mapObject = null;
+		
+		try {
+			InputStream fis;	
+			fis = new FileInputStream(file);
+			JsonReader reader = Json.createReader(fis);
+			
+			mapObject = reader.readObject();
+			
+			reader.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(mapObject == null)
+			return;
+		
+		scores.clear();
+		inGame.clear();
+		map.clear();
+		
+		JsonArray plain = mapObject.getJsonArray("mezok");
+		
+		for(int i = 0; i < plain.size(); ++i) {
+			Mezo m = new Mezo();
+			m.Load(plain.getJsonObject(i).getJsonObject("mezo"), this);
+			Coord c = new Coord(plain.getJsonObject(i).getInt("x"), plain.getJsonObject(i).getInt("y"));
+			map.put(c, m);
+		}
+		
+		createNeighbourhood();
+
+	}
+	
+	private void createNeighbourhood() {
+		for (Entry<Coord, Mezo> entry : map.entrySet()) {
+			int x = entry.getKey().getX();
+			int y = entry.getKey().getY();
+	        Coord c = new Coord(x, y);
+	        
+	        c.setX(x-1);
+	        
+	        if(map.containsKey(c)) 
+	        	entry.getValue().SetNeighbor(Iranyok.LEFT, map.get(c));
+	        
+	        c.setX(x+1);
+	        
+	        if(map.containsKey(c)) 
+	        	entry.getValue().SetNeighbor(Iranyok.RIGHT, map.get(c));
+	        
+	        c.setX(y-1);
+	        
+	        if(map.containsKey(c)) 
+	        	entry.getValue().SetNeighbor(Iranyok.DOWN, map.get(c));
+	        
+	        c.setX(y+1);
+	        
+	        if(map.containsKey(c)) 
+	        	entry.getValue().SetNeighbor(Iranyok.UP, map.get(c));
+	    }
+	}
 	
 	public Dolgozo getCurrent() {
 		return current;

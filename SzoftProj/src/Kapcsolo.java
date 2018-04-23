@@ -89,15 +89,22 @@ public class Kapcsolo extends Dolgok {
 		segedlyuk = tmp;
 	}
 	
-	public JsonObject Saved() {
-		JsonObject value = Json.createObjectBuilder()
-				.add("lyukasmezo", lyukable.toString())
-				.add("segedlyuk", segedlyuk.Saved())
-				.add("weight", String.valueOf(weight))
-				.build();
+	public JsonObject Save() {
 		JsonObject out = Json.createObjectBuilder()
-				.add("kapcsolo", value)
+				.add("type", "kapcsolo")
+				.add("segedlyuk", segedlyuk.Save())
+				.add("weight", weight)
 				.build();
+
 		return out;
+	}
+
+	@Override
+	public void Load(JsonObject ob, Map map) {
+		weight = ob.getInt("weight");
+		Lyuk l = new Lyuk();
+		l.Load(ob.getJsonObject("segedlyuk"), map);
+		segedlyuk = l;
+		
 	}
 }

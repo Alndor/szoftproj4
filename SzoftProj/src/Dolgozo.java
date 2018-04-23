@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonWriter;
 
@@ -183,20 +185,52 @@ public class Dolgozo extends Dolgok {
 		items = tmp;
 	}
 	
-	public JsonObject Saved()
+	public JsonObject Save()
 	{
-		JsonObject value = Json.createObjectBuilder()
-				.add("points", points)
-				.add("irany", "")
-				.add("refused", false)
-				.add("map", m.toString())
-				.add("game", g.toString())
-				.add("weight", String.valueOf(weight))
-				.build();
 		JsonObject out = Json.createObjectBuilder()
-				.add("dolgozo", value)
+				.add("type", "dolgozo")
+				.add("points", points)
+				.add("weight", weight)
+				.add("itemek", saveItems())
 				.build();
+
 		return out;
+	}
+	
+	private JsonArray saveItems() {
+		JsonArrayBuilder itemek = Json.createArrayBuilder();
+		
+		if(items.isEmpty())
+			return itemek.add("").build();
+		
+		for(Item item : items) {
+			itemek.add(item.Save());
+		}
+		
+		return itemek.build();
+	}
+
+	@Override
+	public void Load(JsonObject ob, Map map) {
+		weight = ob.getInt("weight");
+		points = ob.getInt("points");
+		m = map;
+		map.addDolgozo(this);
+		JsonArray itemek = ob.getJsonArray("itemek");
+		if(!itemek.getString(0).equals(""))
+			for(int i = 0; i < itemek.size(); ++i) {
+				JsonObject item = itemek.getJsonObject(i);
+				if("mez".equals(item.getString("type"))){
+					Mez mez = new Mez();
+					mez.Load(item, map);
+					items.add(mez);
+				}
+				else if("olaj".equals(item.getString("type"))) {
+					Olaj olaj = new Olaj();
+					olaj.Load(item, map);
+					items.add(olaj);
+				}
+			}
 	}
 	
 	public String getName() {

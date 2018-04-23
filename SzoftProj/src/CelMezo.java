@@ -50,15 +50,18 @@ public class CelMezo extends Dolgok {
 		m = tmp;
 	}
 	
-	public JsonObject Saved() {
-		JsonObject value = Json.createObjectBuilder()
-				.add("map", m.toString())
-				.add("weight", String.valueOf(weight))
-				.build();
+	public JsonObject Save() {
 		JsonObject out = Json.createObjectBuilder()
-				.add("celmezo", value)
+				.add("type", "celmezo")
+				.add("weight", weight)
 				.build();
+
 		return out;
+	}
+	
+	public void Load(JsonObject ob, Map map) {
+		weight = ob.getInt("weight");
+		m = map;
 	}
 	
 	public String getName() {

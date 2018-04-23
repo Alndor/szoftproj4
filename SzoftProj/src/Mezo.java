@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import javax.json.Json;
 import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonWriter;
 //a mez�ket reprezent�l� oszt�ly
@@ -102,19 +103,6 @@ public class Mezo {
 		mod = m;
 	}
 	
-	public JsonObject Saved() {
-		JsonArray things = Json.createArrayBuilder(dolgok).build();
-		
-		JsonObject value = Json.createObjectBuilder()
-				.add("modifier", String.valueOf(mod))
-				.add("dolgok", things)
-				.build();
-		JsonObject out = Json.createObjectBuilder()
-				.add("mezo", value)
-				.build();
-		return out;
-	}
-	
 	//A mez�n l�v� �sszes dolognak az egy�ttes s�lya.
 	public int GetOsszSuly() {		
 		int cntr = 0;
@@ -138,7 +126,79 @@ public class Mezo {
 		}		
 	}
 	
-	public String GetPosition() {
-		
+	public String getPosition() {
+		if(mymap == null)
+			return "";
+		return mymap.getCoord(this);
 	}
+	
+	public JsonObject Save() {
+		JsonArray things = SavedThings();
+		
+		JsonObject value = Json.createObjectBuilder()
+				.add("modifier", String.valueOf(mod))
+				.add("dolgok", things)
+				.build();
+
+		return value;
+	}
+	
+	private JsonArray SavedThings() {
+		JsonArrayBuilder things = Json.createArrayBuilder();
+		for(Dolgok dolog : dolgok) {
+			things.add(dolog.Save());
+		}
+		return things.build();
+	}
+	
+	public void setMap(Map mezok) {
+		mymap = mezok;
+	}
+	
+public void Load(JsonObject ob, Map map) {
+		
+		mod = Double.parseDouble(ob.getString("modifier"));
+		mymap = map;
+		JsonArray things = ob.getJsonArray("dolgok");
+		
+		for(int i = 0; i < things.size(); ++i) {
+			Dolgok dolog = setDolog(things.getJsonObject(i), map);
+			dolgok.add(dolog);
+		}
+	}
+	
+	private Dolgok setDolog(JsonObject ob, Map map) {
+		Dolgok dolog;
+		
+		if(ob.getString("type").equals("akadaly")) {
+			dolog = new Akadaly();
+		}
+		else if(ob.getString("type").equals("celmezo")) {
+			dolog = new CelMezo();
+		}
+		else if(ob.getString("type").equals("dolgozo")) {
+			dolog = new Dolgozo();
+		}
+		else if(ob.getString("type").equals("kapcsolo")) {
+			dolog = new Kapcsolo();
+		}
+		else if(ob.getString("type").equals("Lada")) {
+			dolog = new Lada();
+		}
+		else if(ob.getString("type").equals("lyuk")) {
+			dolog = new Lyuk();
+		}
+		else if(ob.getString("type").equals("mez")) {
+			dolog = new Mez();
+		}
+		else if(ob.getString("type").equals("Olaj")) {
+			dolog = new Olaj();
+		}
+		else 
+			return null;
+			
+		dolog.Load(ob, map);
+		return dolog;
+	}
+	
 }

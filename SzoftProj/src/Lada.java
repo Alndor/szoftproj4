@@ -111,17 +111,18 @@ public class Lada extends Dolgok {
 		irany = tmp;
 	}
 	
-	public JsonObject Saved() {
-		JsonObject value = Json.createObjectBuilder()
-				.add("refused", String.valueOf(refused))
-				.add("smashed", String.valueOf(smashed))
-				.add("iranyok", "")
-				.add("weight", String.valueOf(weight))
-				.build();
+	public JsonObject Save() {
 		JsonObject out = Json.createObjectBuilder()
-				.add("lada", value)
+				.add("type", "lada")
+				.add("weight", weight)
 				.build();
+
 		return out;
+	}
+
+	@Override
+	public void Load(JsonObject ob, Map map) {
+		weight = ob.getInt("weight");
 	}
 	
 }

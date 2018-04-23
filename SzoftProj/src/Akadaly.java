@@ -32,14 +32,20 @@ public class Akadaly extends Dolgok {
 		//System.out.println("<\t<-[akadaly].HitByLada(l, i)");
 	}
 	
-	public JsonObject Saved() {
+	public JsonObject Save() {
 
 		JsonObject out = Json.createObjectBuilder()
-				.add("akadaly", "")
-				.add("weight", String.valueOf(weight))
+				.add("type", "akadaly")
+				.add("weight", weight)
 				.build();
+
 		return out;
 	}
+	
+	public void Load(JsonObject ob, Map map) {
+		weight = ob.getInt("weight");
+	}
+	
 	public String getName() {
 		return name;
 	}

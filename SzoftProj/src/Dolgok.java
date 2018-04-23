@@ -38,7 +38,8 @@ public abstract class Dolgok {
 		weight = x;
 	}
 	
-	public abstract JsonObject Saved();
+	public abstract JsonObject Save();
+	public abstract void Load(JsonObject ob, Map map);
 	public String getName() {
 		return name;
 	}

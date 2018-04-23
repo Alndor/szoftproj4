@@ -42,34 +42,18 @@ public class Lyuk extends Dolgok {
 		m = tmp;
 	}
 	
-//	public void Save()
-//	{
-//		JsonObject value = Json.createObjectBuilder()
-//				.add("map", m.toString())
-//				.build();
-//		JsonObject out = Json.createObjectBuilder()
-//				.add("lyuk", value)
-//				.add("weight", String.valueOf(weight))
-//				.build();
-//		try {
-//			JsonWriter w = Json.createWriter(new FileWriter("lyuk.txt"));
-//			w.writeObject(out);
-//			w.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-	
-	public JsonObject Saved() {
-		JsonObject value = Json.createObjectBuilder()
-				.add("map", m.toString())
-				.build();
+	public JsonObject Save() {
 		JsonObject out = Json.createObjectBuilder()
-				.add("lyuk", value)
-				.add("weight", String.valueOf(weight))
+				.add("type", "lyuk")
+				.add("weight", weight)
 				.build();
+
 		return out;
+	}
+
+	@Override
+	public void Load(JsonObject ob, Map map) {
+		m = map;	
 	}
 	
 	public String getName() {
