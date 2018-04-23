@@ -9,7 +9,7 @@ import javax.json.JsonWriter;
 //a j�t�kosok �ltal ir�ny�tott dolgoz�k oszt�lya
 public class Dolgozo extends Dolgok {
 	
-	
+	private double strength=10;
 	private String name= "Dolgozo";
 	//az adott j�t�kos pontjait t�rol� v�ltoz�
 	private int points;
@@ -73,7 +73,9 @@ public class Dolgozo extends Dolgok {
 				Mezo nextMezo = current.GetNeighbor(i);
 				nextMezo.GetDolgok(this);
 				current.Remove(this);
-				
+				int weight=0;
+				weight+=current.CountWeight(i);
+				if (weight>strength) refused=true;
 				//amennyiben a dolgoz� nem l�phet a k�vetkez� mez�re az aktu�lis mez�n marad
 				if(refused) {
 					current.Accept(this);
@@ -201,4 +203,11 @@ public class Dolgozo extends Dolgok {
 		return name;
 	}
 
+	public void setStrength(double s) {
+		strength=s;
+	}
+	
+	public double getStrength() {
+		return strength;
+	}
 }

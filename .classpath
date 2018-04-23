@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="SzoftProj/src"/>
 	<classpathentry kind="lib" path="C:/Users/Zsombor/Desktop/Prog/SzoftProjLab/szoftprojfinal/javax.json-1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Zsombor/Desktop/Prog/SzoftProjLab/szoftprojfinal/javax.json-api-1.0.jar" sourcepath="C:/Users/Zsombor/Desktop/Prog/SzoftProjLab/szoftprojfinal/jsonp_1.1_api.zip"/>
+	<classpathentry kind="lib" path="SzoftProj/src/javax.json-1.1.jar"/>
+	<classpathentry kind="lib" path="SzoftProj/src/javax.json-api-1.0.jar"/>
 	<classpathentry kind="output" path="SzoftProj/bin"/>
 </classpath>
