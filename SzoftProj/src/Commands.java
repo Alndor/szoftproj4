@@ -125,19 +125,7 @@ public class Commands {
 		//Célmezõk kilistázásához használandó függvény
 		
 		public String ListCelmezo() {
-			int db=1;
-			String stemp="\n";
-			for(int i=0;i<cmap.GetMezo().size();i++) {
-				Mezo temp=cmap.GetMezo().get(i);
-				for (int j=0;j<temp.GetThings().size();j++) {
-					Dolgok dtemp=temp.GetThings().get(j);
-					if(dtemp.getName()=="CelMezo") {
-						stemp+=(db+" "+temp.getPosition()+"\n");
-					}
-				}
-			}
-			if (stemp!="\n") System.out.println(stemp);
-			return stemp;
+			return listAny("CelMezo");
 		}
 		
 		public void EndGame() {
@@ -294,7 +282,7 @@ public class Commands {
 		
 		public String listAny(String s) {
 			int db=1;
-			String stemp="\n";
+			String stemp="";
 			TreeMap<Coord, Mezo> tmpmap = cmap.GetMezo();
 			
 			for(Entry<Coord, Mezo> tmp : tmpmap.entrySet()){
@@ -311,7 +299,7 @@ public class Commands {
 					}
 				}
 			}
-			if (stemp!="\n") System.out.println(stemp);
+			if (stemp!="") System.out.print(stemp);
 			return stemp;
 			}
 		

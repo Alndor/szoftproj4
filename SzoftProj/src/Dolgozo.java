@@ -18,6 +18,8 @@ public class Dolgozo extends Dolgok {
 	private Iranyok irany = null;
 	//valtozo, ami szamon tartja, hogy sikerult-e a mozgatas
 	protected boolean refused = false;
+	//valtozo, ami szamon tartja, hogy el-e a dolgozo
+	protected boolean dead = false;
 	//a megfelel� kommunik�l�shoz haszn�lt v�ltoz�k
 	private Map m = new Map();
 	private Game g = new Game();
@@ -73,20 +75,22 @@ public class Dolgozo extends Dolgok {
 		//System.out.println(">\t->[dolgozo].Move(i)");
 		if(i.getDir()!='x') {
 				Mezo nextMezo = current.GetNeighbor(i);
-				if(nextMezo != null) {
-					nextMezo.GetDolgok(this);
-					current.Remove(this);
-					int weight=0;
-					weight+=current.CountWeight(i);
-					if (weight>strength) refused=true;
-					//amennyiben a dolgoz� nem l�phet a k�vetkez� mez�re az aktu�lis mez�n marad
-					if(refused) {
-						current.Accept(this);
-						refused=false;
-					}		
-					else
-						nextMezo.Accept(this);
-				}
+				if(nextMezo == null)
+					return;
+				nextMezo.GetDolgok(this);
+				current.Remove(this);
+				if(dead)
+					return;
+				int weight=0;
+				weight+=current.CountWeight(i);
+				if (weight>strength) refused=true;
+				//amennyiben a dolgoz� nem l�phet a k�vetkez� mez�re az aktu�lis mez�n marad
+				if(refused) {
+					current.Accept(this);
+					refused=false;
+				}		
+				else
+					nextMezo.Accept(this);
 		}
 		else current.Accept(this);
 		
@@ -102,6 +106,12 @@ public class Dolgozo extends Dolgok {
 		points++;		
 		
 		//System.out.println("<\t<-[dolgozo].PointsGiven()");
+	}
+	
+	//Megoli a dolgozot
+	
+	public void Kill() {
+		dead = true;
 	}
 	
 	//a j�t�kos feladhatja a j�t�kot, ha �gy �rzi, hogy m�r nem vezet sehova

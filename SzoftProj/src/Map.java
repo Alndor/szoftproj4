@@ -30,8 +30,10 @@ public class Map {
 	
 	//meg�li az �pp soron l�v� dolgoz�t
 	public void Kill(Dolgozo d) {
-		if(inGame.contains(d))
+		if(inGame.contains(d)) {
 			inGame.remove(d);
+			d.Kill();
+		}
 		if (current==d) 
 			current=null;
 		
@@ -110,7 +112,7 @@ public class Map {
 				.build();
 		
 		try {
-			JsonWriter w = Json.createWriter(new FileWriter("map4.txt"));
+			JsonWriter w = Json.createWriter(new FileWriter("Test1.txt"));
 			w.writeObject(out);
 			w.close();
 		} catch (IOException e) {
@@ -124,8 +126,8 @@ public class Map {
 	}
 	
 	public void addDolgozo(Dolgozo d) {
-		inGame.add(d);
-		scores.add(d);
+		inGame.add(0, d);
+		scores.add(0, d);
 	}
 	
 	public void Load(String file) {
