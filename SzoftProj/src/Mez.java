@@ -1,3 +1,9 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 
 public class Mez extends Item{
 	
@@ -10,10 +16,20 @@ public class Mez extends Item{
 		modifier=2;
 	}
 	
-	//A méz mezejének módosítójának beállítása a méz módosítójának függvényében
+	//A mï¿½z mezejï¿½nek mï¿½dosï¿½tï¿½jï¿½nak beï¿½llï¿½tï¿½sa a mï¿½z mï¿½dosï¿½tï¿½jï¿½nak fï¿½ggvï¿½nyï¿½ben
 	@Override
 	public void Modify() {
 		current.SetMod(modifier);
 	}
-
+	
+	public JsonObject Saved() {
+		JsonObject value = Json.createObjectBuilder()
+				.add("modifier", String.valueOf(modifier))
+				.add("weight", String.valueOf(weight))
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("mez", value)
+				.build();
+		return out;
+	}
 }

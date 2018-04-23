@@ -1,3 +1,9 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 
 public class Lada extends Dolgok {
 	//változó, ami számon tartja, hogy a dobozt meg kell-e semmisíteni
@@ -103,6 +109,19 @@ public class Lada extends Dolgok {
 		
 	public void SetIrany(Iranyok tmp) {
 		irany = tmp;
+	}
+	
+	public JsonObject Saved() {
+		JsonObject value = Json.createObjectBuilder()
+				.add("refused", String.valueOf(refused))
+				.add("smashed", String.valueOf(smashed))
+				.add("iranyok", "")
+				.add("weight", String.valueOf(weight))
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("lada", value)
+				.build();
+		return out;
 	}
 	
 }

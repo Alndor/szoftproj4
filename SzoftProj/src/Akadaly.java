@@ -1,8 +1,15 @@
-//a mezõkön elhelyezhetõ akadályok osztálya
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
+
+//a mezï¿½kï¿½n elhelyezhetï¿½ akadï¿½lyok osztï¿½lya
 public class Akadaly extends Dolgok {
 	
 	private String name="Akadaly";
-	//ha az akadályra dolgozó lépne
+	//ha az akadï¿½lyra dolgozï¿½ lï¿½pne
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
 		// TODO Auto-generated method stub
@@ -14,7 +21,7 @@ public class Akadaly extends Dolgok {
 		
 	}
 
-	//ha az akadályra láda lépne
+	//ha az akadï¿½lyra lï¿½da lï¿½pne
 	@Override
 	public void HitByLada(Lada l, Iranyok i) {
 		// TODO Auto-generated method stub
@@ -25,6 +32,14 @@ public class Akadaly extends Dolgok {
 		//System.out.println("<\t<-[akadaly].HitByLada(l, i)");
 	}
 	
+	public JsonObject Saved() {
+
+		JsonObject out = Json.createObjectBuilder()
+				.add("akadaly", "")
+				.add("weight", String.valueOf(weight))
+				.build();
+		return out;
+	}
 	public String getName() {
 		return name;
 	}

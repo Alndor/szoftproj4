@@ -1,9 +1,46 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 
 public class Main {
 
 	public static void main(String args[]) {
 		
+		Dolgozo d = new Dolgozo();
+		Lada l = new Lada();
+		Mezo m = new Mezo();
+		CelMezo cm = new CelMezo();
+		Lyuk ly = new Lyuk();
+		Kapcsolo k = new Kapcsolo();
+		Akadaly a = new Akadaly();
+		Mez me = new Mez();
+		Olaj o = new Olaj();
+		
+		
+//		d.Saved();
+//		l.Saved();
+//		m.Saved();
+//		cm.Saved();
+//		ly.Saved();
+		JsonObject out = k.Saved();
+//		a.Saved();
+//		me.Saved();
+//		o.Saved();
+		
+		try {
+			JsonWriter w = Json.createWriter(new FileWriter("test.txt"));
+			w.writeObject(out);
+			w.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		/*
 		while(true) {
 			
 			//kezdeti objektumok létrehozása
@@ -33,9 +70,12 @@ public class Main {
 			
 			Dolgozo dolgozo1 = new Dolgozo();
 			Dolgozo dolgozo2 = new Dolgozo();
+			dolgozo1.Save();
 			
 			Lyuk lyuk1 = new Lyuk();
 			Lyuk kapcslyuk = new Lyuk();
+			lyuk1.Save();
+			kapcslyuk.Save();
 			
 			Kapcsolo kapcsolo = new Kapcsolo();
 			
@@ -813,7 +853,7 @@ public class Main {
 			}
 			System.out.println("\n\n");
 		}
-		
+		*/
 	}
 
 }

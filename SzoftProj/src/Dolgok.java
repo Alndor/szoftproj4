@@ -1,41 +1,44 @@
+import javax.json.JsonObject;
 
 public abstract class Dolgok {
-	//Dolgok aktuális mezõjét számontartó változó
+	//Dolgok aktuï¿½lis mezï¿½jï¿½t szï¿½montartï¿½ vï¿½ltozï¿½
 	protected Mezo current = new Mezo();
 	private String name=null;
-	//Dolgok súlya
+	//Dolgok sï¿½lya
 	protected int weight;
 	
-	//nem abstract, mert csak a dolgozonak és a ladanak kötelezõ megírni
+	//nem abstract, mert csak a dolgozonak ï¿½s a ladanak kï¿½telezï¿½ megï¿½rni
 	public void CollideWith(Dolgok d) {	}
 	
 	public abstract void HitByDolgozo(Dolgozo d, Iranyok i);
 	
 	public abstract void HitByLada(Lada l, Iranyok i);
 	
-	//"Mezo current" lekérdezése
+	//"Mezo current" lekï¿½rdezï¿½se
 	
 	public Mezo GetCurrent() {
 		return current;
 	}
 		
-	//"Mezo current" beállítása
+	//"Mezo current" beï¿½llï¿½tï¿½sa
 		
 	public void SetCurrent(Mezo tmp) {
 		current = tmp;
 	}
 	
-	//"int weight" lekérdezése
+	//"int weight" lekï¿½rdezï¿½se
 	
 	public int GetWeight(){
 		return weight;
 	}
 	
-	//"int weight" beaállítása
+	//"int weight" beaï¿½llï¿½tï¿½sa
 	
 	public void SetWeight(int x){
 		weight = x;
 	}
+	
+	public abstract JsonObject Saved();
 	public String getName() {
 		return name;
 	}

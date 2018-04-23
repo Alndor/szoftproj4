@@ -1,5 +1,12 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 //a mez�ket reprezent�l� oszt�ly
 public class Mezo {
 	//a mez�n l�v� Dolgokat t�rolja
@@ -93,6 +100,19 @@ public class Mezo {
 	
 	public void SetMod(double m){
 		mod = m;
+	}
+	
+	public JsonObject Saved() {
+		JsonArray things = Json.createArrayBuilder(dolgok).build();
+		
+		JsonObject value = Json.createObjectBuilder()
+				.add("modifier", String.valueOf(mod))
+				.add("dolgok", things)
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("mezo", value)
+				.build();
+		return out;
 	}
 	
 	//A mez�n l�v� �sszes dolognak az egy�ttes s�lya.

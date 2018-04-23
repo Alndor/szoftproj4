@@ -1,3 +1,9 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 
 public class Olaj extends Item {
 
@@ -10,10 +16,20 @@ public class Olaj extends Item {
 	public Olaj() {
 		modifier=0.5;
 	}
-	//Az olaj mezejének módosítójának beállítása az olaj módosítójának függvényében
+	//Az olaj mezejï¿½nek mï¿½dosï¿½tï¿½jï¿½nak beï¿½llï¿½tï¿½sa az olaj mï¿½dosï¿½tï¿½jï¿½nak fï¿½ggvï¿½nyï¿½ben
 	@Override
 	public void Modify() {
 		current.SetMod(modifier);
 	}
 	
+	public JsonObject Saved() {
+		JsonObject value = Json.createObjectBuilder()
+				.add("modifier", String.valueOf(modifier))
+				.add("weight", String.valueOf(weight))
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("olaj", value)
+				.build();
+		return out;
+	}
 }

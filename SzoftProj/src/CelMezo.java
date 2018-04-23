@@ -1,9 +1,15 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 
 public class CelMezo extends Dolgok {
 
 	protected Map m = new Map();
 	private String name = "CelMezo";
-	//amennyiben dolgozó lép rá nem történik semmi
+	//amennyiben dolgozï¿½ lï¿½p rï¿½ nem tï¿½rtï¿½nik semmi
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
 		// TODO Auto-generated method stub
@@ -11,7 +17,7 @@ public class CelMezo extends Dolgok {
 		//System.out.println("<\t<-[celmezo].HitByDolgozo(d, i)");
 	}
 
-	//amennyiben ládát tolunk rá, pontot kapunk
+	//amennyiben lï¿½dï¿½t tolunk rï¿½, pontot kapunk
 	@Override
 	public void HitByLada(Lada l, Iranyok i) {
 		// TODO Auto-generated method stub
@@ -22,7 +28,7 @@ public class CelMezo extends Dolgok {
 		//System.out.println("<\t<-[celmezo].HitByLada(l, i)");
 	}
 	
-	//pontot kapunk és a ládát megsemmisítjük,  helyére falat emelünk
+	//pontot kapunk ï¿½s a lï¿½dï¿½t megsemmisï¿½tjï¿½k,  helyï¿½re falat emelï¿½nk
 	public void Score(Lada l) {
 		//System.out.println("<\t->[celmezo].Score(l)");
 		
@@ -32,16 +38,27 @@ public class CelMezo extends Dolgok {
 		//System.out.println("<\t<-[celmezo].Score(l)");
 	}
 	
-	//"Map m" lekérdezése
+	//"Map m" lekï¿½rdezï¿½se
 	
 	public Map GetMap() {
 		return m;
 	}
 	
-	//"Map m" beállítása
+	//"Map m" beï¿½llï¿½tï¿½sa
 	
 	public void SetMap(Map tmp) {
 		m = tmp;
+	}
+	
+	public JsonObject Saved() {
+		JsonObject value = Json.createObjectBuilder()
+				.add("map", m.toString())
+				.add("weight", String.valueOf(weight))
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("celmezo", value)
+				.build();
+		return out;
 	}
 	
 	public String getName() {

@@ -1,4 +1,10 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 
 //a j�t�kosok �ltal ir�ny�tott dolgoz�k oszt�lya
 public class Dolgozo extends Dolgok {
@@ -173,6 +179,22 @@ public class Dolgozo extends Dolgok {
 	
 	public void SetItems(ArrayList<Item> tmp){
 		items = tmp;
+	}
+	
+	public JsonObject Saved()
+	{
+		JsonObject value = Json.createObjectBuilder()
+				.add("points", points)
+				.add("irany", "")
+				.add("refused", false)
+				.add("map", m.toString())
+				.add("game", g.toString())
+				.add("weight", String.valueOf(weight))
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("dolgozo", value)
+				.build();
+		return out;
 	}
 	
 	public String getName() {

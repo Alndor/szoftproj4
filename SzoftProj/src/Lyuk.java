@@ -1,8 +1,14 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonWriter;
 
 public class Lyuk extends Dolgok {
 	protected Map m = new Map();
 	private String name = "Lyuk";
-	//amennyiben dolgozó lép a lyukra, meghívja az annak megölésére szolgáló függvényt
+	//amennyiben dolgozï¿½ lï¿½p a lyukra, meghï¿½vja az annak megï¿½lï¿½sï¿½re szolgï¿½lï¿½ fï¿½ggvï¿½nyt
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
 		// TODO Auto-generated method stub
@@ -13,7 +19,7 @@ public class Lyuk extends Dolgok {
 		//System.out.println("<\t<-[lyuk].HitByDolgozo(d, i)");
 	}
 
-	//amennyiben láda lép a lyukra, meghívja az annak megsemmisítését elõidézõ függvényt
+	//amennyiben lï¿½da lï¿½p a lyukra, meghï¿½vja az annak megsemmisï¿½tï¿½sï¿½t elï¿½idï¿½zï¿½ fï¿½ggvï¿½nyt
 	@Override
 	public void HitByLada(Lada l, Iranyok i) {
 		// TODO Auto-generated method stub
@@ -24,16 +30,46 @@ public class Lyuk extends Dolgok {
 		//System.out.println("<\t<-[lyuk].HitByLada(l, i)");
 	}
 	
-	//"Map m" lekérdezése
+	//"Map m" lekï¿½rdezï¿½se
 	
 	public Map GetMap() {
 		return m;
 	}
 			
-	//"Map m" beállítása
+	//"Map m" beï¿½llï¿½tï¿½sa
 			
 	public void SetMap(Map tmp) {
 		m = tmp;
+	}
+	
+//	public void Save()
+//	{
+//		JsonObject value = Json.createObjectBuilder()
+//				.add("map", m.toString())
+//				.build();
+//		JsonObject out = Json.createObjectBuilder()
+//				.add("lyuk", value)
+//				.add("weight", String.valueOf(weight))
+//				.build();
+//		try {
+//			JsonWriter w = Json.createWriter(new FileWriter("lyuk.txt"));
+//			w.writeObject(out);
+//			w.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
+	public JsonObject Saved() {
+		JsonObject value = Json.createObjectBuilder()
+				.add("map", m.toString())
+				.build();
+		JsonObject out = Json.createObjectBuilder()
+				.add("lyuk", value)
+				.add("weight", String.valueOf(weight))
+				.build();
+		return out;
 	}
 	
 	public String getName() {
