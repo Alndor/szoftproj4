@@ -28,7 +28,7 @@ public class Main3Function {
 		System.out.println("17 Ládák tolása mézzel");
 		System.out.println("18 Ládák tolása olajjal");
 		System.out.println("19 Láda-láda-célmezõ tolása");
-		System.out.println("20 FEladás");
+		System.out.println("20 Feladás");
 		System.out.println("21 Kilépés");
 		System.out.println("22 Méz lerakása");
 		System.out.println("23 Olaj lerakása");
