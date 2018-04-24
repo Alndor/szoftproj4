@@ -32,8 +32,8 @@ public class Main3Function {
 		System.out.println("21 Kilépés");
 		System.out.println("22 Méz lerakása");
 		System.out.println("23 Olaj lerakása");
-		System.out.println("24 Fájlból parancs olvasása");
-	//	System.out.println("\nÍrja be a választott teszteset számát!");
+//		System.out.println("24 Fájlból parancs olvasása");
+		System.out.println("\nÍrja be a választott teszteset számát!");
 		
 		Scanner scanner = new Scanner(System.in);		
 		int szam = scanner.nextInt();		
