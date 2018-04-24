@@ -233,7 +233,7 @@ public class Dolgozo extends Dolgok {
 		m = map;
 		map.addDolgozo(this);
 		JsonArray itemek = ob.getJsonArray("itemek");
-		if(!itemek.getString(0).equals(""))
+		if(!itemek.isEmpty())
 			for(int i = 0; i < itemek.size(); ++i) {
 				JsonObject item = itemek.getJsonObject(i);
 				if("mez".equals(item.getString("type"))){
