@@ -77,6 +77,7 @@ public class Dolgozo extends Dolgok {
 	//a j�t�kos mozgatja a dolgoz�t egy ir�nyba, vagy d�nthet �gy is, hogy nem mozdul a k�rben
 	public void Move(Iranyok i) {
 		//System.out.println(">\t->[dolgozo].Move(i)");
+		this.irany = i;
 		if(i.getDir()!='x') {
 				Mezo nextMezo = current.GetNeighbor(i);
 				if(nextMezo == null)
