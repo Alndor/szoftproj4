@@ -205,6 +205,7 @@ public class Dolgozo extends Dolgok {
 				.add("type", "dolgozo")
 				.add("points", points)
 				.add("weight", weight)
+				.add("strength", strength)
 				.add("itemek", saveItems())
 				.build();
 
@@ -227,6 +228,7 @@ public class Dolgozo extends Dolgok {
 	@Override
 	public void Load(JsonObject ob, Map map) {
 		weight = ob.getInt("weight");
+		strength = ob.getInt("strength");
 		points = ob.getInt("points");
 		m = map;
 		map.addDolgozo(this);
