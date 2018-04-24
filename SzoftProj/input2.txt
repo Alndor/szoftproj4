@@ -1,5 +1,0 @@
-loadMap Test1
-listAkadaly
-listDolgozo
-moveDolgozo Up
-listDolgozo

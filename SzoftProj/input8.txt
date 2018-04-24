@@ -1,6 +1,0 @@
-loadMap Test2
-listDolgozo
-listLada
-moveDolgozo Down
-listDolgozo
-listLada

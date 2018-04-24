@@ -82,7 +82,7 @@ public class Commands {
 			cmap.getCurrent().PlaceItem(cmap.getCurrent().GetItems().get(0));
 		}
 	
-		public void ChooseTest(int t) throws IOException{
+	/*	public void ChooseTest(int t) throws IOException{
 			File f_in=null;
 			File f_out=null;
 			String inname="input" + t +".txt"; //t-edik input fÃ¡jl
@@ -121,7 +121,7 @@ public class Commands {
 			
 			brin.close();
 			brout.close();
-		}
+		}*/
 		
 		//Célmezõk kilistázásához használandó függvény
 		

@@ -1,8 +1,0 @@
-loadMap Test5
-listOlaj
-listDolgozo
-listLada
-moveDolgozo Down
-listOlaj
-listDolgozo
-listLada
