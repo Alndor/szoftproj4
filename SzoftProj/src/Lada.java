@@ -12,8 +12,12 @@ public class Lada extends Dolgok {
 	protected boolean refused = false;
 	protected Iranyok irany = null;
 	
+	
 	private String name="Lada";
 	
+	public Lada() {
+		this.SetWeight(10);
+	}
 	public String getName() {
 		return name;
 	}
@@ -37,6 +41,8 @@ public class Lada extends Dolgok {
 		
 		irany = i;
 		Mezo nextMezo = current.GetNeighbor(i);
+		if(nextMezo == null)
+			return;
 		nextMezo.GetDolgok(this);
 		current.Remove(this);
 		if(refused) {
@@ -46,7 +52,7 @@ public class Lada extends Dolgok {
 			refused=false;
 		}
 		//amennyiben a láda megsemmisül, nem helyezõdik fel egyetlen mezõre sem
-		if(smashed)
+		else if(smashed)
 			return;
 		else 
 			nextMezo.Accept(this);
@@ -122,9 +128,18 @@ public class Lada extends Dolgok {
 	}
 
 	@Override
-	public void Load(JsonObject ob, Map map) {
-		weight = ob.getInt("weight");
+	public void SetWeight(int x) {
+		// TODO Auto-generated method stub
+		if (x>0)
+			super.SetWeight(x);
 	}
+	
+	@Override
+	public void Load(JsonObject ob, Map map) {
+		SetWeight(ob.getInt("weight"));
+	}
+	
+	
 	
 	
 }

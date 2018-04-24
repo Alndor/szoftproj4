@@ -1,8 +1,0 @@
-loadMap Test3
-listDolgozo
-listLada
-listLyuk
-moveDolgozo Left
-listDolgozo
-ListLada
-listLyuk

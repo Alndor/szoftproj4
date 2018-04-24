@@ -15,7 +15,7 @@ public class Mezo {
 	//megfelel� ir�nyokba be�ll�tott mez�ket t�rolja
 	private HashMap<Iranyok, Mezo> szomszedok = new HashMap<Iranyok, Mezo>();
 	//A mez� m�dos�t� �rt�ke
-	private double mod;
+	private double mod=1;
 	
 	private Map mymap;
 	
@@ -116,13 +116,14 @@ public class Mezo {
 		int tmp = this.GetOsszSuly();
 		
 		//Ha nincs a k�vetkez� mez�n semmi, akkor le�ll a rekurzi�.
-		if (this.GetNeighbor(i).GetOsszSuly() == 0) {
+		if (this.GetNeighbor(i)!=null && this.GetNeighbor(i).GetOsszSuly() == 0) {
 			return tmp*mod;
 		}
-		else {
+		else if(this.GetNeighbor(i)!=null) {
 			tmp += this.GetNeighbor(i).CountWeight(i);
 			return tmp*mod;
 		}		
+		else return 0;
 	}
 	
 	public String getPosition() {
@@ -184,7 +185,7 @@ public class Mezo {
 		else if(ob.getString("type").equals("kapcsolo")) {
 			dolog = new Kapcsolo();
 		}
-		else if(ob.getString("type").equals("Lada")) {
+		else if(ob.getString("type").equals("lada")) {
 			dolog = new Lada();
 		}
 		else if(ob.getString("type").equals("lyuk")) {
@@ -193,7 +194,7 @@ public class Mezo {
 		else if(ob.getString("type").equals("mez")) {
 			dolog = new Mez();
 		}
-		else if(ob.getString("type").equals("Olaj")) {
+		else if(ob.getString("type").equals("olaj")) {
 			dolog = new Olaj();
 		}
 		else 

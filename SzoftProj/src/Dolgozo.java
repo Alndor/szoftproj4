@@ -56,7 +56,7 @@ public class Dolgozo extends Dolgok {
 		irany = i;
 		Mezo nextMezo = current.GetNeighbor(i);
 		int weight=0;
-		weight+=current.CountWeight(i);
+		weight+=nextMezo.CountWeight(i);
 		if (weight>strength) refused=true;
 		if(refused!=true)
 			nextMezo.GetDolgok(this);
@@ -77,19 +77,23 @@ public class Dolgozo extends Dolgok {
 	//a j�t�kos mozgatja a dolgoz�t egy ir�nyba, vagy d�nthet �gy is, hogy nem mozdul a k�rben
 	public void Move(Iranyok i) {
 		//System.out.println(">\t->[dolgozo].Move(i)");
+		this.irany = i;
 		if(i.getDir()!='x') {
 				Mezo nextMezo = current.GetNeighbor(i);
 				if(nextMezo == null)
 					return;
 				int weight=0;
-				weight+=current.CountWeight(i);
-				if (weight>strength) refused=true;
+				weight+=nextMezo.CountWeight(i);
+				
+				if (weight>strength) 
+					refused=true;
+				
 				if(refused!=true)
-				nextMezo.GetDolgok(this);
+					nextMezo.GetDolgok(this);
 				
 				current.Remove(this);
 				if(dead) {
-					current = null;
+					//current = null;
 					return;
 				}
 				
@@ -101,7 +105,7 @@ public class Dolgozo extends Dolgok {
 				else
 					nextMezo.Accept(this);
 		}
-		else current.Accept(this);
+		else return;//current.Accept(this);
 		
 		
 		//System.out.println("<\t<-[dolgozo].Move(i)");
@@ -144,6 +148,7 @@ public class Dolgozo extends Dolgok {
 	//Item lerak�sa
 	public void PlaceItem(Item it){
 		current.Accept(it);
+		it.Modify();
 	}
 	
 	//"int points" lek�rdez�se

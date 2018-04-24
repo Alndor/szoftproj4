@@ -29,6 +29,7 @@ public abstract class Dolgok {
 	//"int weight" lek�rdez�se
 	
 	public int GetWeight(){
+		
 		return weight;
 	}
 	

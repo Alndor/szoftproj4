@@ -1,6 +1,0 @@
-loadMap Test6
-listDolgozo
-listMez
-PlaceDolgozoOlaj
-listDolgozo
-listMez
