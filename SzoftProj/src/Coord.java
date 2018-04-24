@@ -23,6 +23,9 @@ public class Coord implements Comparable{
 	    public boolean isEqual(Coord c) {
 	    	return x == c.getX() && y == c.getY();
 	    }
+	    public boolean equals(Coord c) {
+	    	return isEqual(c);
+	    }
 	    
 	    @Override
 		public int compareTo(Object arg0) {

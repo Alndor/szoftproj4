@@ -30,12 +30,11 @@ public class Map {
 	
 	//meg�li az �pp soron l�v� dolgoz�t
 	public void Kill(Dolgozo d) {
-		if(inGame.contains(d)) {
+		if(inGame.contains(d))
 			inGame.remove(d);
-			d.Kill();
-		}
 		if (current==d) 
 			current=null;
+		d.Kill();
 		
 	}
 	
@@ -96,9 +95,9 @@ public class Map {
 	    return null;
 	}
 	
-	public void Save() {
+	public void Save(String s) {
 		JsonArrayBuilder mezok = Json.createArrayBuilder();
-		for (Entry<Coord, Mezo> entry :  map.entrySet()) {
+		for (Entry<Coord, Mezo> entry :  palya.entrySet()) {
 			JsonObject neighbour = Json.createObjectBuilder()
 					.add("mezo", entry.getValue().Save())
 					.add("x", entry.getKey().getX())
@@ -112,7 +111,7 @@ public class Map {
 				.build();
 		
 		try {
-			JsonWriter w = Json.createWriter(new FileWriter("Test1.txt"));
+			JsonWriter w = Json.createWriter(new FileWriter(s));
 			w.writeObject(out);
 			w.close();
 		} catch (IOException e) {
@@ -130,6 +129,7 @@ public class Map {
 		scores.add(0, d);
 	}
 	
+	public HashMap<Kapcsolo, Coord> kapcsok = new HashMap<Kapcsolo, Coord>();
 	public void Load(String file) {
 		JsonObject mapObject = null;
 		
@@ -162,48 +162,65 @@ public class Map {
 			map.put(c, m);
 		}
 		
-		createNeighbourhood();
 		SetTreeMap();
+		createNeighbourhood();
+		
+		for (Entry<Kapcsolo, Coord> entry : kapcsok.entrySet()) {
+			Coord c = palya.ceilingKey(entry.getValue());
+			
+			entry.getKey().SetLyukable(palya.get(c));
+		}
 
 	}
 	
-	private void createNeighbourhood() {
-		for (Entry<Coord, Mezo> entry : map.entrySet()) {
-			Mezo m = entry.getValue();
+	public void createNeighbourhood() {
+		for (Entry<Coord, Mezo> entry : palya.entrySet()) {
+			
 			int x = entry.getKey().getX();
 			int y = entry.getKey().getY();
+			
 	        Coord c = new Coord(x, y);
+	        Coord c2;
+	       	        
+	        entry.getValue().setMap(this);
 	        
-	        m.setMap(this);
-	        
-	        m.SetNeighbor(Iranyok.DOWN, null);
-	        m.SetNeighbor(Iranyok.UP, null);
-	        m.SetNeighbor(Iranyok.LEFT, null);
-	        m.SetNeighbor(Iranyok.RIGHT, null);
+	        entry.getValue().SetNeighbor(Iranyok.DOWN, null);
+	        entry.getValue().SetNeighbor(Iranyok.UP, null);
+	        entry.getValue().SetNeighbor(Iranyok.LEFT, null);
+	        entry.getValue().SetNeighbor(Iranyok.RIGHT, null);
 	        
 	        c.setX(x-1);
 	        
-	        if(map.containsKey(c)) 
-	        	m.SetNeighbor(Iranyok.LEFT, map.get(c));
+	        c2 = palya.ceilingKey(c);
+	        
+	        if(c2 != null && c.equals(c2)) 
+	        	entry.getValue().SetNeighbor(Iranyok.UP, palya.get(c2));
 	        
 	        c.setX(x+1);
 	        
-	        if(map.containsKey(c)) 
-	        	m.SetNeighbor(Iranyok.RIGHT, map.get(c));
+	        c2 = palya.ceilingKey(c);
 	        
-	        c.setX(y-1);
+	        if(c2 != null && c.equals(c2)) 
+	        	entry.getValue().SetNeighbor(Iranyok.DOWN, palya.get(c2));
 	        
-	        if(map.containsKey(c)) 
-	        	m.SetNeighbor(Iranyok.DOWN, map.get(c));
+	        c.setX(x);
+	        c.setY(y-1);
 	        
-	        c.setX(y+1);
+	        c2 = palya.ceilingKey(c);
 	        
-	        if(map.containsKey(c)) 
-	        	m.SetNeighbor(Iranyok.UP, map.get(c));
+	        if(c2 != null && c.equals(c2)) 
+	        	entry.getValue().SetNeighbor(Iranyok.LEFT, palya.get(c2));
+	        
+	        c.setY(y+1);
+	        
+	        c2 = palya.ceilingKey(c);
+	        
+	        if(c2 != null && c.equals(c2)) 
+	        	entry.getValue().SetNeighbor(Iranyok.RIGHT, palya.get(c2));
 	    }
 	}
 	
-	private void SetTreeMap() {
+	public void SetTreeMap() {
 		for (Entry<Coord, Mezo> entry : map.entrySet()) {
 	        palya.put(entry.getKey(), entry.getValue());
 	    }

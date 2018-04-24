@@ -58,7 +58,7 @@ public class Kapcsolo extends Dolgok {
 	  	
 	  	//ha van rajta a bizonyos lyuk, akkor leszedjük róla, mivel Dolgozó lépett a kapcsolóra
 	  	
-	  	if(lyukable.GetThings().contains(segedlyuk)) {
+	  	if(lyukable.GetThings() != null && lyukable.GetThings().contains(segedlyuk)) {
 	  		lyukable.Remove(segedlyuk);
 	  	}
 	  	
@@ -92,6 +92,7 @@ public class Kapcsolo extends Dolgok {
 	public JsonObject Save() {
 		JsonObject out = Json.createObjectBuilder()
 				.add("type", "kapcsolo")
+				.add("lyukable", lyukable.getPosition())
 				.add("segedlyuk", segedlyuk.Save())
 				.add("weight", weight)
 				.build();
@@ -105,6 +106,13 @@ public class Kapcsolo extends Dolgok {
 		Lyuk l = new Lyuk();
 		l.Load(ob.getJsonObject("segedlyuk"), map);
 		segedlyuk = l;
+		String pos = ob.getString("lyukable");
+		String[] tmp = pos.split(",");
+		int x = tmp[0].charAt(1) - '0';
+		int y = tmp[1].charAt(0) - '0';
+		Coord coord = new Coord(x, y);
+		
+		map.kapcsok.put(this, coord);
 		
 	}
 }

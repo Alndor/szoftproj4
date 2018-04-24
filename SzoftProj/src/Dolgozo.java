@@ -78,11 +78,13 @@ public class Dolgozo extends Dolgok {
 				if(nextMezo == null)
 					return;
 				nextMezo.GetDolgok(this);
-				current.Remove(this);
-				if(dead)
-					return;
 				int weight=0;
 				weight+=current.CountWeight(i);
+				current.Remove(this);
+				if(dead) {
+					current = null;
+					return;
+				}
 				if (weight>strength) refused=true;
 				//amennyiben a dolgoz� nem l�phet a k�vetkez� mez�re az aktu�lis mez�n marad
 				if(refused) {

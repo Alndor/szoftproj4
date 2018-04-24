@@ -163,8 +163,7 @@ public class Mezo {
 		for(int i = 0; i < things.size(); ++i) {
 			Dolgok dolog = setDolog(things.getJsonObject(i), map);
 			if(dolog != null) {
-				Mezo temp = new Mezo();
-				dolog.SetCurrent(temp);
+				dolog.SetCurrent(this);
 				dolgok.add(dolog);
 			}
 		}

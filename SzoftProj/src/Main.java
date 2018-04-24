@@ -826,13 +826,17 @@ public class Main {
 		
 		kiirtest();
 		//olvastest();
+		
+//		Map map = new Map();
+//		map.Load("Test1.txt");
+//		map.Save("Test1.txt");
 	}
 	
 	private static void olvastest() {
 		Map ma = new Map();
 		ma.Load("map2.txt");
 		
-		ma.Save();
+		ma.Save("map.txt");
 	}
 
 	private static void kiirtest() {
@@ -872,8 +876,15 @@ public class Main {
 		Mezo cm = new Mezo();
 		cm.Accept(c);
 		
+		Lyuk ly = new Lyuk();
+		Mezo lym = new Mezo();
+		lym.Accept(ly);
+		lym.setMap(map);
+		
 		Kapcsolo k = new Kapcsolo();
 		Mezo kl = new Mezo();
+		k.SetSegedLyuk(ly);
+		k.SetLyukable(lym);
 		kl.Accept(k);
 		kl.Accept(l);
 		
@@ -884,9 +895,6 @@ public class Main {
 		Mezo md2 = new Mezo();
 		md2.Accept(d2);
 		
-		Lyuk ly = new Lyuk();
-		Mezo lym = new Mezo();
-		lym.Accept(ly);
 		
 		map.addDolgozo(d);
 		map.addMezo(0, 0, am);
@@ -944,7 +952,9 @@ public class Main {
 //		map.addMezo(5, 7, am);
 //		map.addMezo(5, 8, am);
 		
-		map.Save();
+		map.SetTreeMap();
+		map.createNeighbourhood();
+		map.Save("Test1.txt");
 		
 	}
 }
