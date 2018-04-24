@@ -116,13 +116,14 @@ public class Mezo {
 		int tmp = this.GetOsszSuly();
 		
 		//Ha nincs a k�vetkez� mez�n semmi, akkor le�ll a rekurzi�.
-		if (this.GetNeighbor(i).GetOsszSuly() == 0) {
+		if (this.GetNeighbor(i)!=null && this.GetNeighbor(i).GetOsszSuly() == 0) {
 			return tmp*mod;
 		}
-		else {
+		else if(this.GetNeighbor(i)!=null) {
 			tmp += this.GetNeighbor(i).CountWeight(i);
 			return tmp*mod;
 		}		
+		else return 0;
 	}
 	
 	public String getPosition() {
