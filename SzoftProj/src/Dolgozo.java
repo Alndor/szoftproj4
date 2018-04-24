@@ -217,7 +217,7 @@ public class Dolgozo extends Dolgok {
 		
 		if(items.isEmpty())
 			return itemek.add("").build();
-		
+		itemek.add("nemures");
 		for(Item item : items) {
 			itemek.add(item.Save());
 		}
@@ -233,8 +233,8 @@ public class Dolgozo extends Dolgok {
 		m = map;
 		map.addDolgozo(this);
 		JsonArray itemek = ob.getJsonArray("itemek");
-		if(!itemek.isEmpty())
-			for(int i = 0; i < itemek.size(); ++i) {
+		if(!itemek.getString(0).equals(""))
+			for(int i = 1; i < itemek.size(); ++i) {
 				JsonObject item = itemek.getJsonObject(i);
 				if("mez".equals(item.getString("type"))){
 					Mez mez = new Mez();

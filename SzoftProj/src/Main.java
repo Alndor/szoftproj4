@@ -825,12 +825,12 @@ public class Main {
 		}
 		*/
 		
-		kiirtest();
+		//kiirtest();
 		//olvastest();
 		
-//		Map map = new Map();
-//		map.Load("Test1.txt");
-//		map.Save("Test1.txt");
+		Map map = new Map();
+		map.Load("Test5.txt");
+		map.Save("Test5.txt");
 	}
 	
 	private static void olvastest() {
