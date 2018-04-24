@@ -18,8 +18,8 @@ public class Main3Function {
 		System.out.println("7 Tolható láda tolása");
 		System.out.println("8 Nem tolható láda tolása");
 		System.out.println("9 Láda lyukra tolása");*/
-		System.out.println("10 Láda kapcsolóra tolása");
-		System.out.println("11 Láda célmezõre tolása");
+		//System.out.println("10 Láda kapcsolóra tolása");
+		//System.out.println("11 Láda célmezõre tolása");
 		System.out.println("12 Láda falhoz tolása");
 		System.out.println("13 Tolható láda lánc tolása");
 		//System.out.println("14 Nem tolható láda lánc tolása");		
