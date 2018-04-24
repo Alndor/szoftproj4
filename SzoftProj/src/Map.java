@@ -134,7 +134,7 @@ public class Map {
 		JsonObject mapObject = null;
 		
 		try {
-			InputStream fis;	
+			InputStream fis;
 			fis = new FileInputStream(file);
 			JsonReader reader = Json.createReader(fis);
 			
