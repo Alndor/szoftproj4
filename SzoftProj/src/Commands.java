@@ -69,7 +69,7 @@ public class Commands {
 			if(s=="a") i=Iranyok.LEFT;
 			if(s=="d") i=Iranyok.RIGHT;
 			if(cmap.getCurrent()!=null)
-			cmap.getCurrent().Move(i);
+				cmap.getCurrent().Move(i);
 		}
 		//mez lehelyezese
 		public void placeMez() {

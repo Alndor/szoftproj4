@@ -56,7 +56,7 @@ public class Dolgozo extends Dolgok {
 		irany = i;
 		Mezo nextMezo = current.GetNeighbor(i);
 		int weight=0;
-		weight+=current.CountWeight(i);
+		weight+=nextMezo.CountWeight(i);
 		if (weight>strength) refused=true;
 		if(refused!=true)
 			nextMezo.GetDolgok(this);
@@ -83,7 +83,7 @@ public class Dolgozo extends Dolgok {
 				if(nextMezo == null)
 					return;
 				int weight=0;
-				weight+=current.CountWeight(i);
+				weight+=nextMezo.CountWeight(i);
 				if (weight>strength) refused=true;
 				if(refused!=true)
 				nextMezo.GetDolgok(this);
@@ -145,6 +145,7 @@ public class Dolgozo extends Dolgok {
 	//Item lerak�sa
 	public void PlaceItem(Item it){
 		current.Accept(it);
+		it.Modify();
 	}
 	
 	//"int points" lek�rdez�se

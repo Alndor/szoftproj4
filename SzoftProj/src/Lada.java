@@ -11,10 +11,13 @@ public class Lada extends Dolgok {
 	//változó, ami számon tartja, hogy sikerült-e a mozgás
 	protected boolean refused = false;
 	protected Iranyok irany = null;
-	protected int weight = 10;
+	
 	
 	private String name="Lada";
 	
+	/*public Lada(int w) {
+		SetWeight(w);
+	}*/
 	public String getName() {
 		return name;
 	}
@@ -49,7 +52,7 @@ public class Lada extends Dolgok {
 			refused=false;
 		}
 		//amennyiben a láda megsemmisül, nem helyezõdik fel egyetlen mezõre sem
-		if(smashed)
+		else if(smashed)
 			return;
 		else 
 			nextMezo.Accept(this);

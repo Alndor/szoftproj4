@@ -15,7 +15,7 @@ public class Mezo {
 	//megfelel� ir�nyokba be�ll�tott mez�ket t�rolja
 	private HashMap<Iranyok, Mezo> szomszedok = new HashMap<Iranyok, Mezo>();
 	//A mez� m�dos�t� �rt�ke
-	private double mod;
+	private double mod=1;
 	
 	private Map mymap;
 	

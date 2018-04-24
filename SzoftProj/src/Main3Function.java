@@ -33,7 +33,7 @@ public class Main3Function {
 		System.out.println("22 Méz lerakása");
 		System.out.println("23 Olaj lerakása");
 		System.out.println("24 Fájlból parancs olvasása");
-		System.out.println("\nÍrja be a választott teszteset számát!");
+	//	System.out.println("\nÍrja be a választott teszteset számát!");
 		
 		Scanner scanner = new Scanner(System.in);		
 		int szam = scanner.nextInt();		
@@ -278,11 +278,11 @@ public class Main3Function {
 				String a133 = a129 + a130 + a131 + a132;
 				comm.CompareTest(a133, 23);
 				break;		
-		case 24:
+	/*	case 24:
 				Scanner tmp = new Scanner(System.in);
 				String sgd = tmp.nextLine();
 				comm.FajlBolParancs(sgd);
-				break;
+				break;*/
 		default:
 				break;
 		}		
