@@ -825,12 +825,12 @@ public class Main {
 		}
 		*/
 		
-		//kiirtest();
+		kiirtest();
 		//olvastest();
 		
-		Map map = new Map();
-		map.Load("Test5.txt");
-		map.Save("Test5.txt");
+//		Map map = new Map();
+//		map.Load("Test5.txt");
+//		map.Save("Test5.txt");
 	}
 	
 	private static void olvastest() {
@@ -918,7 +918,7 @@ public class Main {
 		map.addMezo(1, 0, am);
 		map.addMezo(1, 1, am);
 		map.addMezo(1, 2, am);
-		map.addMezo(1, 3, md);
+		map.addMezo(1, 3, cm);
 		map.addMezo(1, 4, am);
 		map.addMezo(1, 5, am);
 		map.addMezo(1, 6, am);
@@ -926,17 +926,17 @@ public class Main {
 //		map.addMezo(1, 8, am);
 		map.addMezo(2, 0, am);
 		map.addMezo(2, 1, m);
-		map.addMezo(2, 2, m);
-		map.addMezo(2, 3, ml);
-		map.addMezo(2, 4, m);
-		map.addMezo(2, 5, m);
+		map.addMezo(2, 2, ml);
+		map.addMezo(2, 3, md2);
+		map.addMezo(2, 4, ml);
+		map.addMezo(2, 5, am);
 		map.addMezo(2, 6, am);
 //		map.addMezo(2, 7, am);
 //		map.addMezo(2, 8, am);
 		map.addMezo(3, 0, am);
 		map.addMezo(3, 1, am);
-		map.addMezo(3, 2, ml);
-		map.addMezo(3, 3, am);
+		map.addMezo(3, 2, am);
+		map.addMezo(3, 3, ml2);
 		map.addMezo(3, 4, am);
 		map.addMezo(3, 5, am);
 		map.addMezo(3, 6, am);
@@ -945,7 +945,7 @@ public class Main {
 		map.addMezo(4, 0, am);
 		map.addMezo(4, 1, am);
 		map.addMezo(4, 2, am);
-		map.addMezo(4, 3, cm);
+		map.addMezo(4, 3, m);
 		map.addMezo(4, 4, am);
 		map.addMezo(4, 5, am);
 		map.addMezo(4, 6, am);
@@ -963,7 +963,7 @@ public class Main {
 		
 		map.SetTreeMap();
 		map.createNeighbourhood();
-		map.Save("Test6.txt");
+		map.Save("Test3.txt");
 		
 	}
 }

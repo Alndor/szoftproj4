@@ -184,7 +184,7 @@ public class Mezo {
 		else if(ob.getString("type").equals("kapcsolo")) {
 			dolog = new Kapcsolo();
 		}
-		else if(ob.getString("type").equals("Lada")) {
+		else if(ob.getString("type").equals("lada")) {
 			dolog = new Lada();
 		}
 		else if(ob.getString("type").equals("lyuk")) {
@@ -193,7 +193,7 @@ public class Mezo {
 		else if(ob.getString("type").equals("mez")) {
 			dolog = new Mez();
 		}
-		else if(ob.getString("type").equals("Olaj")) {
+		else if(ob.getString("type").equals("olaj")) {
 			dolog = new Olaj();
 		}
 		else 

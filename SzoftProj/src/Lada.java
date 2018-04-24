@@ -36,6 +36,8 @@ public class Lada extends Dolgok {
 		
 		irany = i;
 		Mezo nextMezo = current.GetNeighbor(i);
+		if(nextMezo == null)
+			return;
 		nextMezo.GetDolgok(this);
 		current.Remove(this);
 		if(refused) {
