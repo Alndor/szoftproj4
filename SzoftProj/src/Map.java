@@ -42,9 +42,11 @@ public class Map {
 	public void Running() {
 		//temporary solution, m�g �gyse kell rendesen
 		
-		if (current==null && inGame.size()!=0)
+		if (current==null && inGame.size()!=0) {
 		//inGame.add(current);
-		current=inGame.get(0);
+		if (inGame.size()==1) current=inGame.get(0);
+		
+		else if(inGame.size()==2) current=inGame.get(1);}
 			
 		
 	}

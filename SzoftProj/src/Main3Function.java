@@ -9,30 +9,30 @@ public class Main3Function {
 		
 		//Alapmenü, amibõl választhat a felhasználó.
 		
-		//System.out.println("1 Lépés lyukra");
+		System.out.println("1 Lépés lyukra");
 		System.out.println("2 Lépés falra");
-		/*System.out.println("3 Lépés dolgozóra");
+		System.out.println("3 Lépés dolgozóra");
 		System.out.println("4 Lépés kapcsolóra");
 		System.out.println("5 Lépés ládára");
 		System.out.println("6 Lépés célmezõre");
 		System.out.println("7 Tolható láda tolása");
 		System.out.println("8 Nem tolható láda tolása");
-		System.out.println("9 Láda lyukra tolása");*/
-		//System.out.println("10 Láda kapcsolóra tolása");
-		//System.out.println("11 Láda célmezõre tolása");
+		System.out.println("9 Láda lyukra tolása");
+		System.out.println("10 Láda kapcsolóra tolása");
+		System.out.println("11 Láda célmezõre tolása");
 		System.out.println("12 Láda falhoz tolása");
 		System.out.println("13 Tolható láda lánc tolása");
-		//System.out.println("14 Nem tolható láda lánc tolása");		
+		System.out.println("14 Nem tolható láda lánc tolása");		
 		System.out.println("15 Láda-dolgozó lánc tolása");
 		System.out.println("16 Láda-dolgozó-fal lánc tolása");
 		System.out.println("17 Ládák tolása mézzel");
-		//System.out.println("18 Ládák tolása olajjal");
+		System.out.println("18 Ládák tolása olajjal");
 		System.out.println("19 Láda-láda-célmezõ tolása");
-		/*System.out.println("20 Feladás");
+		System.out.println("20 Feladás");
 		System.out.println("21 Kilépés");
 		System.out.println("22 Méz lerakása");
-		System.out.println("23 Olaj lerakása");*/
-//		System.out.println("24 Fájlból parancs olvasása");
+		System.out.println("23 Olaj lerakása");
+		//System.out.println("24 Fájlból parancs olvasása");
 		System.out.println("\nÍrja be a választott teszteset számát!");
 		
 		Scanner scanner = new Scanner(System.in);		
