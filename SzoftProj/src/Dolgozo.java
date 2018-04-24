@@ -84,13 +84,16 @@ public class Dolgozo extends Dolgok {
 					return;
 				int weight=0;
 				weight+=nextMezo.CountWeight(i);
-				if (weight>strength) refused=true;
+				
+				if (weight>strength) 
+					refused=true;
+				
 				if(refused!=true)
-				nextMezo.GetDolgok(this);
+					nextMezo.GetDolgok(this);
 				
 				current.Remove(this);
 				if(dead) {
-					current = null;
+					//current = null;
 					return;
 				}
 				
@@ -102,7 +105,7 @@ public class Dolgozo extends Dolgok {
 				else
 					nextMezo.Accept(this);
 		}
-		else current.Accept(this);
+		else return;//current.Accept(this);
 		
 		
 		//System.out.println("<\t<-[dolgozo].Move(i)");
