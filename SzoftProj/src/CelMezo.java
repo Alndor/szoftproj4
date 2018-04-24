@@ -34,7 +34,9 @@ public class CelMezo extends Dolgok {
 		
 		m.AddPoints();
 		l.Smashed();
-		
+		Akadaly a = new Akadaly();
+		current.Accept(a);
+		current.Remove(this);
 		//System.out.println("<\t<-[celmezo].Score(l)");
 	}
 	
