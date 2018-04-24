@@ -124,10 +124,10 @@ public class Dolgozo extends Dolgok {
 	}
 	
 	//a j�t�kos feladhatja a j�t�kot, ha �gy �rzi, hogy m�r nem vezet sehova
-	public void GiveUp() {
+	public void GiveUp(int a) {
 		//System.out.println(">\t->[dolgozo].GiveUp()");
-		
-		g.Concede();
+		m.getInGame().remove(a);
+		//g.Concede();
 		
 		//System.out.println("<\t<-[dolgozo].GiveUp()");
 	}

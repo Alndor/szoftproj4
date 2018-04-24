@@ -150,7 +150,7 @@ public class Main3Function {
 				String a66 = comm.listLada();
 				String a67 = comm.ListCelmezo();
 				String a68 = comm.listAkadaly();
-				String a69 = a61 + a61 + a63 + a64 + a65 + a66 + a67 + a68;
+				String a69 = a61 + a62 + a63 + a64 + a65 + a66 + a67 + a68;
 				comm.CompareTest(a69, 11);
 				break;
 		case 12:
@@ -217,7 +217,7 @@ public class Main3Function {
 				String a102 = comm.listMez();
 				String a103 = comm.listDolgozo();
 				String a104 = a98 + a99 + a100 + a101 + a102 + a103;
-				comm.CompareTest(a104, 18);
+				comm.CompareTest(a104, 17);
 				break;
 		case 18:
 				comm.loadMap("Test5");
@@ -228,8 +228,8 @@ public class Main3Function {
 				String a108 = comm.listOlaj();
 				String a109 = comm.listDolgozo();
 				String a110 = comm.listLada();
-				String a111 = a105 + a106 + a107 + a108 + a109;
-				comm.CompareTest(a111, 19);
+				String a111 = a105 + a106 + a107 + a108 + a109+a110;
+				comm.CompareTest(a111, 18);
 				break;
 		case 19:
 				comm.loadMap("Test6");				
@@ -243,16 +243,16 @@ public class Main3Function {
 				String a118 = comm.listLada();	
 				String a119 = comm.ListCelmezo();
 				String a120 = a112 + a113 + a114 + a115 + a116 + a117 + a118 + a119;
-				comm.CompareTest(a120, 20);
+				comm.CompareTest(a120, 19);
 				break;
 		case 20:
 				comm.loadMap("Test6");				
 				String a121 = comm.listDolgozo();		
-				comm.GiveUp(1);
+				comm.GiveUp(0);
 				comm.moveDolgozo("s");															
 				String a122 = comm.listDolgozo();	
 				String a123 = a121 + a122;
-				comm.CompareTest(a123, 21);
+				comm.CompareTest(a123, 20);
 				break;
 		case 21:
 				comm.loadMap("Test6");
@@ -266,7 +266,7 @@ public class Main3Function {
 				String a126 = comm.listDolgozo();
 				String a127 = comm.listMez();
 				String a128 = a124 + a125 + a126 + a127;
-				comm.CompareTest(a128, 23);
+				comm.CompareTest(a128, 22);
 				break;
 		case 23:
 				comm.loadMap("Test6");
@@ -276,7 +276,7 @@ public class Main3Function {
 				String a131 = comm.listDolgozo();
 				String a132 = comm.listOlaj();
 				String a133 = a129 + a130 + a131 + a132;
-				comm.CompareTest(a133, 24);
+				comm.CompareTest(a133, 23);
 				break;		
 		case 24:
 				Scanner tmp = new Scanner(System.in);
