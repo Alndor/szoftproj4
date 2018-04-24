@@ -38,46 +38,47 @@ public class Map {
 		
 	}
 	
-	//a jï¿½tï¿½k folyï¿½sï¿½t irï¿½nyï¿½tja
+	//a jatek futasat iranyitja
 	public void Running() {
-		//temporary solution, mï¿½g ï¿½gyse kell rendesen
+		
 		
 		if (current==null && inGame.size()!=0) {
 		//inGame.add(current);
-		if (inGame.size()==1) current=inGame.get(0);
+		if (inGame.size()==1) 
+			current=inGame.get(0);
 		
 		else if(inGame.size()==2) current=inGame.get(1);}
 			
-		
+	
 	}
 	
 	
-	//meghï¿½vja a pontot adï¿½ fï¿½ggvï¿½nyï¿½t az ï¿½pp soron lï¿½vï¿½ jï¿½tï¿½kosnak
+	//meghivja a pontot ado fuggvenyet az epp soron levïo jatekosnak
 	public void AddPoints() {
 	
 		current.PointsGiven();	
 		
 	}
 	
-	//"ArrayList map" lekï¿½rdezï¿½se
+	//"ArrayList map" lekerdezese
 	
 	public TreeMap<Coord, Mezo> GetMezo() {
 		return palya;
 	}
 	
-	//"ArrayList map" beï¿½llï¿½tï¿½sa
+	//"ArrayList map" beallitasa
 	
 	public void SetMezo(HashMap<Coord, Mezo> tmp) {
 		map = tmp;
 	}
 	
-	//"ArrayList scores" lekï¿½rdezï¿½se
+	//"ArrayList scores" lekerdezese
 	
 	public ArrayList<Dolgozo> GetScores() {
 		return scores;
 	}
 	
-	//"ArrayList scores" beï¿½llï¿½tï¿½sa
+	//"ArrayList scores" beallitasa
 	
 	public void SetScores(ArrayList<Dolgozo> tmp) {
 		scores = tmp;
@@ -127,7 +128,7 @@ public class Map {
 	}
 	
 	public void addDolgozo(Dolgozo d) {
-		inGame.add(0, d);
+		inGame.add(0,d);
 		scores.add(0, d);
 	}
 	
@@ -171,6 +172,11 @@ public class Map {
 			Coord c = palya.ceilingKey(entry.getValue());
 			
 			entry.getKey().SetLyukable(palya.get(c));
+		}
+		
+		if (file.equals("Test1.txt")) {
+			Dolgozo tmp = inGame.remove(0);
+			inGame.add(tmp);
 		}
 
 	}

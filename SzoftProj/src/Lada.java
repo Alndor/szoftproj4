@@ -15,9 +15,9 @@ public class Lada extends Dolgok {
 	
 	private String name="Lada";
 	
-	/*public Lada(int w) {
-		SetWeight(w);
-	}*/
+	public Lada() {
+		this.SetWeight(10);
+	}
 	public String getName() {
 		return name;
 	}
@@ -128,9 +128,18 @@ public class Lada extends Dolgok {
 	}
 
 	@Override
-	public void Load(JsonObject ob, Map map) {
-		weight = ob.getInt("weight");
+	public void SetWeight(int x) {
+		// TODO Auto-generated method stub
+		if (x>0)
+			super.SetWeight(x);
 	}
+	
+	@Override
+	public void Load(JsonObject ob, Map map) {
+		SetWeight(ob.getInt("weight"));
+	}
+	
+	
 	
 	
 }
