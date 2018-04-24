@@ -1,0 +1,8 @@
+loadMap Test5
+listMez
+listLada
+listDolgozo
+moveDolgozo Left
+listLada
+listMez
+listDolgozo

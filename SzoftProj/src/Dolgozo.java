@@ -11,13 +11,15 @@ import javax.json.JsonWriter;
 //a j�t�kosok �ltal ir�ny�tott dolgoz�k oszt�lya
 public class Dolgozo extends Dolgok {
 	
-	private double strength=10;
+	private double strength=14;
 	private String name= "Dolgozo";
 	//az adott j�t�kos pontjait t�rol� v�ltoz�
 	private int points;
 	private Iranyok irany = null;
 	//valtozo, ami szamon tartja, hogy sikerult-e a mozgatas
 	protected boolean refused = false;
+	//valtozo, ami szamon tartja, hogy el-e a dolgozo
+	protected boolean dead = false;
 	//a megfelel� kommunik�l�shoz haszn�lt v�ltoz�k
 	private Map m = new Map();
 	private Game g = new Game();
@@ -53,7 +55,11 @@ public class Dolgozo extends Dolgok {
 		
 		irany = i;
 		Mezo nextMezo = current.GetNeighbor(i);
-		nextMezo.GetDolgok(this);
+		int weight=0;
+		weight+=current.CountWeight(i);
+		if (weight>strength) refused=true;
+		if(refused!=true)
+			nextMezo.GetDolgok(this);
 		current.Remove(this);
 		if(refused) {
 			//amennyiben a dolgoz�t nem lehet a k�vetkez� mez�re tolni, meghal
@@ -73,18 +79,27 @@ public class Dolgozo extends Dolgok {
 		//System.out.println(">\t->[dolgozo].Move(i)");
 		if(i.getDir()!='x') {
 				Mezo nextMezo = current.GetNeighbor(i);
-				nextMezo.GetDolgok(this);
-				current.Remove(this);
+				if(nextMezo == null)
+					return;
 				int weight=0;
 				weight+=current.CountWeight(i);
 				if (weight>strength) refused=true;
+				if(refused!=true)
+				nextMezo.GetDolgok(this);
+				
+				current.Remove(this);
+				if(dead) {
+					current = null;
+					return;
+				}
+				
 				//amennyiben a dolgoz� nem l�phet a k�vetkez� mez�re az aktu�lis mez�n marad
 				if(refused) {
 					current.Accept(this);
 					refused=false;
 				}		
 				else
-					nextMezo.Accept(this);	
+					nextMezo.Accept(this);
 		}
 		else current.Accept(this);
 		
@@ -102,11 +117,17 @@ public class Dolgozo extends Dolgok {
 		//System.out.println("<\t<-[dolgozo].PointsGiven()");
 	}
 	
+	//Megoli a dolgozot
+	
+	public void Kill() {
+		dead = true;
+	}
+	
 	//a j�t�kos feladhatja a j�t�kot, ha �gy �rzi, hogy m�r nem vezet sehova
-	public void GiveUp() {
+	public void GiveUp(int a) {
 		//System.out.println(">\t->[dolgozo].GiveUp()");
-		
-		g.Concede();
+		m.getInGame().remove(a);
+		//g.Concede();
 		
 		//System.out.println("<\t<-[dolgozo].GiveUp()");
 	}
@@ -191,6 +212,7 @@ public class Dolgozo extends Dolgok {
 				.add("type", "dolgozo")
 				.add("points", points)
 				.add("weight", weight)
+				.add("strength", strength)
 				.add("itemek", saveItems())
 				.build();
 
@@ -202,7 +224,7 @@ public class Dolgozo extends Dolgok {
 		
 		if(items.isEmpty())
 			return itemek.add("").build();
-		
+		itemek.add("nemures");
 		for(Item item : items) {
 			itemek.add(item.Save());
 		}
@@ -213,12 +235,13 @@ public class Dolgozo extends Dolgok {
 	@Override
 	public void Load(JsonObject ob, Map map) {
 		weight = ob.getInt("weight");
+		strength = ob.getInt("strength");
 		points = ob.getInt("points");
 		m = map;
 		map.addDolgozo(this);
 		JsonArray itemek = ob.getJsonArray("itemek");
 		if(!itemek.getString(0).equals(""))
-			for(int i = 0; i < itemek.size(); ++i) {
+			for(int i = 1; i < itemek.size(); ++i) {
 				JsonObject item = itemek.getJsonObject(i);
 				if("mez".equals(item.getString("type"))){
 					Mez mez = new Mez();
