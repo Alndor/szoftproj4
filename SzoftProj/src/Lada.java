@@ -11,7 +11,14 @@ public class Lada extends Dolgok {
 	//változó, ami számon tartja, hogy sikerült-e a mozgás
 	protected boolean refused = false;
 	protected Iranyok irany = null;
-	protected int weight = 10;
+	
+	public Lada() {
+		weight = 10;
+	}
+	
+	public Lada(int w) {
+		weight = w;
+	}
 	
 	private String name="Lada";
 	public String getName() {

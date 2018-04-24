@@ -92,7 +92,7 @@ public class Map {
 	    return null;
 	}
 	
-	public void Save() {
+	public void Save(String s) {
 		JsonArrayBuilder mezok = Json.createArrayBuilder();
 		for (Entry<Coord, Mezo> entry :  map.entrySet()) {
 			JsonObject neighbour = Json.createObjectBuilder()
@@ -108,7 +108,7 @@ public class Map {
 				.build();
 		
 		try {
-			JsonWriter w = Json.createWriter(new FileWriter("map4.txt"));
+			JsonWriter w = Json.createWriter(new FileWriter(s));
 			w.writeObject(out);
 			w.close();
 		} catch (IOException e) {

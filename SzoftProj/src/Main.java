@@ -832,7 +832,7 @@ public class Main {
 		Map ma = new Map();
 		ma.Load("map2.txt");
 		
-		ma.Save();
+		ma.Save("map2.txt");
 	}
 
 	private static void kiirtest() {
@@ -843,6 +843,8 @@ public class Main {
 		
 		Mezo m = new Mezo();
 		
+		Mezo klym = new Mezo();
+		
 		Dolgozo d = new Dolgozo();
 		
 		Lada l = new Lada();
@@ -852,10 +854,12 @@ public class Main {
 		Mezo lm = new Mezo();
 		lm.Accept(mez);
 		lm.Accept(l);
+		lm.SetMod(2);
 		
 		Mezo lo = new Mezo();
 		lo.Accept(olaj);
-		lm.Accept(l);
+		lo.Accept(l);
+		lo.SetMod(0.5);
 		
 		Mezo ml = new Mezo();
 		ml.Accept(l);
@@ -868,11 +872,16 @@ public class Main {
 		Mezo ml2 = new Mezo();
 		ml2.Accept(l2);
 		
+		Mezo ml3 = new Mezo();
+		ml3.Accept(new Lada());
+		
 		CelMezo c = new CelMezo();
 		Mezo cm = new Mezo();
 		cm.Accept(c);
 		
 		Kapcsolo k = new Kapcsolo();
+		k.SetLyukable(klym);
+		
 		Mezo kl = new Mezo();
 		kl.Accept(k);
 		kl.Accept(l);
@@ -902,16 +911,16 @@ public class Main {
 		map.addMezo(1, 1, m);
 		map.addMezo(1, 2, ml2);
 		map.addMezo(1, 3, ml2);
-		map.addMezo(1, 4, md);
-		map.addMezo(1, 5, kl);
-		map.addMezo(1, 6, kl);
+		map.addMezo(1, 4, md2);
+		map.addMezo(1, 5, ml);
+		map.addMezo(1, 6, ml);
 		map.addMezo(1, 7, m);
 		map.addMezo(1, 8, am);
 		map.addMezo(2, 0, am);
 		map.addMezo(2, 1, am);
 		map.addMezo(2, 2, am);
 		map.addMezo(2, 3, am);
-		map.addMezo(2, 4, lm);
+		map.addMezo(2, 4, ml3);
 		map.addMezo(2, 5, am);
 		map.addMezo(2, 6, am);
 		map.addMezo(2, 7, am);
@@ -944,7 +953,7 @@ public class Main {
 		map.addMezo(5, 7, am);
 		map.addMezo(5, 8, am);
 		
-		map.Save();
+		map.Save("Test4.txt");
 		
 	}
 }
