@@ -13,6 +13,7 @@ public class Lada extends Dolgok {
 	protected Iranyok irany = null;
 	
 	private String name="Lada";
+	
 	public String getName() {
 		return name;
 	}
@@ -126,5 +127,6 @@ public class Lada extends Dolgok {
 	public void Load(JsonObject ob, Map map) {
 		weight = ob.getInt("weight");
 	}
+	
 	
 }

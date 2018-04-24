@@ -68,17 +68,18 @@ public class Commands {
 			if(s=="s") i=Iranyok.DOWN;
 			if(s=="a") i=Iranyok.LEFT;
 			if(s=="d") i=Iranyok.RIGHT;
+			if(cmap.getCurrent()!=null)
 			cmap.getCurrent().Move(i);
 		}
 		//mez lehelyezese
 		public void placeMez() {
 			cmap.Running();
-			cmap.getCurrent().PlaceItem(cmap.getCurrent().GetItems().get(0));
+			cmap.getCurrent().PlaceItem(cmap.getCurrent().GetItems().get(1));
 		}
 		//olaj lehelyezese
 		public void placeOlaj() {
 			cmap.Running();
-			cmap.getCurrent().PlaceItem(cmap.getCurrent().GetItems().get(1));
+			cmap.getCurrent().PlaceItem(cmap.getCurrent().GetItems().get(0));
 		}
 	
 		public void ChooseTest(int t) throws IOException{
@@ -133,7 +134,8 @@ public class Commands {
 		}
 		
 		public void GiveUp(int sz) {
-			cmap.getInGame().get(0).GiveUp();			
+			
+			cmap.getInGame().remove(0);			
 		}
 		
 		public void CompareTest(String uj, int elvart) throws IOException {

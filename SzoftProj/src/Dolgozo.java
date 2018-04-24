@@ -11,7 +11,7 @@ import javax.json.JsonWriter;
 //a j�t�kosok �ltal ir�ny�tott dolgoz�k oszt�lya
 public class Dolgozo extends Dolgok {
 	
-	private double strength=10;
+	private double strength=14;
 	private String name= "Dolgozo";
 	//az adott j�t�kos pontjait t�rol� v�ltoz�
 	private int points;
@@ -55,7 +55,11 @@ public class Dolgozo extends Dolgok {
 		
 		irany = i;
 		Mezo nextMezo = current.GetNeighbor(i);
-		nextMezo.GetDolgok(this);
+		int weight=0;
+		weight+=current.CountWeight(i);
+		if (weight>strength) refused=true;
+		if(refused!=true)
+			nextMezo.GetDolgok(this);
 		current.Remove(this);
 		if(refused) {
 			//amennyiben a dolgoz�t nem lehet a k�vetkez� mez�re tolni, meghal
@@ -77,15 +81,18 @@ public class Dolgozo extends Dolgok {
 				Mezo nextMezo = current.GetNeighbor(i);
 				if(nextMezo == null)
 					return;
-				nextMezo.GetDolgok(this);
 				int weight=0;
 				weight+=current.CountWeight(i);
+				if (weight>strength) refused=true;
+				if(refused!=true)
+				nextMezo.GetDolgok(this);
+				
 				current.Remove(this);
 				if(dead) {
 					current = null;
 					return;
 				}
-				if (weight>strength) refused=true;
+				
 				//amennyiben a dolgoz� nem l�phet a k�vetkez� mez�re az aktu�lis mez�n marad
 				if(refused) {
 					current.Accept(this);
@@ -117,10 +124,10 @@ public class Dolgozo extends Dolgok {
 	}
 	
 	//a j�t�kos feladhatja a j�t�kot, ha �gy �rzi, hogy m�r nem vezet sehova
-	public void GiveUp() {
+	public void GiveUp(int a) {
 		//System.out.println(">\t->[dolgozo].GiveUp()");
-		
-		g.Concede();
+		m.getInGame().remove(a);
+		//g.Concede();
 		
 		//System.out.println("<\t<-[dolgozo].GiveUp()");
 	}
