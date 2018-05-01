@@ -8,7 +8,7 @@ public class Main3Function {
 		Commands comm = new Commands();
 		
 		//Alapmenü, amibõl választhat a felhasználó.
-		
+		/*
 		System.out.println("1 Lépés lyukra");
 		System.out.println("2 Lépés falra");
 		System.out.println("3 Lépés dolgozóra");
@@ -280,6 +280,8 @@ public class Main3Function {
 				break;		
 		default:
 				break;
-		}		
+		}
+		*/
+		MyFrame mf = new MyFrame();
 	}
 }

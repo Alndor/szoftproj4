@@ -15,8 +15,9 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.json.JsonWriter;
+import javax.swing.table.AbstractTableModel;
 
-public class Map {
+public class Map extends AbstractTableModel{
 
 	private HashMap<Coord, Mezo> map = new HashMap<Coord, Mezo>();
 	private TreeMap<Coord, Mezo> palya = new TreeMap<Coord, Mezo>();
@@ -248,6 +249,46 @@ public class Map {
 	
 	public void setName(String s) {
 		name=s;
+	}
+
+	//Visszaadja az oszlopok számát
+	@Override
+	public int getColumnCount() {
+		int count=0;
+		for(Entry<Coord, Mezo> tmp : palya.entrySet()){
+			if (tmp.getKey().x==1)
+				count++;
+		}
+		return count;
+	}
+
+	//Visszaadja a sorok számát
+	@Override
+	public int getRowCount() {
+		int count=0;
+		for(Entry<Coord, Mezo> tmp : palya.entrySet()){
+			if (tmp.getKey().y==1)
+				count++;
+		}
+		return count;
+	}
+
+	//Maga az infó, hogy (x,y) helyen mi található, dolgok neve space-szel elválasztva
+	@Override
+	public Object getValueAt(int x, int y) {
+		String value="";
+		Coord c = new Coord(x,y);
+		for(Entry<Coord, Mezo> tmp : palya.entrySet()){
+			if (tmp.getKey().equals(c)){
+				Mezo m = tmp.getValue();
+				for (Dolgok d : m.GetThings()){
+					value+=d.getName()+" ";
+				}
+			}
+		}
+		
+		return value;
+		
 	}
 }
 
