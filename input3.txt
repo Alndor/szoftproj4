@@ -1,4 +1,0 @@
-loadMap Test1
-listDolgozo
-moveDolgozo Left
-listDolgozo

@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="SzoftProj/src"/>
-	<classpathentry kind="lib" path="SzoftProj/src/javax.json-1.1.jar"/>
-	<classpathentry kind="lib" path="SzoftProj/src/javax.json-api-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Balázs/eclipse-workspace/szoftproj4/SzoftProj/src/javax.json-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Balázs/eclipse-workspace/szoftproj4/SzoftProj/src/javax.json-api-1.0.jar"/>
 	<classpathentry kind="output" path="SzoftProj/bin"/>
 </classpath>

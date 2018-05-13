@@ -24,12 +24,12 @@ public class Map extends AbstractTableModel{
 	
 	
 	private String name=new String();
-	//a pontok sz�montart�s�ra szolg�l� lista
+	//a pontok szamitasar szolgalo lista
 	private ArrayList<Dolgozo> scores = new ArrayList<>();
 	private ArrayList<Dolgozo>	inGame= new ArrayList<>();
 	private Dolgozo current= null;
 	
-	//meg�li az �pp soron l�v� dolgoz�t
+	//megoli a parameterkent kapott dolgozot
 	public void Kill(Dolgozo d) {
 		if(inGame.contains(d))
 			inGame.remove(d);
@@ -41,15 +41,17 @@ public class Map extends AbstractTableModel{
 	
 	//a jatek futasat iranyitja
 	public void Running() {
-		
-		
+		//beallitjuk, hogy ki eppen az aktiv jatekos
 		if (current==null && inGame.size()!=0) {
-		//inGame.add(current);
-		if (inGame.size()==1) 
-			current=inGame.get(0);
-		
-		else if(inGame.size()==2) current=inGame.get(1);}
+			current=inGame.remove(0);
 			
+		}
+		else if(current!=null) {
+			inGame.add(current);
+			current=inGame.remove(0);
+		}
+		
+		
 	
 	}
 	
@@ -102,12 +104,12 @@ public class Map extends AbstractTableModel{
 	public void Save(String s) {
 		JsonArrayBuilder mezok = Json.createArrayBuilder();
 		for (Entry<Coord, Mezo> entry :  palya.entrySet()) {
-			JsonObject neighbour = Json.createObjectBuilder()
+		/*	JsonObject neighbour = Json.createObjectBuilder()
 					.add("mezo", entry.getValue().Save())
 					.add("x", entry.getKey().getX())
 					.add("y", entry.getKey().getY())
-					.build();
-	        mezok.add(neighbour);
+					.build();*/
+	    //    mezok.add(neighbour);
 	    }
 		
 		JsonObject out = Json.createObjectBuilder()
@@ -129,8 +131,8 @@ public class Map extends AbstractTableModel{
 	}
 	
 	public void addDolgozo(Dolgozo d) {
-		inGame.add(0,d);
-		scores.add(0, d);
+		inGame.add(d);
+		scores.add(d);
 	}
 	
 	public HashMap<Kapcsolo, Coord> kapcsok = new HashMap<Kapcsolo, Coord>();
@@ -161,7 +163,7 @@ public class Map extends AbstractTableModel{
 		
 		for(int i = 0; i < plain.size(); ++i) {
 			Mezo m = new Mezo();
-			m.Load(plain.getJsonObject(i).getJsonObject("mezo"), this);
+		//	m.Load(plain.getJsonObject(i).getJsonObject("mezo"), this);
 			Coord c = new Coord(plain.getJsonObject(i).getInt("x"), plain.getJsonObject(i).getInt("y"));
 			map.put(c, m);
 		}

@@ -1,5 +1,0 @@
-loadMap Test6
-listDolgozo
-GiveUp 1
-loveDolgozo Right
-listDolgozo

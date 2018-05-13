@@ -1,3 +1,4 @@
+import com.sun.prism.Image;
 
 public class GraphicOlaj implements Drawable {
 

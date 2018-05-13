@@ -1,7 +1,0 @@
-loadMap Test1
-listDolgozo
-listKapcsolo
-listLyuk
-moveDolgozo Down
-listDolgozo
-listLyuk
