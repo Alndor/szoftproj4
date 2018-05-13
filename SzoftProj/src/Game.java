@@ -12,7 +12,7 @@ public class Game {
 	private Button b2= new Button("mez");
 	
 	
-	private View view;
+	private View view = new View(currentMap);
 	private Controller c= new Controller(this);
 	
 	public Controller getController() {

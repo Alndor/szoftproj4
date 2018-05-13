@@ -11,6 +11,13 @@ import javax.json.JsonWriter;
 //a j�t�kosok �ltal ir�ny�tott dolgoz�k oszt�lya
 public class Dolgozo extends Dolgok {
 	
+	
+	
+	Dolgozo(){
+		dr= new GraphicDolgozo();
+	}
+	
+	
 	private double strength=14;
 	private String name= "Dolgozo";
 	//az adott j�t�kos pontjait t�rol� v�ltoz�

@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import com.sun.xml.internal.ws.org.objectweb.asm.Label;
 //a mez�ket reprezent�l� oszt�ly
 public class Mezo {
+	GraphicMezo dr=new GraphicMezo();
 	
 	JLabel l= new JLabel();
 	

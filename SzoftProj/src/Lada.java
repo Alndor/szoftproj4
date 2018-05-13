@@ -6,6 +6,8 @@ import javax.json.JsonObject;
 import javax.json.JsonWriter;
 
 public class Lada extends Dolgok {
+	
+	
 	//változó, ami számon tartja, hogy a dobozt meg kell-e semmisíteni
 	protected boolean smashed = false;
 	//változó, ami számon tartja, hogy sikerült-e a mozgás
@@ -17,6 +19,7 @@ public class Lada extends Dolgok {
 	
 	public Lada() {
 		this.SetWeight(10);
+		dr= new GraphicLada();
 	}
 	public String getName() {
 		return name;

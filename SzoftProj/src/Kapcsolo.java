@@ -6,6 +6,12 @@ import javax.json.JsonObject;
 import javax.json.JsonWriter;
 
 public class Kapcsolo extends Dolgok {
+	
+	Kapcsolo(){
+		dr= new GraphicKapcsolo();
+
+	}
+	
 	//azt a mezõt képviseli, amelyre a lyuk felkerülhet
 	private Mezo lyukable = new Mezo();
 	//a felrakható lyuk
@@ -15,8 +21,7 @@ public class Kapcsolo extends Dolgok {
 	public String getName() {
 		return name;
 	}
-
-
+	
 	//ha dolgozó lép rá, megvizsgálja a váltó állását, és az alapján alakít rajta
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {

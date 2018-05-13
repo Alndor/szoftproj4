@@ -1,6 +1,7 @@
 import javax.json.JsonObject;
 
 public abstract class Dolgok {
+	Drawable dr;
 	//Dolgok aktu�lis mez�j�t sz�montart� v�ltoz�
 	protected Mezo current;
 	protected String name = "Dolgok";

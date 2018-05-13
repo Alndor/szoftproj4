@@ -5,9 +5,18 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonWriter;
 
+
+
 public class Lyuk extends Dolgok {
+	
+	Lyuk(){
+		dr= new GraphicLyuk();
+	}
+	
 	protected Map m = new Map();
 	private String name = "Lyuk";
+	
+	
 	//amennyiben dolgoz� l�p a lyukra, megh�vja az annak meg�l�s�re szolg�l� f�ggv�nyt
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
