@@ -1,2 +1,0 @@
-loadMap Test6
-EndGame

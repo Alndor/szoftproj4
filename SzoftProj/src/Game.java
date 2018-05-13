@@ -11,16 +11,16 @@ public class Game {
 	
 	//elindítja a játékot
 	public void StartGame() {
-		//temporary solution, még úgyse kell
-		/*while(currentMap.getInGame().size()!=0) {
-			currentMap.Running();
-			
-			
-			
-			
-		}*/
 		
-		//EndGame();
+		while(currentMap.getInGame().size()!=0) {
+			currentMap.Running();
+						
+			
+			
+			
+		}
+		
+		EndGame();
 	}
 	
 	//véget vet a játéknak
@@ -34,8 +34,8 @@ public class Game {
 	//a játék feladására szolgál
 	public void Concede() {
 		
-		
-		EndGame();
+		currentMap.getInGame().remove(currentMap.getCurrent());
+		//EndGame();
 		
 	}
 	
@@ -43,7 +43,7 @@ public class Game {
 	//kiválaszthatjuk a pályát
 	public Map ChooseMap() {
 		for(int i=0;i<maps.size();i++) {
-			System.out.println(i+".\t"+maps.get(i).getName());
+			System.out.println(i+1+".\t"+maps.get(i).getName());
 		}
 		
 		//temporary solution, még úgyse kell
