@@ -146,7 +146,7 @@ public class Mezo {
 				.add("dolgok", things)
 				.build();
 
-		return value;
+		return (JsonObject)value;
 	}
 	
 	private JsonArray SavedThings() {
