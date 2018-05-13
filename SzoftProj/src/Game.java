@@ -5,6 +5,8 @@ public class Game {
 	private ArrayList<Map> maps = new ArrayList<>();
 	private Map currentMap=new Map();
 	
+	private View view;
+	
 	
 	
 	//elindítja a játékot
