@@ -163,7 +163,7 @@ public class Map extends AbstractTableModel{
 		
 		for(int i = 0; i < plain.size(); ++i) {
 			Mezo m = new Mezo();
-			m.Load(plain.getJsonObject(i).getJsonObject("mezo"), this);
+			m.Load((JsonObject)(plain.getJsonObject(i).getJsonObject("mezo")), this);
 			Coord c = new Coord(plain.getJsonObject(i).getInt("x"), plain.getJsonObject(i).getInt("y"));
 			map.put(c, m);
 		}

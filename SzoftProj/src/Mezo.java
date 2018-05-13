@@ -162,7 +162,7 @@ public class Mezo {
 		JsonArray things = ob.getJsonArray("dolgok");
 		
 		for(int i = 0; i < things.size(); ++i) {
-			Dolgok dolog = setDolog(things.getJsonObject(i), map);
+			Dolgok dolog = setDolog((JsonObject)(things.getJsonObject(i)), map);
 			if(dolog != null) {
 				dolog.SetCurrent(this);
 				dolgok.add(dolog);
