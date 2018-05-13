@@ -47,6 +47,7 @@ public class Game {
 		}
 		
 		//temporary solution, még úgyse kell
+		currentMap=maps.get(0);
 		return maps.get(0);
 	}
 	
@@ -54,6 +55,14 @@ public class Game {
 	
 	public ArrayList<Map> GetMaps() {
 		return maps;
+	}
+	
+	public Map getMap() {
+		return currentMap;
+	}
+	
+	public void setMap(Map m) {
+		currentMap=m;
 	}
 	
 	//"ArrayList maps" beállítása
