@@ -41,10 +41,9 @@ public class Dolgozo extends Dolgok {
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
 		// TODO Auto-generated method stub
-		//System.out.println(">\t->[dolgozo].HitByDolgozo(d, i)");
 		//dolgoz� nem l�phet dolgoz�ra
 		d.Refuse();
-		//System.out.println("<\t<-[dolgozo].HitByDolgozo(d, i)");
+	
 	}
 
 	//a param�ter�l kapott l�da egy megfelel� ir�nyba �ti

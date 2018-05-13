@@ -8,8 +8,14 @@ import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonWriter;
+import javax.swing.JLabel;
+
+import com.sun.xml.internal.ws.org.objectweb.asm.Label;
 //a mez�ket reprezent�l� oszt�ly
 public class Mezo {
+	
+	JLabel l= new JLabel();
+	
 	//a mez�n l�v� Dolgokat t�rolja
 	private ArrayList<Dolgok> dolgok=new ArrayList<>();
 	//megfelel� ir�nyokba be�ll�tott mez�ket t�rolja
