@@ -108,6 +108,11 @@ public class MyFrame extends JFrame{
 	   				 cellLabel.setIcon(image);
 	   				 //cellLabel.setText("C");
 	   				 break;
+	   			default:
+	   				 image=new ImageIcon("Mezo.gif");
+	   				 cellLabel.setIcon(image);
+	   				 //cellLabel.setText("A");
+	   				 break;
 	   			 }
 	   		 }
 	   		//((DefaultTableCellRenderer)component).setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
