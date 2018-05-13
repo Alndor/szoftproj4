@@ -104,12 +104,12 @@ public class Map extends AbstractTableModel{
 	public void Save(String s) {
 		JsonArrayBuilder mezok = Json.createArrayBuilder();
 		for (Entry<Coord, Mezo> entry :  palya.entrySet()) {
-		/*	JsonObject neighbour = Json.createObjectBuilder()
+			JsonObject neighbour = Json.createObjectBuilder()
 					.add("mezo", entry.getValue().Save())
 					.add("x", entry.getKey().getX())
 					.add("y", entry.getKey().getY())
-					.build();*/
-	    //    mezok.add(neighbour);
+					.build();
+	        mezok.add(neighbour);
 	    }
 		
 		JsonObject out = Json.createObjectBuilder()
@@ -163,7 +163,7 @@ public class Map extends AbstractTableModel{
 		
 		for(int i = 0; i < plain.size(); ++i) {
 			Mezo m = new Mezo();
-		//	m.Load(plain.getJsonObject(i).getJsonObject("mezo"), this);
+			m.Load(plain.getJsonObject(i).getJsonObject("mezo"), this);
 			Coord c = new Coord(plain.getJsonObject(i).getInt("x"), plain.getJsonObject(i).getInt("y"));
 			map.put(c, m);
 		}

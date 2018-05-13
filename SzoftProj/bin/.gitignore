@@ -1,5 +1,11 @@
-/Main.class
-/Menu$Jatekkezdes.class
-/Menu.class
-/MyFrame$MyTableCellRenderer.class
-/MyFrame.class
+/Drawable.class
+/GraphicAkadaly.class
+/GraphicCelmezo.class
+/GraphicDolgozo.class
+/GraphicKapcsolo.class
+/GraphicLada.class
+/GraphicLyuk.class
+/GraphicMez.class
+/GraphicMezo.class
+/GraphicOlaj.class
+/View.class

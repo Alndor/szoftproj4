@@ -4,7 +4,7 @@ import java.awt.event.KeyListener;
 
 public class KeyEventHandler extends KeyAdapter{
 
-	private Game game= new Game();
+	private Game game= null;
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
