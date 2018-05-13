@@ -70,4 +70,8 @@ public class Game {
 	public void SetMaps(ArrayList<Map> tmp) {
 		maps = tmp;
 	}
+	
+	public Controller getController(){
+		return c;
+	}
 }

@@ -83,10 +83,10 @@ public class Menu {
 			else {
 				map.Load("4PlayerMap.txt");
 			}
-			
-			//g.setMap(map);
+			Game g = new Game();
+			g.setMap(map);
 			f1.dispose();
-			MyFrame mf = new MyFrame(map);
+			MyFrame mf = new MyFrame(g);
 		}
 	}		
 	

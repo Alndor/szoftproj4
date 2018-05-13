@@ -15,6 +15,8 @@ public class Controller {
 		meh.setGame(g);
 	}
 	
-	
+	public KeyEventHandler getKeh(){
+		return keh;
+	}
 	
 }

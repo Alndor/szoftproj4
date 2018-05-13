@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 
 public class MouseEventHandler extends MouseAdapter {
 
-	private Game game = new Game();
+	private Game game /*= new Game()*/;
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub

@@ -25,12 +25,15 @@ public class MyFrame extends JFrame{
 	
 	private Map map= new Map();
 	
-	public MyFrame(Map terkep){ //Jelenleg mindent a konstruktorban rak össze
+	public MyFrame(Game g){ //Jelenleg mindent a konstruktorban rak össze
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("GUI Demo");
 		this.setResizable(false);
 		JPanel p=new JPanel(new BorderLayout()); //A panel, amire rárakjuk majd a table-t
-		map = terkep; //Betöltés, hogy a mapnak legyen tartalma
+		p.addKeyListener(g.getController().keh);
+		p.setFocusable(true);
+		p.requestFocusInWindow();
+		map = g.getMap(); //Betöltés, hogy a mapnak legyen tartalma
 		table.setRowHeight(50); //Sorok magasságának beállítása az 50x50-es képek miatt
 		table.setModel(map); //Átadjuk a mapet modelnek
 		setColumnWidth(table); //Sajnos jobb megoldást nem tudok az oszlopok szélességének beállítására, így erre külön metódus van
@@ -108,6 +111,9 @@ public class MyFrame extends JFrame{
 	   				 cellLabel.setIcon(image);
 	   				 //cellLabel.setText("C");
 	   				 break;
+	   			default:
+	   				image=new ImageIcon("Mezo.gif");
+	   				 cellLabel.setIcon(image);
 	   			 }
 	   		 }
 	   		//((DefaultTableCellRenderer)component).setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
