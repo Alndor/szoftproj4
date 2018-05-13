@@ -21,16 +21,16 @@ import javax.swing.table.TableModel;
 
 
 public class MyFrame extends JFrame{
-	private JTable table = new JTable();
+	private JTable table = new JTable();		
 	
 	private Map map= new Map();
 	
-	public MyFrame(){ //Jelenleg mindent a konstruktorban rak össze
+	public MyFrame(Map terkep){ //Jelenleg mindent a konstruktorban rak össze
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("GUI Demo");
 		this.setResizable(false);
 		JPanel p=new JPanel(new BorderLayout()); //A panel, amire rárakjuk majd a table-t
-		map.Load("Test5.txt"); //Betöltés, hogy a mapnak legyen tartalma
+		map = terkep; //Betöltés, hogy a mapnak legyen tartalma
 		table.setRowHeight(50); //Sorok magasságának beállítása az 50x50-es képek miatt
 		table.setModel(map); //Átadjuk a mapet modelnek
 		setColumnWidth(table); //Sajnos jobb megoldást nem tudok az oszlopok szélességének beállítására, így erre külön metódus van
@@ -40,7 +40,7 @@ public class MyFrame extends JFrame{
 		this.setVisible(true); //Megjelenítjuk
 		this.pack(); //Pack-eljük, hogy az ablak akkora legyen, mint a table
 	}
-	
+		
 	//Az oszlopok méretezése
 	public void setColumnWidth(JTable table){
 		TableModel tm=table.getModel();
