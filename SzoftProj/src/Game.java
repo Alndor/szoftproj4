@@ -6,7 +6,7 @@ public class Game {
 	private Map currentMap=new Map();
 	
 	private View view;
-	
+	private Controller c= new Controller(this);
 	
 	
 	//elindítja a játékot
@@ -14,7 +14,7 @@ public class Game {
 		
 		while(currentMap.getInGame().size()!=0) {
 			currentMap.Running();
-						
+			
 			
 			
 			

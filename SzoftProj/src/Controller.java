@@ -10,7 +10,10 @@ public class Controller {
 	KeyEventHandler keh= new KeyEventHandler();
 	MouseEventHandler meh= new MouseEventHandler();
 	
-	
+	Controller(Game g) {
+		keh.setGame(g);
+		meh.setGame(g);
+	}
 	
 	
 	
