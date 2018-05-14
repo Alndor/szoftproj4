@@ -48,21 +48,11 @@ public class KeyEventHandler implements KeyListener{
 	private void Ellenorzesek() {
 		if ((game.getMap().getInGame().size() == 0) && game.getMap().getCurrent() == null) {
 			game.EndGame();
+			return;
 		}
 	/*	else if((game.getMap().getKjsz() == 1) && (game.getMap().getCurrent() == null))
 			game.EndGame();
 		*/
-		int k = 0;
-		
-		for (Entry<Coord, Mezo> entry : game.getMap().GetMezo().entrySet()) {
-			if (entry.getValue().VanMozgathatoLada()) {
-				k++;
-			}
-		}
-		
-		if (k == 0) {
-			game.Concede();
-		}
 		
 		int cmsz = 0;
 		
@@ -73,8 +63,25 @@ public class KeyEventHandler implements KeyListener{
 					++cmsz;
 		}
 		
-		if(cmsz == 0)
+		if(cmsz == 0) {
 			game.EndGame();
+			return;
+		}
+			
+		int k = 0;
+		
+		for (Entry<Coord, Mezo> entry : game.getMap().GetMezo().entrySet()) {
+			if (entry.getValue().VanMozgathatoLada()) {
+				k++;
+			}
+		}
+		
+		if (k == 0) {
+			game.Concede();
+			return;
+		}
+		
+		
 	}
 
 	public void setGame(Game g) {
