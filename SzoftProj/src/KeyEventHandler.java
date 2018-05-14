@@ -9,11 +9,12 @@ public class KeyEventHandler implements KeyListener{
 	private Game game;
 	@Override
 	public void keyTyped(KeyEvent e) {
-
+		game.getMap().Running();
 		Iranyok i=Iranyok.NOTHING;
 		if(e.getKeyChar()=='h') {
-			game.getMap().Running();
-			game.getMap().getCurrent().Kill();
+			/*if (game.getMap().getCurrent()==null)
+				game.getMap().Running();*/
+			game.getMap().getCurrent().GiveUp();;
 			game.getMap().fireTableDataChanged();
 			Ellenorzesek();
 			return;
@@ -24,15 +25,19 @@ public class KeyEventHandler implements KeyListener{
 		else if(e.getKeyChar()=='d') i=Iranyok.RIGHT;
 		else if(e.getKeyChar()=='x') i=Iranyok.NOTHING;	
 		else if(e.getKeyChar()=='p') {
+			/*if(game.getMap().getCurrent()==null)
+				game.getMap().Running();*/
 			Mez mez = new Mez();
 			game.getMap().getCurrent().PlaceItem(mez);
 		}
 		else if(e.getKeyChar()=='o') {
+		/*	if(game.getMap().getCurrent()==null)
+				game.getMap().Running();*/
 			Olaj olaj = new Olaj();
 			game.getMap().getCurrent().PlaceItem(olaj);
 		}
 		
-		game.getMap().Running();
+		//game.getMap().Running();
 		game.getMap().getCurrent().Move(i);
 		game.getMap().fireTableDataChanged();
 		Ellenorzesek();
@@ -41,12 +46,12 @@ public class KeyEventHandler implements KeyListener{
 	}
 
 	private void Ellenorzesek() {
-		if ((game.getMap().getInGame().size() == 0) && game.getMap().getKjsz() != 1) {
+		if ((game.getMap().getInGame().size() == 0) && game.getMap().getCurrent() == null) {
 			game.EndGame();
 		}
-		else if((game.getMap().getKjsz() == 1) && (game.getMap().getCurrent() == null))
+	/*	else if((game.getMap().getKjsz() == 1) && (game.getMap().getCurrent() == null))
 			game.EndGame();
-		
+		*/
 		int k = 0;
 		
 		for (Entry<Coord, Mezo> entry : game.getMap().GetMezo().entrySet()) {

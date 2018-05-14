@@ -41,7 +41,7 @@ public class Map extends AbstractTableModel{
 		if (current==d) 
 			current=null;
 		d.Kill();
-		
+		d.current.Remove(d);
 	}
 	
 	//a jatek futasat iranyitja

@@ -134,10 +134,14 @@ public class Dolgozo extends Dolgok {
 	}
 	
 	//a j�t�kos feladhatja a j�t�kot, ha �gy �rzi, hogy m�r nem vezet sehova
-	public void GiveUp(int a) {
+	public void GiveUp() {
 		//System.out.println(">\t->[dolgozo].GiveUp()");
-		m.getInGame().remove(a);
+		if(m.getInGame().contains(this))
+			m.getInGame().remove(this);
 		//g.Concede();
+		else if(this==m.getCurrent())
+			m.Kill(this);
+		
 		
 		//System.out.println("<\t<-[dolgozo].GiveUp()");
 	}
@@ -153,7 +157,9 @@ public class Dolgozo extends Dolgok {
 	
 	//Item lerak�sa
 	public void PlaceItem(Item it){
+		current.Remove(this);
 		current.Accept(it);
+		current.Accept(this);
 		it.Modify();
 	}
 	
