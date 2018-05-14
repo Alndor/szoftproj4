@@ -6,15 +6,16 @@ import java.util.Map.Entry;
 
 public class KeyEventHandler implements KeyListener{
 
-	private Game game/*= new Game()*/;
+	private Game game;
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+
 		Iranyok i=Iranyok.NOTHING;
 		if(e.getKeyChar()=='h') {
 			game.getMap().Running();
 			game.getMap().getCurrent().Kill();
 			game.getMap().fireTableDataChanged();
+			Ellenorzesek();
 			return;
 		}
 		else if(e.getKeyChar()=='w')	i=Iranyok.UP;
@@ -34,7 +35,12 @@ public class KeyEventHandler implements KeyListener{
 		game.getMap().Running();
 		game.getMap().getCurrent().Move(i);
 		game.getMap().fireTableDataChanged();
+		Ellenorzesek();
 		
+		
+	}
+
+	private void Ellenorzesek() {
 		if ((game.getMap().getInGame().size() == 0) && game.getMap().getKjsz() != 1) {
 			game.EndGame();
 		}
@@ -65,8 +71,6 @@ public class KeyEventHandler implements KeyListener{
 		if(cmsz == 0)
 			game.EndGame();
 	}
-
-
 
 	public void setGame(Game g) {
 		game=g;
