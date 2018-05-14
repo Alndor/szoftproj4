@@ -30,7 +30,9 @@ public class KeyEventHandler implements KeyListener{
 		
 		if ((game.getMap().getInGame().size() == 0) && game.getMap().getKjsz() != 1) {
 			game.EndGame();
-		}			
+		}
+		else if((game.getMap().getKjsz() == 1) && (game.getMap().getCurrent() == null))
+			game.EndGame();
 		
 		int k = 0;
 		
