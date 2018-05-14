@@ -8,7 +8,7 @@ public class Game {
 	private ArrayList<Map> maps = new ArrayList<>();
 	private Map currentMap=new Map();
 	
-	private View view;
+	//private View view;
 	private Controller c= new Controller(this);
 	
 	

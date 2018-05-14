@@ -14,7 +14,7 @@ public class Mez extends Item{
 	
 	public Mez() {
 		modifier=2;
-		dr= new GraphicMez();
+		//dr= new GraphicMez();
 	}
 	
 	//A m�z mezej�nek m�dos�t�j�nak be�ll�t�sa a m�z m�dos�t�j�nak f�ggv�ny�ben

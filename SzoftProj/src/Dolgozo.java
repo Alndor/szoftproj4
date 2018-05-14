@@ -14,7 +14,7 @@ public class Dolgozo extends Dolgok {
 	
 	
 	Dolgozo(){
-		dr= new GraphicDolgozo();
+	//	dr= new GraphicDolgozo();
 	}
 	
 	

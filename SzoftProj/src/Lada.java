@@ -58,7 +58,7 @@ public class Lada extends Dolgok {
 	
 	public Lada() {
 		this.SetWeight(10);
-		dr= new GraphicLada();
+		//dr= new GraphicLada();
 	}
 	public String getName() {
 		return name;

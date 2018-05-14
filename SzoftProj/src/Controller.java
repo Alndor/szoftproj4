@@ -9,11 +9,11 @@ import java.util.EventListener;
 public class Controller {
 
 	KeyEventHandler keh= new KeyEventHandler();
-	MouseEventHandler meh= new MouseEventHandler();
+//	MouseEventHandler meh= new MouseEventHandler();
 	
 	Controller(Game g) {
 		keh.setGame(g);
-		meh.setGame(g);
+	//	meh.setGame(g);
 	}
 	
 	public KeyEventHandler getKeh() {
@@ -24,7 +24,7 @@ public class Controller {
 		keh=k;
 	}
 	
-	public MouseEventHandler getMeh() {
+/*	public MouseEventHandler getMeh() {
 		return meh;
 	}
 	
@@ -32,5 +32,5 @@ public class Controller {
 		meh=k;
 	}
 	
-	
+	*/
 }

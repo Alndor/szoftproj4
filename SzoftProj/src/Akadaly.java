@@ -8,7 +8,7 @@ import javax.json.JsonWriter;
 //a mez�k�n elhelyezhet� akad�lyok oszt�lya
 public class Akadaly extends Dolgok {
 	Akadaly(){
-		dr=new GraphicAkadaly();
+		//dr=new GraphicAkadaly();
 	}
 	private String name="Akadaly";
 	//ha az akad�lyra dolgoz� l�pne

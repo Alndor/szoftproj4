@@ -10,7 +10,7 @@ import javax.json.JsonWriter;
 public class Lyuk extends Dolgok {
 	
 	Lyuk(){
-		dr= new GraphicLyuk();
+	//	dr= new GraphicLyuk();
 	}
 	
 	protected Map m = new Map();

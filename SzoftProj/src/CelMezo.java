@@ -8,7 +8,7 @@ import javax.json.JsonWriter;
 public class CelMezo extends Dolgok {
 	
 	CelMezo(){
-		dr= new GraphicCelmezo();
+	//	dr= new GraphicCelmezo();
 	}
 	protected Map m = new Map();
 	private String name = "CelMezo";

@@ -8,7 +8,7 @@ import javax.json.JsonWriter;
 public class Kapcsolo extends Dolgok {
 	
 	Kapcsolo(){
-		dr= new GraphicKapcsolo();
+		//dr= new GraphicKapcsolo();
 
 	}
 	
