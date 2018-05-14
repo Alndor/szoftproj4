@@ -81,7 +81,7 @@ public class Menu {
 		f1.pack();
 		Dimension dim = new Dimension();
 		dim.width = 300;
-		dim.height = 300;
+		dim.height = 200;
 		f1.setMinimumSize(dim);
 		f1.setVisible(true);
 		f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
