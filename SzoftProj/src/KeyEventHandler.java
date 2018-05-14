@@ -9,8 +9,8 @@ public class KeyEventHandler implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		Iranyok i=Iranyok.NOTHING;
-		game.getMap().Running();
 		if(e.getKeyChar()=='h') {
+			game.getMap().Running();
 			game.getMap().getCurrent().Kill();
 			game.getMap().fireTableDataChanged();
 			return;
@@ -20,6 +20,8 @@ public class KeyEventHandler implements KeyListener{
 		else if(e.getKeyChar()=='a') i=Iranyok.LEFT;
 		else if(e.getKeyChar()=='d') i=Iranyok.RIGHT;
 		else if(e.getKeyChar()=='x') i=Iranyok.NOTHING;
+		else return;
+		game.getMap().Running();
 		game.getMap().getCurrent().Move(i);
 		game.getMap().fireTableDataChanged();
 	}
