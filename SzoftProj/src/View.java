@@ -28,7 +28,7 @@ public class View {
 		DrawAll();
 	}
 	
-	public void DologRemoved(Dolgok d) {
+	/*public void DologRemoved(Dolgok d) {
 		DrawAll();
-	}
+	}*/
 }

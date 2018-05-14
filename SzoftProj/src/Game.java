@@ -1,3 +1,4 @@
+import java.awt.Button;
 import java.util.ArrayList;
 
 public class Game {
@@ -5,25 +6,22 @@ public class Game {
 	private ArrayList<Map> maps = new ArrayList<>();
 	private Map currentMap=new Map();
 	
-	private View view;
-	private Controller c= new Controller(this);
+	private Button b1=new Button("olaj");
+	private Button b2= new Button("mez");
 	
 	
-	//elindítja a játékot
+	View view = new View(currentMap);
+	Controller c= new Controller(this);
+	
+	
+	//elindï¿½tja a jï¿½tï¿½kot
 	public void StartGame() {
+		b1.addMouseListener(c.meh);
+		b2.addMouseListener(c.meh);
 		
-		while(currentMap.getInGame().size()!=0) {
-			currentMap.Running();
-			
-			
-			
-			
-		}
-		
-		EndGame();
 	}
 	
-	//véget vet a játéknak
+	//vï¿½get vet a jï¿½tï¿½knak
 	public void EndGame() {
 		for(int i=0;i<currentMap.GetScores().size();i++)
 			System.out.println(currentMap.GetScores().get(i));
@@ -31,7 +29,7 @@ public class Game {
 	}
 	
 	
-	//a játék feladására szolgál
+	//a jï¿½tï¿½k feladï¿½sï¿½ra szolgï¿½l
 	public void Concede() {
 		
 		currentMap.getInGame().remove(currentMap.getCurrent());
@@ -40,18 +38,18 @@ public class Game {
 	}
 	
 	
-	//kiválaszthatjuk a pályát
+	//kivï¿½laszthatjuk a pï¿½lyï¿½t
 	public Map ChooseMap() {
 		for(int i=0;i<maps.size();i++) {
 			System.out.println(i+1+".\t"+maps.get(i).getName());
 		}
 		
-		//temporary solution, még úgyse kell
+		//temporary solution, mï¿½g ï¿½gyse kell
 		currentMap=maps.get(0);
 		return maps.get(0);
 	}
 	
-	//"ArrayList maps" lekérdezése
+	//"ArrayList maps" lekï¿½rdezï¿½se
 	
 	public ArrayList<Map> GetMaps() {
 		return maps;
@@ -65,7 +63,7 @@ public class Game {
 		currentMap=m;
 	}
 	
-	//"ArrayList maps" beállítása
+	//"ArrayList maps" beï¿½llï¿½tï¿½sa
 	
 	public void SetMaps(ArrayList<Map> tmp) {
 		maps = tmp;

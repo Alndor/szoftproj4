@@ -50,9 +50,7 @@ public class Map extends AbstractTableModel{
 			inGame.add(current);
 			current=inGame.remove(0);
 		}
-		
-		
-	
+
 	}
 	
 	

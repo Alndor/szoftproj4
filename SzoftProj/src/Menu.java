@@ -86,7 +86,8 @@ public class Menu {
 			
 			//g.setMap(map);
 			f1.dispose();
-			MyFrame mf = new MyFrame(map);
+			Window mf = new Window();
+			mf.SetGame(map);
 		}
 	}		
 	
