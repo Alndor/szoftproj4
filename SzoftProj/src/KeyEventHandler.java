@@ -9,12 +9,17 @@ public class KeyEventHandler implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		Iranyok i=Iranyok.NOTHING;
-		if(e.getKeyChar()=='w')	i=Iranyok.UP;
+		game.getMap().Running();
+		if(e.getKeyChar()=='h') {
+			game.getMap().getCurrent().Kill();
+			game.getMap().fireTableDataChanged();
+			return;
+		}
+		else if(e.getKeyChar()=='w')	i=Iranyok.UP;
 		else if(e.getKeyChar()=='s') i=Iranyok.DOWN;
 		else if(e.getKeyChar()=='a') i=Iranyok.LEFT;
 		else if(e.getKeyChar()=='d') i=Iranyok.RIGHT;
 		else if(e.getKeyChar()=='x') i=Iranyok.NOTHING;
-		game.getMap().Running();
 		game.getMap().getCurrent().Move(i);
 		game.getMap().fireTableDataChanged();
 	}
