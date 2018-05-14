@@ -56,7 +56,7 @@ public class Map extends AbstractTableModel{
 	}
 	
 	
-	//meghivja a pontot ado fuggvenyet az epp soron levïo jatekosnak
+	//meghivja a pontot ado fuggvenyet az epp soron levï¿½o jatekosnak
 	public void AddPoints() {
 	
 		current.PointsGiven();	
@@ -163,7 +163,7 @@ public class Map extends AbstractTableModel{
 		
 		for(int i = 0; i < plain.size(); ++i) {
 			Mezo m = new Mezo();
-			m.Load(plain.getJsonObject(i).getJsonObject("mezo"), this);
+			m.Load((JsonObject)(plain.getJsonObject(i).getJsonObject("mezo")), this);
 			Coord c = new Coord(plain.getJsonObject(i).getInt("x"), plain.getJsonObject(i).getInt("y"));
 			map.put(c, m);
 		}
@@ -253,7 +253,7 @@ public class Map extends AbstractTableModel{
 		name=s;
 	}
 
-	//Visszaadja az oszlopok számát
+	//Visszaadja az oszlopok szï¿½mï¿½t
 	@Override
 	public int getColumnCount() {
 		int count=0;
@@ -264,7 +264,7 @@ public class Map extends AbstractTableModel{
 		return count;
 	}
 
-	//Visszaadja a sorok számát
+	//Visszaadja a sorok szï¿½mï¿½t
 	@Override
 	public int getRowCount() {
 		int count=0;
@@ -275,7 +275,7 @@ public class Map extends AbstractTableModel{
 		return count;
 	}
 
-	//Maga az infó, hogy (x,y) helyen mi található, dolgok neve space-szel elválasztva
+	//Maga az infï¿½, hogy (x,y) helyen mi talï¿½lhatï¿½, dolgok neve space-szel elvï¿½lasztva
 	@Override
 	public Object getValueAt(int x, int y) {
 		String value="";

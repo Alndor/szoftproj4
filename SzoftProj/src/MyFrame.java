@@ -25,23 +25,26 @@ public class MyFrame extends JFrame{
 	
 	private Map map= new Map();
 	
-	public MyFrame(Map terkep){ //Jelenleg mindent a konstruktorban rak össze
+	public MyFrame(Game g){ //Jelenleg mindent a konstruktorban rak ï¿½ssze
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("GUI Demo");
 		this.setResizable(false);
-		JPanel p=new JPanel(new BorderLayout()); //A panel, amire rárakjuk majd a table-t
-		map = terkep; //Betöltés, hogy a mapnak legyen tartalma
-		table.setRowHeight(50); //Sorok magasságának beállítása az 50x50-es képek miatt
-		table.setModel(map); //Átadjuk a mapet modelnek
-		setColumnWidth(table); //Sajnos jobb megoldást nem tudok az oszlopok szélességének beállítására, így erre külön metódus van
-		table.setDefaultRenderer(Object.class, new MyTableCellRenderer(table.getDefaultRenderer(Object.class))); //Saját renderer beállítása
+		JPanel p=new JPanel(new BorderLayout()); //A panel, amire rï¿½rakjuk majd a table-t
+		p.addKeyListener(g.getController().keh);
+		p.setFocusable(true);
+		p.requestFocusInWindow();
+		map = g.getMap(); //Betï¿½ltï¿½s, hogy a mapnak legyen tartalma
+		table.setRowHeight(50); //Sorok magassï¿½gï¿½nak beï¿½llï¿½tï¿½sa az 50x50-es kï¿½pek miatt
+		table.setModel(map); //ï¿½tadjuk a mapet modelnek
+		setColumnWidth(table); //Sajnos jobb megoldï¿½st nem tudok az oszlopok szï¿½lessï¿½gï¿½nek beï¿½llï¿½tï¿½sï¿½ra, ï¿½gy erre kï¿½lï¿½n metï¿½dus van
+		table.setDefaultRenderer(Object.class, new MyTableCellRenderer(table.getDefaultRenderer(Object.class))); //Sajï¿½t renderer beï¿½llï¿½tï¿½sa
 		p.add(table, BorderLayout.CENTER); //A panelre rakjuk a table-t
-		this.add(p); //Hozzáadjuk a frame-hez
-		this.setVisible(true); //Megjelenítjuk
-		this.pack(); //Pack-eljük, hogy az ablak akkora legyen, mint a table
+		this.add(p); //Hozzï¿½adjuk a frame-hez
+		this.setVisible(true); //Megjelenï¿½tjuk
+		this.pack(); //Pack-eljï¿½k, hogy az ablak akkora legyen, mint a table
 	}
 		
-	//Az oszlopok méretezése
+	//Az oszlopok mï¿½retezï¿½se
 	public void setColumnWidth(JTable table){
 		TableModel tm=table.getModel();
 		TableColumnModel cmodel=table.getColumnModel();
@@ -50,7 +53,7 @@ public class MyFrame extends JFrame{
 		}
 	}
 	
-	//A saját rendelelõ osztály megvalósítása
+	//A sajï¿½t rendelelï¿½ osztï¿½ly megvalï¿½sï¿½tï¿½sa
 	class MyTableCellRenderer extends JLabel implements TableCellRenderer {
 
 	   	 private TableCellRenderer renderer;
@@ -61,15 +64,15 @@ public class MyFrame extends JFrame{
 	   	 
 	   	 //Maga a renderer
 	   	 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-	   		 //A régi házi feladatomnál a COmponent-et változtattam, de azzal nem lehet szöveget és képet váltosztatni, így egy JLabel-t ad majd vissza
+	   		 //A rï¿½gi hï¿½zi feladatomnï¿½l a COmponent-et vï¿½ltoztattam, de azzal nem lehet szï¿½veget ï¿½s kï¿½pet vï¿½ltosztatni, ï¿½gy egy JLabel-t ad majd vissza
 	   		 JComponent component = (JComponent)renderer.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-	   		 JLabel cellLabel = new JLabel(); //Ezt változtatja majd a modell szerint
+	   		 JLabel cellLabel = new JLabel(); //Ezt vï¿½ltoztatja majd a modell szerint
 	   		 ImageIcon image;
-	   		 String s = (String)value; //A map által elküldött a mezõn lévõ dolgok listája
+	   		 String s = (String)value; //A map ï¿½ltal elkï¿½ldï¿½tt a mezï¿½n lï¿½vï¿½ dolgok listï¿½ja
 	   		 String things[] = s.split(" ");
 	   		 Border b = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray);
 	   		 
-	   		 //Sima foreach-el nézi végig, ez majd még fejleszthetõ
+	   		 //Sima foreach-el nï¿½zi vï¿½gig, ez majd mï¿½g fejleszthetï¿½
 	   		 for (String str : things){
 	   			 switch (str){
 	   			 case "Mez":
