@@ -76,6 +76,9 @@ public class MyFrame extends JFrame{
 	   		 String things[] = s.split(" ");
 	   		 Border b = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray);
 	   		 
+	   		image=new ImageIcon("Mezo.gif");
+	   		cellLabel.setIcon(image);
+	   		 
 	   		 //Sima foreach-el nézi végig, ez majd még fejleszthetõ
 	   		 for (String str : things){
 	   			 switch (str){	   			 
@@ -114,10 +117,7 @@ public class MyFrame extends JFrame{
 	   				 break;
 	   			 case "Olaj":
 	   				 b = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.black);	   				 
-	   				 //break;
-	   			default:
-	   				image=new ImageIcon("Mezo.gif");
-	   				 cellLabel.setIcon(image);
+	   				 break;	   				
 	   			 }
 	   		 }
 	   		//((DefaultTableCellRenderer)component).setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
