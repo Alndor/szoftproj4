@@ -26,6 +26,17 @@ public class Menu {
 		JButton b1 = new JButton("Start game!");
 		ActionListener al1 = new Jatekkezdes();
 		b1.addActionListener(al1);
+		
+		JLabel l3 = new JLabel(
+				"Játékban használható gombok:");
+		
+		JLabel l4 = new JLabel("1.Mozgatás: w, a, s, d.");
+		
+		JLabel l5 = new JLabel("2.Öngyilkosság (feladás): h");
+		
+		JLabel l6 = new JLabel("3.Mézlerakás: p");
+		
+		JLabel l7 = new JLabel("4.Olajlerakás: o");
 				
 		
 		JLabel l2 = new JLabel("Choose map:");
@@ -43,7 +54,13 @@ public class Menu {
 		layout.setAutoCreateContainerGaps(true);
 		
 		layout.setHorizontalGroup(layout.createSequentialGroup()
-				.addComponent(l2)
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+						.addComponent(l2)
+						.addComponent(l3)
+						.addComponent(l4)
+						.addComponent(l5)
+						.addComponent(l6)
+						.addComponent(l7))
 				.addComponent(c2)
 		);
 		
@@ -51,7 +68,12 @@ public class Menu {
 				   layout.createSequentialGroup()				      
 				      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 				    		  .addComponent(l2)
-				    		  .addComponent(c2))				      
+				    		  .addComponent(c2))	
+				      .addComponent(l3)
+				      .addComponent(l4)
+				      .addComponent(l5)
+				      .addComponent(l6)
+				      .addComponent(l7)
 		);	
 		
 		f1.add(panel, BorderLayout.CENTER);
