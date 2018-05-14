@@ -12,9 +12,9 @@ public class Kapcsolo extends Dolgok {
 
 	}
 	
-	//azt a mezõt képviseli, amelyre a lyuk felkerülhet
+	//azt a mezï¿½t kï¿½pviseli, amelyre a lyuk felkerï¿½lhet
 	private Mezo lyukable = new Mezo();
-	//a felrakható lyuk
+	//a felrakhatï¿½ lyuk
 	private Lyuk segedlyuk = new Lyuk();
 	//protected boolean open = false;
 	private String name="Kapcsolo";
@@ -22,24 +22,24 @@ public class Kapcsolo extends Dolgok {
 		return name;
 	}
 	
-	//ha dolgozó lép rá, megvizsgálja a váltó állását, és az alapján alakít rajta
+	//ha dolgozï¿½ lï¿½p rï¿½, megvizsgï¿½lja a vï¿½ltï¿½ ï¿½llï¿½sï¿½t, ï¿½s az alapjï¿½n alakï¿½t rajta
 	@Override
 	public void HitByDolgozo(Dolgozo d, Iranyok i) {
 		
 		SwitchD();
 	}
 
-	//ha láda tolódik rá, megvizsgálja a váltó állását, és az alapján alakít rajta
+	//ha lï¿½da tolï¿½dik rï¿½, megvizsgï¿½lja a vï¿½ltï¿½ ï¿½llï¿½sï¿½t, ï¿½s az alapjï¿½n alakï¿½t rajta
 	@Override
 	public void HitByLada(Lada l, Iranyok i) {
 		
 		SwitchL();
 	}
 	
-	//megvizsgálja a mezõn lévõ Dolgokat, és aszerint jár el, hogy tartalmazta-e a lyukat
+	//megvizsgï¿½lja a mezï¿½n lï¿½vï¿½ Dolgokat, ï¿½s aszerint jï¿½r el, hogy tartalmazta-e a lyukat
 	public void SwitchL() {
 		
-		//csak akkor teszünk bele, ha még nem tartalmazza
+		//csak akkor teszï¿½nk bele, ha mï¿½g nem tartalmazza
 		
 		if(!lyukable.GetThings().contains(segedlyuk)) {
 			for(Dolgok dolog : lyukable.GetThings())
@@ -49,38 +49,42 @@ public class Kapcsolo extends Dolgok {
 				}
 			lyukable.GetThings().clear();
 			lyukable.Accept(segedlyuk);
+		}				
+		
+		if (lyukable.GetThings().size() > 1) {
+			lyukable.Remove(lyukable.GetThings().get(0));
 		}
 	}
 	
-	//megvizsgálja a mezõn lévõ Dolgokat, és aszerint jár el, hogy tartalmazta-e a lyukat
+	//megvizsgï¿½lja a mezï¿½n lï¿½vï¿½ Dolgokat, ï¿½s aszerint jï¿½r el, hogy tartalmazta-e a lyukat
 	public void SwitchD() {
   	
-	  	//ha van rajta a bizonyos lyuk, akkor leszedjük róla, mivel Dolgozó lépett a kapcsolóra
+	  	//ha van rajta a bizonyos lyuk, akkor leszedjï¿½k rï¿½la, mivel Dolgozï¿½ lï¿½pett a kapcsolï¿½ra
 	  	
 	  	if(lyukable.GetThings() != null && lyukable.GetThings().contains(segedlyuk)) {
 	  		lyukable.Remove(segedlyuk);
 	  	}
 	}
 	
-	//"Mezo lyukable" lekérdezése
+	//"Mezo lyukable" lekï¿½rdezï¿½se
 	
 	public Mezo GetLyukable() {
 		return lyukable;
 	}
 	
-	//"Mezo lyukable" beállítása
+	//"Mezo lyukable" beï¿½llï¿½tï¿½sa
 	
 	public void SetLyukable(Mezo tmp) {
 		lyukable = tmp;
 	}
 	
-	//"Lyuk segedlyuk" lekérdezése
+	//"Lyuk segedlyuk" lekï¿½rdezï¿½se
 	
 	public Lyuk GetSegedLyuk() {
 		return segedlyuk;
 	}
 	
-	//"Lyuk segedlyuk" beállítása
+	//"Lyuk segedlyuk" beï¿½llï¿½tï¿½sa
 	
 	public void SetSegedLyuk(Lyuk tmp) {
 		segedlyuk = tmp;

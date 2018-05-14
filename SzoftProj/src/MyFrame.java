@@ -30,7 +30,7 @@ public class MyFrame extends JFrame{
 		this.setTitle("GUI Demo");
 		this.setResizable(false);
 		JPanel p=new JPanel(new BorderLayout()); //A panel, amire r�rakjuk majd a table-t
-		p.addKeyListener(g.getController().keh);
+		p.addKeyListener(g.getController().getKeh());
 		p.setFocusable(true);
 		p.requestFocusInWindow();
 		map = g.getMap(); //Bet�lt�s, hogy a mapnak legyen tartalma
@@ -53,6 +53,10 @@ public class MyFrame extends JFrame{
 		}
 	}
 	
+	public void Exit() {
+		this.dispose();
+	}
+	
 	//A saj�t rendelel� oszt�ly megval�s�t�sa
 	class MyTableCellRenderer extends JLabel implements TableCellRenderer {
 
@@ -72,15 +76,12 @@ public class MyFrame extends JFrame{
 	   		 String things[] = s.split(" ");
 	   		 Border b = BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray);
 	   		 
+	   		image=new ImageIcon("Mezo.gif");
+	   		cellLabel.setIcon(image);
+	   		 
 	   		 //Sima foreach-el n�zi v�gig, ez majd m�g fejleszthet�
 	   		 for (String str : things){
-	   			 switch (str){
-	   			 case "Mez":
-	   				 b = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.orange);
-	   				 break;
-	   			 case "Olaj":
-	   				 b = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.black);
-	   				 break;
+	   			 switch (str){	   			 
 	   			 case "Akadaly":
 	   				 image=new ImageIcon("Akadaly.gif");
 	   				 cellLabel.setIcon(image);
@@ -111,11 +112,12 @@ public class MyFrame extends JFrame{
 	   				 cellLabel.setIcon(image);
 	   				 //cellLabel.setText("C");
 	   				 break;
-	   		  default: 
-                  image=new ImageIcon("Mezo.gif"); 
-                  cellLabel.setIcon(image); 
-                  //cellLabel.setText("A"); 
-                  break; 
+	   			case "Mez":
+	   				 b = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.orange);	   				
+	   				 break;
+	   			 case "Olaj":
+	   				 b = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.black);	   				 
+	   				 break;	   				
 	   			 }
 	   		 }
 	   		//((DefaultTableCellRenderer)component).setHorizontalAlignment(DefaultTableCellRenderer.CENTER);

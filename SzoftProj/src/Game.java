@@ -1,4 +1,7 @@
+import java.awt.Component;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 public class Game {
 
@@ -25,18 +28,46 @@ public class Game {
 	
 	//véget vet a játéknak
 	public void EndGame() {
-		for(int i=0;i<currentMap.GetScores().size();i++)
-			System.out.println(currentMap.GetScores().get(i));
+		/*for(int i=0;i<currentMap.GetScores().size();i++)
+			System.out.println(currentMap.GetScores().get(i));*/
 		
+		Component frame1 = null;
+		Component frame2 = null;
+		String tmp = "";
+		int i;
+		for (i = 0; i < currentMap.GetScores().size(); i++) {
+			tmp += (i+1) + ". Játékos: "+ currentMap.GetScores().get(i).GetPoints() + " pont" + "\n";
+		}
+		JOptionPane.showMessageDialog(frame1,
+			    tmp,
+			    "Pontszámok",
+			    JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(frame2,
+			    "A játéknak vége!",
+			    "Nembaj, majd legközelebb!",
+			    JOptionPane.WARNING_MESSAGE);
+		System.exit(0);
 	}
 	
 	
-	//a játék feladására szolgál
+	//a játék befejezése, ha nincs több mozgatható láda
 	public void Concede() {
-		
-		currentMap.getInGame().remove(currentMap.getCurrent());
-		//EndGame();
-		
+		Component frame1 = null;
+		Component frame2 = null;
+		String tmp = "";
+		int i;
+		for (i = 0; i < currentMap.GetScores().size(); i++) {
+			tmp += (i+1) + ". Játékos: "+ currentMap.GetScores().get(i).GetPoints() + " pont" + "\n";
+		}
+		JOptionPane.showMessageDialog(frame2,
+			    tmp,
+			    "Pontszámok",
+			    JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(frame1,
+			    "A játéknak vége, mert nincs több mozgatható láda!",
+			    "Nembaj, majd legközelebb!",
+			    JOptionPane.WARNING_MESSAGE);
+		System.exit(0);
 	}
 	
 	

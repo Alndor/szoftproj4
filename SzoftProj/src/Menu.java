@@ -74,14 +74,17 @@ public class Menu {
 			
 			if (c2.getSelectedItem().equals("EgyJatekos")) {
 				map.Load("1PlayerMap.txt");
+				map.setKjsz(1);
 			}
 			
 			else if (c2.getSelectedItem().equals("KetJatekos")) {
 				map.Load("2PlayerMap.txt");
+				map.setKjsz(2);
 			}
 			
 			else {
 				map.Load("4PlayerMap.txt");
+				map.setKjsz(4);
 			}
 			Game g = new Game();
 			g.setMap(map);

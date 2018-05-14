@@ -14,6 +14,45 @@ public class Lada extends Dolgok {
 	protected boolean refused = false;
 	protected Iranyok irany = null;
 	
+	private boolean mozgathato = true;
+	
+	public void Mozgathato() {
+		int akadalyszam = 0;
+		int i;
+		
+		for (i = 0; i < this.GetCurrent().GetNeighbor(Iranyok.DOWN).GetThings().size(); i++) {
+			if (this.GetCurrent().GetNeighbor(Iranyok.DOWN).GetThings().get(i).getName().equals("Akadaly")) {
+				akadalyszam++;
+			}
+		}
+		
+		for (i = 0; i < this.GetCurrent().GetNeighbor(Iranyok.UP).GetThings().size(); i++) {
+			if (this.GetCurrent().GetNeighbor(Iranyok.UP).GetThings().get(i).getName().equals("Akadaly")) {
+				akadalyszam++;
+			}
+		}
+		
+		for (i = 0; i < this.GetCurrent().GetNeighbor(Iranyok.RIGHT).GetThings().size(); i++) {
+			if (this.GetCurrent().GetNeighbor(Iranyok.RIGHT).GetThings().get(i).getName().equals("Akadaly")) {
+				akadalyszam++;
+			}
+		}
+		
+		for (i = 0; i < this.GetCurrent().GetNeighbor(Iranyok.LEFT).GetThings().size(); i++) {
+			if (this.GetCurrent().GetNeighbor(Iranyok.LEFT).GetThings().get(i).getName().equals("Akadaly")) {
+				akadalyszam++;
+			}
+		}
+		
+		if (akadalyszam > 1) {
+			mozgathato = false;
+		}
+		
+	}
+	
+	public boolean GetMozgathato() {
+		return mozgathato;
+	}
 	
 	private String name="Lada";
 	
@@ -57,10 +96,10 @@ public class Lada extends Dolgok {
 		//amennyiben a láda megsemmisül, nem helyezõdik fel egyetlen mezõre sem
 		else if(smashed)
 			return;
-		else 
+		else {
 			nextMezo.Accept(this);
-		
-		
+			this.Mozgathato();
+		}							
 		//System.out.println("<\t<-[lada].HitByDolgozo(d, i)");
 	}
 	

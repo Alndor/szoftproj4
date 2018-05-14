@@ -150,6 +150,52 @@ public class Mezo {
 		return (JsonObject)value;
 	}
 	
+	public boolean VanMozgathatoLada() {
+		
+		int z = 0;
+		while (z < this.GetThings().size() && !this.GetThings().get(z).getName().equals("Lada"))  {
+			z++;
+		}
+		
+		if (z == this.GetThings().size()) {
+			return false;
+		}
+		
+		int akadalyszam = 0;
+		int i;
+		
+		for (i = 0; i < this.GetNeighbor(Iranyok.DOWN).GetThings().size(); i++) {
+			if (this.GetNeighbor(Iranyok.DOWN).GetThings().get(i).getName().equals("Akadaly")) {
+				akadalyszam++;
+			}
+		}
+		
+		for (i = 0; i < this.GetNeighbor(Iranyok.UP).GetThings().size(); i++) {
+			if (this.GetNeighbor(Iranyok.UP).GetThings().get(i).getName().equals("Akadaly")) {
+				akadalyszam++;
+			}
+		}
+		
+		for (i = 0; i < this.GetNeighbor(Iranyok.RIGHT).GetThings().size(); i++) {
+			if (this.GetNeighbor(Iranyok.RIGHT).GetThings().get(i).getName().equals("Akadaly")) {
+				akadalyszam++;
+			}
+		}
+		
+		for (i = 0; i < this.GetNeighbor(Iranyok.LEFT).GetThings().size(); i++) {
+			if (this.GetNeighbor(Iranyok.LEFT).GetThings().get(i).getName().equals("Akadaly")) {
+				akadalyszam++;
+			}
+		}
+		
+		if (akadalyszam > 1) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
 	private JsonArray SavedThings() {
 		JsonArrayBuilder things = Json.createArrayBuilder();
 		for(Dolgok dolog : dolgok) {
@@ -166,7 +212,7 @@ public class Mezo {
 		
 		mod = Double.parseDouble(ob.getString("modifier"));
 		mymap = map;
-		JsonArray things = ob.getJsonArray("dolgok");
+		JsonArray things = (JsonArray)(ob.getJsonArray("dolgok"));
 		
 		for(int i = 0; i < things.size(); ++i) {
 			Dolgok dolog = setDolog((JsonObject)(things.getJsonObject(i)), map);

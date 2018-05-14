@@ -21,7 +21,7 @@ public class Dolgozo extends Dolgok {
 	private double strength=14;
 	private String name= "Dolgozo";
 	//az adott j�t�kos pontjait t�rol� v�ltoz�
-	private int points;
+	private int points = 0;
 	private Iranyok irany = null;
 	//valtozo, ami szamon tartja, hogy sikerult-e a mozgatas
 	protected boolean refused = false;
