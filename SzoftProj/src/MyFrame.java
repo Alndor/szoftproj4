@@ -30,7 +30,7 @@ public class MyFrame extends JFrame{
 		this.setTitle("GUI Demo");
 		this.setResizable(false);
 		JPanel p=new JPanel(new BorderLayout()); //A panel, amire rárakjuk majd a table-t
-		p.addKeyListener(g.getController().keh);
+		p.addKeyListener(g.getController().getKeh());
 		p.setFocusable(true);
 		p.requestFocusInWindow();
 		map = g.getMap(); //Betöltés, hogy a mapnak legyen tartalma
@@ -51,6 +51,10 @@ public class MyFrame extends JFrame{
 		for (int i=0; i<tm.getColumnCount(); i++){
 			cmodel.getColumn(i).setPreferredWidth(50);
 		}
+	}
+	
+	public void Exit() {
+		this.dispose();
 	}
 	
 	//A saját rendelelõ osztály megvalósítása
@@ -74,13 +78,7 @@ public class MyFrame extends JFrame{
 	   		 
 	   		 //Sima foreach-el nézi végig, ez majd még fejleszthetõ
 	   		 for (String str : things){
-	   			 switch (str){
-	   			 case "Mez":
-	   				 b = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.orange);
-	   				 break;
-	   			 case "Olaj":
-	   				 b = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.black);
-	   				 break;
+	   			 switch (str){	   			 
 	   			 case "Akadaly":
 	   				 image=new ImageIcon("Akadaly.gif");
 	   				 cellLabel.setIcon(image);
@@ -111,6 +109,12 @@ public class MyFrame extends JFrame{
 	   				 cellLabel.setIcon(image);
 	   				 //cellLabel.setText("C");
 	   				 break;
+	   			case "Mez":
+	   				 b = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.orange);	   				
+	   				 break;
+	   			 case "Olaj":
+	   				 b = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.black);	   				 
+	   				 //break;
 	   			default:
 	   				image=new ImageIcon("Mezo.gif");
 	   				 cellLabel.setIcon(image);

@@ -47,9 +47,12 @@ public class Kapcsolo extends Dolgok {
 		
 		if(!lyukable.GetThings().contains(segedlyuk)) {
 			lyukable.Accept(segedlyuk);
+		}				
+		
+		if (lyukable.GetThings().size() > 1) {
+			lyukable.Remove(lyukable.GetThings().get(0));
 		}
 			
-		//System.out.println("<\t<-[kapcsolo].SwitchL()");
 	}
 	
 	//megvizsgálja a mezõn lévõ Dolgokat, és aszerint jár el, hogy tartalmazta-e a lyukat

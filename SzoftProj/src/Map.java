@@ -27,6 +27,11 @@ public class Map extends AbstractTableModel{
 	//a pontok szamitasar szolgalo lista
 	private ArrayList<Dolgozo> scores = new ArrayList<>();
 	private ArrayList<Dolgozo>	inGame= new ArrayList<>();
+	
+	private int kjsz;
+	
+	private ArrayList<Lada> mozladaszam = new ArrayList<>();
+	
 	private Dolgozo current= null;
 	
 	//megoli a parameterkent kapott dolgozot
@@ -137,7 +142,7 @@ public class Map extends AbstractTableModel{
 	
 	public HashMap<Kapcsolo, Coord> kapcsok = new HashMap<Kapcsolo, Coord>();
 	public void Load(String file) {
-		JsonObject mapObject = null;
+		JsonObject mapObject = (JsonObject)null;
 		
 		try {
 			InputStream fis;
@@ -159,11 +164,12 @@ public class Map extends AbstractTableModel{
 		inGame.clear();
 		map.clear();
 		
-		JsonArray plain = mapObject.getJsonArray("mezok");
+		JsonArray plain = (JsonArray)(mapObject.getJsonArray("mezok"));
 		
 		for(int i = 0; i < plain.size(); ++i) {
 			Mezo m = new Mezo();
 			m.Load((JsonObject)(plain.getJsonObject(i).getJsonObject("mezo")), this);
+			
 			Coord c = new Coord(plain.getJsonObject(i).getInt("x"), plain.getJsonObject(i).getInt("y"));
 			map.put(c, m);
 		}
@@ -291,6 +297,14 @@ public class Map extends AbstractTableModel{
 		
 		return value;
 		
+	}
+
+	public int getKjsz() {
+		return kjsz;
+	}
+
+	public void setKjsz(int kjsz) {
+		this.kjsz = kjsz;
 	}
 }
 
