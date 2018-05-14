@@ -70,6 +70,25 @@ public class Game {
 		System.exit(0);
 	}
 	
+	public void Gratula() {
+		Component frame1 = null;
+		Component frame2 = null;
+		String tmp = "";
+		int i;
+		for (i = 0; i < currentMap.GetScores().size(); i++) {
+			tmp += (i+1) + ". Játékos: "+ currentMap.GetScores().get(i).GetPoints() + " pont" + "\n";
+		}
+		JOptionPane.showMessageDialog(frame2,
+			    tmp,
+			    "Pontszámok",
+			    JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(frame1,
+			    "Gratulálok, betoltad az összes ládát a helyére!",
+			    "Vége",
+			    JOptionPane.PLAIN_MESSAGE);
+		System.exit(0);
+	}
+	
 	
 	//kiválaszthatjuk a pályát
 	public Map ChooseMap() {

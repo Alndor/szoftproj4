@@ -64,7 +64,7 @@ public class KeyEventHandler implements KeyListener{
 		}
 		
 		if(cmsz == 0) {
-			game.EndGame();
+			game.Gratula();
 			return;
 		}
 			
