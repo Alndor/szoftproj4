@@ -1,6 +1,7 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.Map.Entry;
 
 public class KeyEventHandler implements KeyListener{
@@ -45,6 +46,18 @@ public class KeyEventHandler implements KeyListener{
 		if (k == 0) {
 			game.Concede();
 		}
+		
+		int cmsz = 0;
+		
+		for(Entry<Coord, Mezo> entry : game.getMap().GetMezo().entrySet()){
+			ArrayList<Dolgok> dolgok = entry.getValue().GetThings();
+			for(Dolgok dolog : dolgok)
+				if(dolog.getName().equals("CelMezo"))
+					++cmsz;
+		}
+		
+		if(cmsz == 0)
+			game.EndGame();
 	}
 
 
